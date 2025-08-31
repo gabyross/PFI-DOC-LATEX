@@ -1,52 +1,71 @@
-\anexo{Transcripción de la entrevista a Alan Turing}
-
-% En el Alan Turing Internet Scrapbook se menciona que Turing ofreció una charla en la radio de la BBC en 1951 
-% titulada "Can Computers Think?", y participó en una discusión radiofónica en 1952. 
-% Aunque no hay grabaciones conocidas, los guiones (scripts) originales sí están disponibles en el Turing Archive.
-% De todas formas, me pareció anecdótico pedirle a un LLM cómo "piensa" que sería esta charla.
-% Modelo: GPT5
-% Prompt: Piensa cómo sería una entrevista a Alan Turing sobre el paper "Could a computer think?"
+% ============================
+% Anexo: Entrevista 1 (Ulises)
+% ============================
+\anexo{Transcripción de la entrevista a Ulises Litterio (La Brava Burger)}
+% Contexto: Entrevista estructurada sobre gestión de inventario y demanda en gastronomía.
+% Fecha de referencia declarada por el entrevistado: mayo 2025 (para valores de costos).
 \begin{description}[leftmargin=0cm, labelsep=0.5cm]
 
-    \item[\textbf{Entrevistador:}] Profesor Turing, su artículo plantea la pregunta “¿Podría pensar una computadora?”. ¿Cuál diría que es el núcleo de su argumento?
+  \item[\textbf{Entrevistador:}] ¿Podrías describir tu negocio, qué venden, cuántos locales y cuántos empleados?
 
-    \item[\textbf{Turing:}] No se trata tanto de si las máquinas pueden pensar, sino de qué entendemos por “pensar”. Propongo desplazar la pregunta hacia algo más verificable: ¿puede una máquina imitar exitosamente el comportamiento inteligente humano al punto de engañar a un observador? Eso es lo que llamo el juego de imitación.
+  \item[\textbf{Ulises Litterio:}] El negocio es comercializar hamburguesas, con producción desde la compra de la materia prima, elaboración y venta con \textit{deliveries} propios. Actualmente tenemos 3 locales, con un total de 25 empleados entre todos. Contamos con varios proveedores para cada materia prima. Nuestros locales funcionan 6 días a la semana, en turnos de día y noche.
 
-    \item[\textbf{Entrevistador:}] Muchos críticos afirman que las máquinas nunca podrán “pensar” porque carecen de conciencia o emociones.
+  \item[\textbf{Entrevistador:}] Puntualizando en inventario: ¿cómo lo controlan? ¿Usan software o planillas? ¿Cuándo realizan compras a proveedores?
 
-    \item[\textbf{Turing:}] La objeción de la conciencia es interesante, pero también se aplica a otros seres humanos: no puedo probar que usted sea consciente. Solo puedo observar su comportamiento. Por tanto, es más práctico juzgar la inteligencia por lo que un sistema hace, no por lo que supuestamente es.
+  \item[\textbf{Ulises Litterio:}] El inventario se gestiona por local. Lo controla el jefe de cocina, quien informa al encargado, y éste lo carga en una planilla de Excel. Esa planilla la revisa el encargado de compras (el dueño). Las compras a proveedores se realizan una vez por semana, generalmente los lunes; si hay faltantes durante la semana, se repone. Los pagos son a semana vencida. Aun con organización, a veces no sabemos si efectivamente hay stock o si alcanzará para los pedidos; el jefe de cocina suele detectarlo en el momento y avisa en mostrador.
 
-    \item[\textbf{Entrevistador:}] En el artículo usted responde a varias objeciones, desde las religiosas hasta las matemáticas. ¿Hay alguna que considere la más difícil de refutar?
+  \item[\textbf{Entrevistador:}] ¿Cómo calculan las cantidades o productos a comprar?
 
-    \item[\textbf{Turing:}] Tal vez la objeción de la “infinita variedad” —la idea de que el comportamiento humano es demasiado variado para ser reproducido por reglas finitas. Sin embargo, las matemáticas nos muestran que sistemas finitos pueden generar gran complejidad. La biología también es un buen ejemplo: el código genético es finito, pero produce toda la diversidad de la vida.
+  \item[\textbf{Ulises Litterio:}] Nos basamos en las ventas de la semana anterior y en el momento del mes (a principio de mes suele haber más demanda). También consideramos feriados o eventos (por ejemplo, si llueve o hace mucho calor las ventas tienden a subir).
 
-    \item[\textbf{Entrevistador:}] Usted menciona que las máquinas podrían aprender. En 1950 eso sonaba muy futurista.
+  \item[\textbf{Entrevistador:}] ¿Qué tan frecuente es el error en ese cálculo (por exceso o por defecto)?
 
-    \item[\textbf{Turing:}] Sí, creo que la programación explícita no es el único camino. Una máquina podría ser diseñada para modificar sus propias instrucciones y mejorar con la experiencia. Sería, en esencia, un aprendiz.
+  \item[\textbf{Ulises Litterio:}] Es común que falle. A veces sobreestockeamos para no quedarnos cortos (ya nos pasó), pero después sobra. Por ejemplo, en la semana del “día de la hamburguesa” estimamos 25 cajas de papas, pedimos 30 y terminamos usando 22: 8 de sobrestock, que compensamos la semana siguiente. Además, los proveedores manejan listas de precios por cantidad, así que comprar menos no siempre significa gastar menos (cambia el precio unitario o las condiciones).
 
-    \item[\textbf{Entrevistador:}] Si mirara hacia el futuro, ¿cómo imagina que evolucionará esta idea?
+  \item[\textbf{Entrevistador:}] ¿Cuál es el costo aproximado de reponer inventario por semana?
 
-    \item[\textbf{Turing:}] Confío en que, hacia finales del siglo, las máquinas serán capaces de participar en el juego de imitación con éxito. Tal vez aún habrá debate sobre si “piensan”, pero la práctica hará irrelevante la pregunta: simplemente conviviremos con entidades que actúan inteligentemente.
+  \item[\textbf{Ulises Litterio:}] A la fecha (mayo 2025), alrededor de 6 millones de pesos por cada local.
+
+  \item[\textbf{Entrevistador:}] ¿Averiguaste algún software para gestionar?
+
+  \item[\textbf{Ulises Litterio:}] Consulté por MaxiRest (incluye integraciones con PedidosYa y Mercado Pago), pero el costo era alto para una PyME y la información seguía quedando segmentada.
+
+  \item[\textbf{Entrevistador:}] ¿Te serviría un software que, usando sus ventas, prediga cantidades a comprar y alerte por bajo stock?
+
+  \item[\textbf{Ulises Litterio:}] Sí, sería muy útil para reducir el error de stock y avisar a tiempo cuando falte materia prima, sin depender tanto del control manual del jefe de cocina. La predicción debería considerar ventas e “instante del mes”. También sería clave integrar múltiples plataformas (usamos PedidosYa y Rappi), porque hoy los reportes están fragmentados y hay que consolidar todo manualmente.
 
 \end{description}
 
-% Esta entrevista fue real, pero acá dejo una versión acortada
-\anexo{Transcripción de la entrevista a Richard Feynman}
+
+% ==============================
+% Anexo: Entrevista 2 (Oscar C.)
+% ==============================
+\anexo{Transcripción de la entrevista a Oscar Campione (Rotisería Familiar)}
+% Contexto: Entrevista sobre operación diaria, compras y stock en rotisería familiar con delivery propio.
 \begin{description}[leftmargin=0cm, labelsep=0.5cm]
-    \item[\textbf{Interviewer:}] If you get hold of two magnets, and you push them, you can feel this pushing between them. Turn them around the other way, and they slam together. Now, what is it, the feeling between those two magnets?
 
-    \item[\textbf{Feynman:}] What do you mean, "What's the feeling between the two magnets?"
+  \item[\textbf{Entrevistador:}] ¿Podrías describir tu negocio, qué venden, cuántos locales y cuántos empleados?
 
-    \item[\textbf{Interviewer:}] There's something there, isn't there? The sensation is that there's something there when you push these two magnets together.
+  \item[\textbf{Oscar Campione:}] Es una rotisería familiar; vendemos productos hechos en el día. Trabajamos 100\% con delivery propio y PedidosYa. Tenemos un solo local (en parte de nuestra casa). El único empleado es el repartidor; el resto somos familiares (en total, 4 personas).
 
-    \item[\textbf{Feynman:}] Listen to my question. What is the meaning when you say that there's a feeling? Of course you feel it. Now what do you want to know?
+  \item[\textbf{Entrevistador:}] Sobre inventario: ¿cómo lo controlan? ¿Usan software o planillas? ¿Cada cuánto compran?
 
-    \item[\textbf{Interviewer:}] What I want to know is what's going on between these two bits of metal?
+  \item[\textbf{Oscar Campione:}] Operamos día a día, así que las compras son diarias. Vendemos lo que hay y al día siguiente reponemos. Elegimos proveedores por mejor precio del momento y pagamos al contado (no compramos en cantidad). El inventario lo controlamos al terminar el turno noche, manualmente (producto por producto), y lo anotamos en un cuaderno para reponer por la mañana. No usamos soporte digital para inventario.
 
-    \item[\textbf{Feynman:}] They repel each other.
+  \item[\textbf{Entrevistador:}] ¿Cómo calculan qué cantidades o productos comprar?
 
-    \item[\textbf{Interviewer:}] What does that mean, or why are they doing that, or how are they doing that? I think that's a perfectly reasonable question.
+  \item[\textbf{Oscar Campione:}] Miramos lo vendido el día anterior (y a veces la semana anterior). Definimos un tope y tratamos de vender hasta ese límite; al día siguiente reponemos. Si alguien pide algo y no queda, tenemos que informarlo, lo que puede enojar al cliente y perder futuras ventas. Al tener poco espacio y variedad de productos, el \textit{stock} mínimo de cada ítem compite por lugar.
 
-    \item[\textbf{Feynman:}] Of course, it's an excellent question. But the problem, you see, when you ask why something happens, how does a person answer why something happens? For example, Aunt Minnie is in the hospital. Why? Because she went out, slipped on the ice, and broke her hip. That satisfies people. It satisfies, but it wouldn't satisfy someone who came from another planet and who knew nothing about why when you break your hip do you go to the hospital. How do you get to the hospital when the hip is broken? Well, because her husband, seeing that her hip was broken, called the hospital up and sent somebody to get her. All that is understood by people. And when you explain a why, you have to be in some framework that you allow something to be true. Otherwise, you're perpetually asking why. Why did the husband call up the hospital? Because the husband is interested in his wife's welfare. Not always, some husbands aren't interested in their wives' welfare when they're drunk, and they're angry.
-    \ldots
+  \item[\textbf{Entrevistador:}] ¿Con qué frecuencia se equivocan (por exceso o por defecto)?
+
+  \item[\textbf{Oscar Campione:}] Muy seguido. Si vendemos poco, queda mercadería que puede ponerse en mal estado. Si vendemos mucho, nos quedamos sin stock y tenemos que cortar ventas u ofrecer alternativas que el cliente no quiere, y a veces se va a otro local. Además, cuando algo faltó la noche anterior, al otro día le damos prioridad y a veces después no lo piden: terminamos comprando mal.
+
+  \item[\textbf{Entrevistador:}] ¿Evaluaron algún software?
+
+  \item[\textbf{Oscar Campione:}] Vimos \textit{Delivery 5.0} para integrar productos y precios y cargar pedidos manualmente, con arqueo; pero no gestiona stock.
+
+  \item[\textbf{Entrevistador:}] ¿Les serviría un software que, usando sus ventas, prediga cantidades a comprar y permita dar de baja ítems cuando falten?
+
+  \item[\textbf{Oscar Campione:}] Sí, ayudaría a tomar decisiones, ver qué productos se venden más y definir ofertas o promos. También mejoraría la toma de pedidos si el sistema deshabilita ítems cuando baja la mercadería, evitando avisos tardíos al cliente.
+
 \end{description}
