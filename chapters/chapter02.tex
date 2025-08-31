@@ -1,21 +1,94 @@
-\chapter{Preliminares}\label{chapter02}
+\chapter{Antecedentes}\label{chapter02}
 
-\section{Nombre de la primera sección}
+\section{Marco Teórico}
 
-Completar.\pdfcomment{Ejemplo de comentario en el pdf}
+\subsection{Plataformas digitales de delivery}
 
-\section{Nombre de la segunda sección}
+En los últimos años, el crecimiento de plataformas digitales de delivery, tales como PedidosYa, Rappi, Uber Eats y Didi Food, ha transformado profundamente el ecosistema gastronómico. Estas aplicaciones actúan como intermediarios entre los establecimientos y los consumidores, facilitando la adquisición de productos a través de interfaces móviles y web. Su influencia se ha vuelto particularmente relevante para los modelos de pequeños y medianos negocios gastronómicos, que encuentran en estas plataformas una vía eficiente para ampliar su alcance comercial.
 
-Completar. Otra referencia de ejemplo:~\ref{ejemploRefVeganismo}.
+A su vez, las plataformas disponen de APIs que permiten ser notificadas de eventos, tales como una nueva compra. De este modo, sistemas externos (como el planteado en esta tesis) pueden utilizar esa información en sus procesos internos.
 
-\section{Ejemplo de tabla}
+\subsection{Inventario en el rubro gastronómico}
 
-\input{tables/table_example.tex}
+Según \parencite{chopra2019supply}, se define al inventario como el conjunto de bienes o productos que una empresa mantiene en existencia con el propósito de satisfacer la demanda futura. Puede existir en forma de materias primas, productos en proceso o productos terminados, y se mantiene debido a razones como economías de escala, incertidumbre en la demanda o suministro, y variabilidad estacional.
 
-\noindent \ldots como se ve en la Tabla~\ref{tab:example} \ldots
+El concepto de \emph{supply chain} se refiere al conjunto de procesos, actores y recursos involucrados en el flujo de productos, información y servicios desde los proveedores hasta el consumidor final. \parencite{chopra2019supply} definen la cadena de suministro como \guillemotleft \emph{todos los niveles involucrados, directa o indirectamente, en satisfacer la demanda del cliente}\guillemotright.
 
-\section{Ejemplo de figura}
+Focalizándose en el rubro gastronómico, esto implica gestionar la compra, almacenamiento y transformación de la materia prima requerida para los distintos productos a comercializar, de forma tal que estén disponibles en el momento que son requeridos, y con los niveles de calidad esperados por el cliente.
 
-\input{figures/example.tex}
+A su vez, existen ciertas particularidades en las materias primas que conciernen a este rubro:
 
-\noindent \ldots como se ve en la Figura~\ref{fig:example} \ldots
+\begin{itemize}
+    \item La demanda es variable, ya que factores externos, tales como el clima o feriados, provocan cambios en el patrón de consumo de los clientes.
+    \item Muchas de las materias primas son perecederas, con una vida útil muy corta, lo que implica que las compras a proveedores ocurren muy frecuentemente.
+    \item Los pagos a proveedores tienden a ocurrir al menos una semana luego de la entrega de mercadería, lo que implica que cualquier desvío, ya sea en cantidad o tipo de materia prima requerida, se traslada directamente como una pérdida económica, debido a la naturaleza perecedera de la misma.
+\end{itemize}
+
+Este proceso de reposición de inventario, siendo uno de los que ocurre con mayor frecuencia, es a su vez uno de los de mayor costo asociado, significando para uno de los entrevistados, en mayo de 2025, alrededor de 6 millones de pesos argentinos por semana en cada uno de sus locales.
+
+El cálculo de cuánto se debe comprar es una tarea que hoy en día, debido a los costos asociados, queda en manos del personal con mayor conocimiento del negocio. Inclusive, muchas veces recae directamente en el dueño, quien debe considerar no solo las ventas que ya ocurrieron, sino también cómo los factores externos, como los feriados, el clima y el momento del mes, podrían influir en las ventas de la próxima semana.
+
+\subsection{Aprendizaje supervisado}
+
+El aprendizaje supervisado es una de las principales ramas de \emph{Machine Learning} y se refiere al proceso mediante el cual un algoritmo aprende a realizar predicciones a partir de un conjunto de datos etiquetado. Según \parencite{russell2022ai}, \guillemotleft{}\emph{en el aprendizaje supervisado, el agente observa pares de entrada-salida y aprende una función que mapea desde la entrada hacia la salida. Por ejemplo, las entradas podrían ser imágenes de una cámara, cada una acompañada de una salida que indica \textquotedblleft autobús\textquotedblright{} o \textquotedblleft peatón\textquotedblright{}. Esta salida se llama etiqueta. El agente aprende una función que, dada una nueva imagen, predice la etiqueta apropiada.}\guillemotright{}.
+
+Formalmente, el aprendizaje supervisado parte de un conjunto de entrenamiento conformado por $n$ ejemplos etiquetados:
+
+\[
+(x_1, y_1), (x_2, y_2), \ldots, (x_n, y_n)
+\]
+
+donde cada $x_n$ es una entrada (también conocida como vector de características) y cada $y_n$ es la salida o etiqueta correspondiente. Estos ejemplos son generados por una función desconocida $f(x)$, y el objetivo del algoritmo es encontrar una función aproximada $h(x)$, denominada \emph{hipótesis}, que generalice correctamente sobre datos no vistos.
+
+Los problemas que son abarcados por este tipo de aprendizaje son:
+
+\begin{itemize}
+    \item \textbf{Clasificación:} cuando las salidas $y_n$ son categorías discretas, tales como un tipo de producto o la decisión de si realizar o no una compra.
+    \item \textbf{Regresión:} cuando las salidas son valores numéricos continuos (por ejemplo, predicción de precios, estimación de demanda o ventas futuras).
+\end{itemize}
+
+El problema de predicción de ventas abarcado en esta tesis entra en la categoría de problemas de regresión, ya que la variable a predecir es numérica continua.
+
+\subsection{Métricas}
+
+A la hora de implementar algún algoritmo predictivo, es fundamental tener la capacidad de medir cuán precisas son las predicciones devueltas. Es aquí donde las métricas toman un rol preponderante, ya que permiten evaluar de distintas formas la performance de un algoritmo.
+
+Para el caso específico de regresión, se utilizan métricas que calculan el grado de error entre los valores reales y los valores predichos por el modelo.
+
+Basándonos en \parencite{hyndman2018forecasting, james2013isl} se pueden definir tres métricas principales para modelos de regresión:
+
+\begin{itemize}
+    \item \textbf{MAE (Mean Absolute Error):} mide el promedio de las diferencias absolutas entre los valores predichos por el modelo y los valores reales observados, sin considerar la dirección del error. La unidad utilizada es la misma de lo que se está prediciendo, lo que facilita su interpretación, y es menos sensible a valores atípicos en comparación con otras métricas como MSE y RMSE.
+    
+    \[
+        \mbox{MAE} = \frac{1}{n} \sum_{t=1}^{n} \left| y_t - \hat{y}_t \right|
+    \]
+
+    \item \textbf{RMSE (Root Mean Squared Error):} cuantifica la diferencia promedio entre los valores reales observados y las predicciones de un modelo. Se calcula como el promedio del cuadrado de los errores. Es muy sensible a valores atípicos.
+    
+    \[
+        \mbox{RMSE} = \sqrt{ \frac{1}{n} \sum_{t=1}^{n} \left( y_t - \hat{y}_t \right)^2 }
+    \]
+
+    \item \textbf{MSE (Mean Squared Error):} mide el promedio del cuadrado de las diferencias entre valores reales y predichos. Penaliza más fuertemente a los errores grandes y, a diferencia del RMSE, se expresa en unidades al cuadrado, lo que puede dificultar la interpretación.
+    
+    \[
+        \mbox{MSE} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2
+    \]
+\end{itemize}
+
+\subsection{CatBoost}
+
+Antes de definir el algoritmo CatBoost, es necesario aclarar dos conceptos claves: la función de pérdida y el \emph{Gradient Boosting}.
+
+Una \emph{función de pérdida} es una función matemática que cuantifica el error entre la predicción del modelo ($\hat{y}$) y el valor real observado ($y$). Su objetivo es proporcionar una medida numérica del desempeño del modelo, la cual puede luego utilizarse para optimizar los parámetros mediante técnicas como el descenso del gradiente.
+
+Formalmente, dada una función de predicción $f(x)$ y un valor objetivo $y$, una función de pérdida $L(y, f(x))$ devuelve un valor escalar que representa la penalización por la discrepancia entre ambos.
+
+Definido este concepto, podemos explicar el \emph{Gradient Boosting}: una técnica de ensamble supervisado que construye un modelo predictivo fuerte mediante la combinación secuencial de múltiples modelos débiles (generalmente árboles de decisión), con el objetivo de corregir los errores residuales del conjunto anterior. A cada paso, el nuevo modelo es entrenado para minimizar el error del conjunto previo, utilizando métodos de optimización basados en el gradiente de una función de pérdida.
+
+En este caso, la función utilizada por CatBoost es RMSE.
+
+Dada esta definición, CatBoost (\emph{Categorical Boosting}), definido en \parencite{dorogush2018catboost}, es un algoritmo basado en Gradient Boosting diseñado específicamente para manejar datasets que contienen una combinación de variables numéricas y categóricas. Se destaca por su capacidad para procesar variables categóricas sin necesidad de codificación previa (como one-hot o label encoding), y por reducir el \emph{overfitting} mediante una técnica llamada \emph{Ordered Boosting}. 
+
+A su vez, es uno de los algoritmos de Machine Learning más performantes a la hora de trabajar con datasets de las características a utilizar en esta tesis.
