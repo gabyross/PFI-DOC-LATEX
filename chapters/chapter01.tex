@@ -1,8 +1,8 @@
 \chapter{Introducción}
 
-El sector gastronómico ha sido identificado como un área estratégica dentro de la economía de la Ciudad Autónoma de Buenos Aires, destacándose por su capacidad de transformar barrios a través de la generación masiva de empleos y una variada oferta culinaria, demostrando que esta actividad no solo es fundamental para el turismo, sino también para la vida cotidiana de los residentes del país \parencite{srsur2024gastronomico}. En línea con esta relevancia, la industria gastronómica en Argentina es una de las más dinámicas y resilientes a la situación económica. A pesar de que indicadores de la Cámara Argentina de Comercio y Servicios (CAC) \parencite{cac2024consumo} determinaron que el consumo en el país cerró el 2024 con una caída acumulada de -7,4\%, en el presente el sector gastronómico experimenta un incremento constante que apunta hacia la recuperación. Pero aun cuando tanto empresarios como operadores culinarios han utilizado estrategias financieras y alternativas creativas para tratar de superar las barreras que impone la inestabilidad económica del país, sigue siendo necesario encontrar mecanismos que eleven la eficiencia operativa y así conseguir un punto de equilibrio entre la rentabilidad y la sostenibilidad.
+El sector gastronómico ha sido identificado como un área estratégica dentro de la economía de la Ciudad Autónoma de Buenos Aires, destacándose por su capacidad de transformar barrios a través de la generación masiva de empleos y una variada oferta culinaria, demostrando que esta actividad no solo es fundamental para el turismo, sino también para la vida cotidiana de los residentes del país \parencite{srsur2024gastronomico}. En línea con esta relevancia, la industria gastronómica en Argentina es una de las más dinámicas y resilientes a la situación económica. A pesar de que indicadores de la Cámara Argentina de Comercio y Servicios (CAC) \parencite{cac2024consumo} determinaron que el consumo en el país cerró el 2024 con una caída acumulada de -7,4\%, en el presente el sector gastronómico experimenta un incremento constante que apunta hacia la recuperación. Pero aún cuando tanto empresarios como operadores culinarios han utilizado estrategias financieras y alternativas creativas para tratar de superar las barreras que impone la inestabilidad económica del país, sigue siendo necesario encontrar mecanismos que eleven la eficiencia operativa y así conseguir un punto de equilibrio entre la rentabilidad y la sostenibilidad.
 
-Por lo tanto, ante el panorama presentado los distintos establecimientos gastronómicos buscan la optimización de sus operaciones, apalancándose en soluciones tecnológicas que permitan gestionar aspectos tales como la venta y facturación de sus productos, la gestión de inventario, o análisis y reportes del funcionamiento del negocio, es decir, la tecnología pasa a tener un rol preponderante, ayudando a la toma de decisiones informadas que permitan maximizar la ganancia y reducir los costos \parencite{agrawal2023predictive}.
+Por lo tanto, ante el panorama presentado los distintos establecimientos gastronómicos buscan la optimización de sus operaciones, apalancándose en soluciones tecnológicas que permitan gestionar aspectos tales como la venta y facturación de sus productos, la gestión de inventario, o análisis y reportes del funcionamiento del negocio, es decir, la tecnología pasa a tener un rol preponderante, ayudando a la toma de decisiones informadas que permitan maximizar la ganancia y reducir los costos  \parencite{agrawal2023predictive}.
 
 En el presente contexto, los avances relacionados a la tecnología predictiva, especialmente aquellos que comprenden modelos de Machine Learning, son capaces de brindar una solución innovadora. Como lo demuestra \parencite{schmidt2022mlsales}, los restaurantes tienen la capacidad de adaptarse a estas invenciones para aprovechar dichos modelos y así predecir la demanda.
 
@@ -10,7 +10,7 @@ A pesar de la implementación exponencial de la informática en múltiples área
 
 Brindarle esta posibilidad a un negocio significa disminuir enormemente la incertidumbre alrededor del cálculo de stock requerido. Esta es una tarea crítica, puesto que comprar por encima de lo necesario, en el caso de los ítems orgánicos con una fecha de vencimiento acotada, se traduce directamente en pérdidas económicas por desperdicio. Y de forma similar, comprar por debajo continúa generando un impacto financiero negativo debido a las ventas que no pueden concretarse, pero también impacta a la reputación del negocio y la fidelización del cliente \parencite{agrawal2023predictive}.
 
-Con fundamento en consultas efectuadas a dueños y encargados de negocios, hoy en día esta es una tarea solamente realizada a partir de la experiencia personal y basada en los datos de ventas de la última semana, no considerando aspectos externos tales como la estacionalidad o el clima, cuando se encuentra demostrado que estos son determinantes a la hora de realizar predicciones en esta industria \parencite{tanizaki2019forecasting}.
+Con fundamento en consultas efectuadas a dueños y encargados de negocios, hoy en día esta es una tarea solamente realizada a partir de la experiencia personal y basada en los datos de ventas de la última semana, no considerando aspectos externos tales como la estacionalidad o el clima, cuando se encuentra demostrado que estos son determinantes a la hora de realizar predicciones en esta industria. \parencite{tanizaki2019forecasting}.
 
 Actualmente, se encuentran dos principales líderes de mercado en Argentina, siendo estos Maxirest y Restô, los cuales a pesar de que brindan soluciones integrales para la gestión del negocio, no atacan esta problemática en particular. Se enfocan únicamente en un análisis descriptivo de las ventas o el inventario, es decir, no abordan de forma específica la problemática de predicción de almacenamiento de stock y por ende tampoco de venta.  
 
@@ -28,17 +28,23 @@ La solución está orientada a PYMES gastronómicas ubicadas en CABA, que busque
 
 \section{Objetivo General}
 
-Permitir la optimización de los niveles de stock en el rubro gastronómico de Argentina en el año 2025, mediante predicción de ventas utilizando un modelo de Machine Learning, en base a la información de ventas, a fin de reducir costos y maximizar ingresos.
+Permitir la optimización de los niveles de stock en el rubro gastronómico de Argentina en el año 2025, mediante predicción de ventas utilizando un modelo de Machine Learning, en base a la información de ventas, a fin de reducir costos y maximizar ingresos
 
 \noindent\textbf{Objetivos Específicos:}
 
 \begin{itemize}
     \item Entrevistar a dueños y/o encargados de locales gastronómicos a fin de comprender el proceso de gestión de inventario y qué factores afectan a las ventas.
+    
     \item Desarrollar integraciones con sistemas de plataformas de delivery, tales como PedidosYa, a fin de obtener y unificar las ventas en tiempo real.
+    
     \item Desarrollar un modelo de Machine Learning que permita pronosticar ventas y extrapolar el inventario mínimo necesario para satisfacer la demanda.
+    
     \item Usar fuentes externas de datos, tales como APIs meteorológicas o de feriados, a fin de enriquecer los datos a usar para la predicción.
+    
     \item Permitir que el usuario defina alertas que notifique cuando un ítem del inventario queda por debajo de un umbral.
+    
     \item Permitir que el usuario brinde feedback sobre estos pronósticos, a fin de permitir que el modelo se ajuste.
+    
     \item Desarrollar una plataforma web donde el usuario pueda cargar los productos que vende, indicando de qué elementos del inventario se encuentran compuestos.
 \end{itemize}
 
