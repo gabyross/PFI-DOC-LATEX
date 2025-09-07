@@ -29,6 +29,58 @@ Los requerimientos no funcionales especifican condiciones de calidad y restricci
     \item El sistema debe desplegarse en una plataforma en la nube (ej. AWS Amplify) que garantice al menos un 99\% de disponibilidad mensual.
 \end{enumerate}
 
+\section{Diagramas}\label{sec:diagramas}
+
+Para comprender de manera clara la interacción entre los usuarios y el sistema, así como el flujo de los procesos internos, se emplean diferentes tipos de diagramas. Estas representaciones gráficas permiten comunicar de forma visual los requerimientos, las funcionalidades y la lógica de operación de la aplicación, favoreciendo la comprensión tanto de aspectos funcionales como de diseño \parencite{booch2005uml}. 
+
+A continuación, se detallan los posibles flujos funcionales que se encuentran disponibles en SmartStocker.
+
+\subsection{Diagramas de Casos de Uso}\label{sec:diagramas-casos-uso}
+
+Un diagrama de caso de uso es una representación visual que muestra cómo los actores (usuarios u otros sistemas) interactúan con las funcionalidades principales de una aplicación. Estos diagramas permiten modelar el comportamiento esperado desde el punto de vista del usuario, identificando qué operaciones puede ejecutar y cómo se relacionan con el sistema \parencite{jacobson1992usecase}.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/DiagramaCasosDeUsoTesis.png}
+    \caption{Diagrama de Casos de Uso}
+    \label{fig:casos-de-uso}
+\end{figure}
+
+\subsection{Diagramas de Flujo}\label{sec:diagramas-flujo}
+
+Los diagramas de flujo o de procesos son herramientas visuales que representan de manera secuencial los pasos y decisiones que conforman un procedimiento. Su utilización permite clarificar la lógica del negocio, identificar posibles ineficiencias y redundancias, así como facilitar la comunicación entre los equipos técnicos y los usuarios. De esta manera, constituyen un recurso fundamental para comprender, analizar, documentar y mejorar procesos organizacionales \parencite{asq2025flowchart}.
+
+\subsubsection{Registro y Autenticación}
+
+Con el fin de garantizar la seguridad y la personalización de los datos, el acceso a la información y a las funcionalidades críticas de \emph{SmartStocker} se encuentra restringido a usuarios autenticados. Para ello, la plataforma implementa un flujo de registro inicial y un mecanismo de inicio de sesión que permite identificar de manera única a cada restaurante o local gastronómico.
+
+En la etapa de registro, el usuario debe proporcionar credenciales seguras junto con los datos básicos de su establecimiento. Una vez verificados y almacenados en la base de datos, se habilita la creación de una cuenta que asegura un entorno exclusivo para la gestión de inventario y el análisis de ventas.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/DiagramaRegistroDeUsuario.png}
+    \caption{Flujo de Registro del Usuario}
+    \label{fig:flujo-registro}
+\end{figure}
+
+Posteriormente, mediante la autenticación, los usuarios acceden a su espacio de trabajo personalizado, desde el cual es posible consultar métricas, visualizar predicciones de demanda, administrar productos e ingredientes y recibir alertas relacionadas con el stock disponible. Este proceso de inicio de sesión no solo protege la integridad de la información, sino que también garantiza que las recomendaciones generadas por el sistema respondan a las características particulares de cada negocio gastronómico.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/DiagramaInicioDeSesion.png}
+    \caption{Flujo de Autenticación del Usuario}
+    \label{fig:flujo-autenticacion}
+\end{figure}
+
+\subsubsection{Generación de Predicciones}
+
+La capacidad de anticipar la demanda de productos constituye la funcionalidad central de \emph{SmartStocker}, ya que permite a los restaurantes y locales gastronómicos tomar decisiones fundamentadas sobre compras y reposiciones de insumos. En este proceso, el sistema aplica modelos de \emph{Machine Learning} que, a partir de datos históricos y variables externas, generan estimaciones confiables de ventas futuras.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/DiagramaDePrediccionTesis.png}
+    \caption{Flujo de Predicción de Ventas}
+    \label{fig:flujo-prediccion}
+\end{figure}
+
 \section{Arquitectura de la solución}\label{sec:arquitectura-solucion}
 En esta sección se presenta la arquitectura de SmartStocker, detallando las tecnologías empleadas para su diseño técnico y funcional. La arquitectura funciona como marco conceptual que sustenta cada componente del sistema y especifica las interacciones y dependencias entre las distintas partes que lo componen.
 
