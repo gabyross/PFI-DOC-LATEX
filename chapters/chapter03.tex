@@ -30,6 +30,25 @@ Actualmente, en Argentina, el mercado del software especializado en el sector ga
     \item \textbf{Restô} \parencite{iprofesional2014resto}. Es un sistema de gestión gastronómica que forma parte del ecosistema del software Tango, el cual fue desarrollado por la empresa argentina Axoft. El propósito de este es brindar una solución a la necesidad de una herramienta tecnológica que simplifique los procesos del día a día de dicho sector. En línea con dicho objetivo, este brinda una administración integral en múltiples establecimientos gastronómicos con diversas funciones tales como la gestión de mesas y reservas, el control de stock de insumos, la facturación electrónica, el seguimiento de ventas, y muchas otras más. De igual manera, gracias a su enfoque modular y adaptable, es utilizado tanto por pequeños comercios como por grandes cadenas gastronómicas, lo que le ha permitido posicionarse como una de las soluciones locales más completas del mercado para la administración de negocios del rubro alimenticio.
 \end{itemize}
 
+Ahora bien, con el objetivo de sintetizar las principales características de las soluciones comerciales vigentes en Argentina y contrastarlas con la propuesta de SmartStocker, se elaboró la siguiente tabla comparativa. En ella se ponen en relación funcionalidades clave vinculadas a la gestión del inventario, los reportes en tiempo real y, especialmente, la incorporación de modelos de Machine Learning.  
+\begin{table}[htbp]
+    \centering
+    \begin{tabular}{lccc}
+        \hline
+        \textbf{Funcionalidad} & \textbf{Maxirest} & \textbf{Restô} & \textbf{SmartStocker} \\
+        \hline
+        Reportes en tiempo real    & Sí & Sí & Sí \\
+        Control de inventario      & Sí & Sí & Sí \\
+        Predicción de demanda (ML) & No & No & Sí \\
+        Estimación de stock (ML)   & No & No & Sí \\
+        Ajuste dinámico (feedback) & No & No & Sí \\
+        \hline
+    \end{tabular}
+    \caption{Comparación de funcionalidades entre la competencia y SmartStocker.}
+    \label{tab:comparacion-funcionalidades}
+\end{table}
+Tal como se observa, las plataformas locales se limitan a la automatización y análisis descriptivo, mientras que SmartStocker incorpora un enfoque predictivo con modelos de Machine Learning, evidenciando así el diferencial innovador del proyecto.
+
 \subsection{Propuestas académicas y experimentales}\label{sec:academico}
 
 Aunque el modelo predictivo se ha desarrollado en investigaciones de múltiples áreas, existen escasos trabajos académicos enfocados específicamente en el rubro gastronómico. Uno de ellos es \parencite{hari2024predictiwaste}: \emph{PredictiWaste: An ML-Powered Framework for Sustainable Food Inventory Optimization in Restaurants (marco de trabajo basado en aprendizaje automático para la optimización sostenible del inventario de alimentos en restaurantes)}, se introduce un modelo de análisis predictivo para reducir el desperdicio de alimentos en el inventario y la planificación de menús de restaurantes. 
