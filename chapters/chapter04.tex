@@ -1,4 +1,34 @@
 \chapter{Descripcion}\label{chapter04}
+
+\section{Requerimientos}\label{sec:requerimientos}
+A continuación se presentan los requerimientos de la solución, organizados en dos categorías: requerimientos funcionales y no funcionales. Los requerimientos funcionales representan las operaciones y servicios que la plataforma debe ofrecer al usuario final, mientras que los no funcionales establecen criterios de calidad que condicionan la forma en que el sistema debe operar \parencite{ieee2008}.
+
+SmartStocker está diseñado para asistir a pequeños y medianos establecimientos gastronómicos en la gestión de su inventario. A partir de la integración con plataformas de ventas y el análisis de datos históricos mediante técnicas de Machine Learning, el sistema proyecta la demanda futura, calcula el stock necesario y genera alertas tempranas para evitar pérdidas por desabastecimiento o exceso. Asimismo, provee un tablero con métricas relevantes y permite al usuario interactuar con el modelo de predicción para ajustarlo a la realidad de su negocio mediante feedback.
+
+\subsection{Requerimientos funcionales}\label{sec:requerimientos-funcionales}
+Los requerimientos funcionales describen las acciones observables que el sistema debe llevar a cabo para satisfacer las necesidades del usuario \parencite{ieee2008}.
+\begin{enumerate}[label=\textbf{RF\arabic*}, leftmargin=2.5cm]
+    \item El sistema debe permitir el alta de cuentas de restaurantes, con autenticación segura mediante correo electrónico y contraseña.
+    \item El sistema debe permitir registrar, modificar y eliminar productos gastronómicos, vinculados con los insumos que los componen.
+    \item El sistema debe facilitar la administración de inventario, incluyendo actualización de cantidades disponibles y definición de umbrales mínimos de stock.
+    \item El sistema debe conectarse con plataformas de delivery en CABA (ej. PedidosYa) para importar datos de ventas en tiempo real.
+    \item El sistema debe permitir la carga manual de datos históricos de ventas a través de archivos en formato \texttt{.csv} o \texttt{.xlsx}.
+    \item El sistema debe ejecutar predicciones de ventas basadas en modelos de \emph{Machine Learning}, considerando tanto información histórica como variables externas (clima, feriados, días de la semana).
+    \item El sistema debe calcular automáticamente la cantidad de inventario recomendada según los resultados de las predicciones generadas.
+    \item El sistema debe emitir alertas cuando un insumo se encuentre por debajo del nivel mínimo configurado por el usuario.
+    \item El sistema debe permitir al usuario proporcionar retroalimentación respecto a las predicciones, incorporando estos datos para el ajuste del modelo.
+\end{enumerate}
+
+\subsection{Requerimientos no funcionales}\label{sec:requerimientos-no-funcionales}
+Los requerimientos no funcionales especifican condiciones de calidad y restricciones técnicas que determinan cómo debe operar la solución, más allá de las funciones explícitas que ofrece \parencite{ieee2008}.
+\begin{enumerate}[label=\textbf{RNF\arabic*}, leftmargin=2.8cm]
+    \item La interfaz debe ser adaptable (\emph{responsive}) para asegurar su correcto uso en computadoras de escritorio, tablets y dispositivos móviles.
+    \item La aplicación debe garantizar disponibilidad continua (24x7) para el acceso a predicciones, métricas e informes en cualquier momento.
+    \item El sistema debe ser compatible con los navegadores más utilizados (Google Chrome, Mozilla Firefox, Microsoft Edge y Safari) en sus versiones estables recientes.
+    \item La infraestructura debe poder escalar automáticamente para soportar un crecimiento sostenido de usuarios sin afectar el rendimiento.
+    \item El sistema debe desplegarse en una plataforma en la nube (ej. AWS Amplify) que garantice al menos un 99\% de disponibilidad mensual.
+\end{enumerate}
+
 \section{Arquitectura de la solución}\label{sec:arquitectura-solucion}
 En esta sección se presenta la arquitectura de SmartStocker, detallando las tecnologías empleadas para su diseño técnico y funcional. La arquitectura funciona como marco conceptual que sustenta cada componente del sistema y especifica las interacciones y dependencias entre las distintas partes que lo componen.
 
