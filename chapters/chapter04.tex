@@ -1,4 +1,4 @@
-\chapter{Descripcion}\label{chapter04}
+\chapter{Descripción}\label{chapter04}
 
 \section{Requerimientos}\label{sec:requerimientos}
 A continuación se presentan los requerimientos de la solución, organizados en dos categorías: requerimientos funcionales y no funcionales. Los requerimientos funcionales representan las operaciones y servicios que la plataforma debe ofrecer al usuario final, mientras que los no funcionales establecen criterios de calidad que condicionan la forma en que el sistema debe operar \parencite{ieee2008}.
@@ -137,7 +137,14 @@ El modelo predictivo requiere datos de calidad para generar resultados confiable
 
 \subsection{Procesamiento Predictivo}\label{sec:procesamiento-predictivo}
 
-...
+El procesamiento predictivo constituye el núcleo técnico de la funcionalidad de SmartStocker. Una vez recopilados los datos históricos y actuales, el sistema los somete a un proceso de depuración y normalización que asegura la consistencia y homogeneidad de los registros. Este preprocesamiento incluye la eliminación de valores atípicos, la imputación de datos faltantes y la transformación de variables temporales (como la estacionalidad o los turnos horarios) en características relevantes para el modelo.
+
+Posteriormente, los datos son utilizados para entrenar algoritmos de aprendizaje supervisado, dentro de los cuales se evaluaron diferentes enfoques, priorizando modelos de regresión y técnicas de boosting como CatBoost, debido a su robustez en contextos con variables categóricas y a su capacidad de reducir el sobreajuste. Estos modelos generan proyecciones de ventas futuras en base a patrones identificados, incorporando tanto las tendencias históricas como variables externas tales como clima, feriados y días de la semana.
+
+Las predicciones se ejecutan bajo demanda, es decir, cada vez que el usuario lo requiera dentro de la plataforma, lo que garantiza resultados actualizados y adaptados al contexto puntual de planificación del negocio, integrando un mecanismo de retroalimentación continua (feedback loop) mediante el cual los usuarios validan si las estimaciones reflejaron la demanda real observada; esa información se reintegra al modelo para ajustar progresivamente su precisión, personalizando las predicciones al contexto específico de cada restaurante y favoreciendo la evolución de SmartStocker ante escenarios cambiantes.
+
+En consecuencia, el procesamiento predictivo de SmartStocker no se limita a entregar un valor numérico de ventas estimadas, sino que constituye un sistema adaptable y evolutivo, orientado a respaldar la toma de decisiones estratégicas en la gestión de inventarios gastronómicos.
+
 \subsection{Cálculo de Inventario Sugerido}\label{sec:calculo-inventario}
 
 Una vez obtenidas las predicciones de ventas, los resultados obtenidos son vinculados con la lista de ingredientes definida por el restaurante. De esta manera, se genera un cálculo automático del inventario recomendado, minimizando tanto los riesgos de desabastecimiento como los costos derivados de un exceso de stock. 
