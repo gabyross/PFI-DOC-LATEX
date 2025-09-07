@@ -13,7 +13,7 @@ Los requerimientos funcionales describen las acciones observables que el sistema
     \item El sistema debe facilitar la administración de inventario, incluyendo actualización de cantidades disponibles y definición de umbrales mínimos de stock.
     \item El sistema debe conectarse con plataformas de delivery en CABA (ej. PedidosYa) para importar datos de ventas en tiempo real.
     \item El sistema debe permitir la carga manual de datos históricos de ventas a través de archivos en formato \texttt{.csv} o \texttt{.xlsx}.
-    \item El sistema debe ejecutar predicciones de ventas basadas en modelos de \emph{Machine Learning}, considerando tanto información histórica como variables externas (clima, feriados, días de la semana).
+    \item El sistema debe ejecutar predicciones de ventas basadas en modelos de Machine Learning, considerando tanto información histórica como variables externas (clima, feriados, días de la semana).
     \item El sistema debe calcular automáticamente la cantidad de inventario recomendada según los resultados de las predicciones generadas.
     \item El sistema debe emitir alertas cuando un insumo se encuentre por debajo del nivel mínimo configurado por el usuario.
     \item El sistema debe permitir al usuario proporcionar retroalimentación respecto a las predicciones, incorporando estos datos para el ajuste del modelo.
@@ -22,7 +22,7 @@ Los requerimientos funcionales describen las acciones observables que el sistema
 \subsection{Requerimientos no funcionales}\label{sec:requerimientos-no-funcionales}
 Los requerimientos no funcionales especifican condiciones de calidad y restricciones técnicas que determinan cómo debe operar la solución, más allá de las funciones explícitas que ofrece \parencite{ieee2008}.
 \begin{enumerate}[label=\textbf{RNF\arabic*}, leftmargin=2.8cm]
-    \item La interfaz debe ser adaptable (\emph{responsive}) para asegurar su correcto uso en computadoras de escritorio, tablets y dispositivos móviles.
+    \item La interfaz debe ser adaptable (responsive) para asegurar su correcto uso en computadoras de escritorio, tablets y dispositivos móviles.
     \item La aplicación debe garantizar disponibilidad continua (24x7) para el acceso a predicciones, métricas e informes en cualquier momento.
     \item El sistema debe ser compatible con los navegadores más utilizados (Google Chrome, Mozilla Firefox, Microsoft Edge y Safari) en sus versiones estables recientes.
     \item La infraestructura debe poder escalar automáticamente para soportar un crecimiento sostenido de usuarios sin afectar el rendimiento.
@@ -51,7 +51,7 @@ Los diagramas de flujo o de procesos son herramientas visuales que representan d
 
 \subsubsection{Registro y Autenticación}
 
-Con el fin de garantizar la seguridad y la personalización de los datos, el acceso a la información y a las funcionalidades críticas de \emph{SmartStocker} se encuentra restringido a usuarios autenticados. Para ello, la plataforma implementa un flujo de registro inicial y un mecanismo de inicio de sesión que permite identificar de manera única a cada restaurante o local gastronómico.
+Con el fin de garantizar la seguridad y la personalización de los datos, el acceso a la información y a las funcionalidades críticas de SmartStocker se encuentra restringido a usuarios autenticados. Para ello, la plataforma implementa un flujo de registro inicial y un mecanismo de inicio de sesión que permite identificar de manera única a cada restaurante o local gastronómico.
 
 En la etapa de registro, el usuario debe proporcionar credenciales seguras junto con los datos básicos de su establecimiento. Una vez verificados y almacenados en la base de datos, se habilita la creación de una cuenta que asegura un entorno exclusivo para la gestión de inventario y el análisis de ventas.
 
@@ -73,7 +73,7 @@ Posteriormente, mediante la autenticación, los usuarios acceden a su espacio de
 
 \subsubsection{Generación de Predicciones}
 
-La capacidad de anticipar la demanda de productos constituye la funcionalidad central de \emph{SmartStocker}, ya que permite a los restaurantes y locales gastronómicos tomar decisiones fundamentadas sobre compras y reposiciones de insumos. En este proceso, el sistema aplica modelos de \emph{Machine Learning} que, a partir de datos históricos y variables externas, generan estimaciones confiables de ventas futuras.
+La capacidad de anticipar la demanda de productos constituye la funcionalidad central de SmartStocker, ya que permite a los restaurantes y locales gastronómicos tomar decisiones fundamentadas sobre compras y reposiciones de insumos. En este proceso, el sistema aplica modelos de Machine Learning que, a partir de datos históricos y variables externas, generan estimaciones confiables de ventas futuras.
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.7\textwidth]{images/DiagramaDePrediccionTesis.png}
@@ -83,9 +83,9 @@ La capacidad de anticipar la demanda de productos constituye la funcionalidad ce
 
 \section{Diseño UX / UI}
 
-El diseño visual de \emph{SmartStocker} se sustenta en una paleta cromática la cual fue escogida con el propósito de transmitir profesionalismo, confianza y modernidad, atributos que resultan esenciales en un sistema orientado a la toma de decisiones estratégicas en el sector gastronómico. Ahora bien, la elección de los tonos se realizó considerando tanto la dimensión estética como la funcionalidad comunicativa de cada color dentro de la interfaz.
+El diseño visual de SmartStocker se sustenta en una paleta cromática la cual fue escogida con el propósito de transmitir profesionalismo, confianza y modernidad, atributos que resultan esenciales en un sistema orientado a la toma de decisiones estratégicas en el sector gastronómico. Ahora bien, la elección de los tonos se realizó considerando tanto la dimensión estética como la funcionalidad comunicativa de cada color dentro de la interfaz.
 
-Los colores principales corresponden a una gama de azules, donde el azul corporativo (\#1E40AF) se utiliza en encabezados, botones primarios y elementos de navegación clave. Este tono se asocia tradicionalmente con la seriedad, la estabilidad y la confianza, lo que refuerza la credibilidad del sistema frente a los usuarios que deben basar sus decisiones en datos precisos. Como complemento, el azul claro (\#3B82F6) aparece en estados de interacción como \emph{hover} y en componentes secundarios, aportando un contraste visual que mantiene la coherencia cromática y facilita la detección rápida de acciones disponibles.
+Los colores principales corresponden a una gama de azules, donde el azul corporativo (\#1E40AF) se utiliza en encabezados, botones primarios y elementos de navegación clave. Este tono se asocia tradicionalmente con la seriedad, la estabilidad y la confianza, lo que refuerza la credibilidad del sistema frente a los usuarios que deben basar sus decisiones en datos precisos. Como complemento, el azul claro (\#3B82F6) aparece en estados de interacción como hover y en componentes secundarios, aportando un contraste visual que mantiene la coherencia cromática y facilita la detección rápida de acciones disponibles.
 
 En cuanto a los colores semánticos, se definieron tres que cumplen un rol fundamental en la comunicación de estados del sistema: verde éxito (\#10B981), naranja advertencia (\#F59E0B) y rojo crítico (\#EF4444). Estos colores no solo cumplen con la convención culturalmente reconocida (verde como positivo, rojo como error), sino que también permiten que el usuario identifique de forma inmediata la condición de un insumo o la validez de una acción.
 
@@ -108,9 +108,46 @@ En conjunto, esta paleta de colores no responde únicamente a una intención est
         Gris claro (fondos) & \cellcolor[HTML]{F3F4F6} & \#F3F4F6 \\ \hline
         Azul muy claro (fondos) & \cellcolor[HTML]{EFF6FF} & \#EFF6FF \\ \hline
     \end{tabular}
-    \caption{Paleta de colores empleada en \emph{SmartStocker}}
+    \caption{Paleta de colores empleada en SmartStocker}
     \label{tab:paleta-colores}
 \end{table}
+
+\section{Funcionalidades}\label{sec:funcionalidades}
+
+\subsection{Predicción de Ventas}\label{sec:prediccion-ventas}
+
+En el sector gastronómico, la capacidad de anticipar la demanda se ha convertido en un factor estratégico para reducir pérdidas, optimizar el uso de insumos y garantizar la continuidad del servicio. Bajo dicha premisa, SmartStocker incorpora un módulo de predicciones como una de sus funcionalidades principales. El sistema aplica técnicas de aprendizaje automático que permiten transformar datos históricos y registros actuales en estimaciones de ventas futuras. 
+
+El objetivo de esta funcionalidad es reemplazar las decisiones basadas únicamente en la experiencia o la intuición por un enfoque sistemático apoyado en datos, incrementando la objetividad en la gestión del inventario. Además, su integración con fuentes externas de información le otorga la capacidad de adaptarse a contextos cambiantes, como la estacionalidad, los feriados o incluso factores climáticos que pueden influir en el consumo.
+
+\subsection{Fuentes de Datos}\label{sec:fuentes-datos}
+
+El modelo predictivo requiere datos de calidad para generar resultados confiables. Con este fin, la plataforma web admite dos vías principales de recopilación:
+
+\begin{itemize}
+    \item \textbf{Carga manual de datos mediante archivos CSV}: esta modalidad permite a los locales gastronómicos incorporar sus registros históricos directamente desde sistemas internos o planillas de control. Para este fin, se determinó que el formato esperado para archivos CSV es:
+    \begin{itemize}
+        \item Fecha venta: dd/mm/aaaa hh:mm:ss
+        \item Producto: con el mismo nombre usado al generar el producto en la aplicación.
+        \item Cantidad.
+    \end{itemize}
+
+    \item \textbf{Integración automática con sistemas de venta}: este mecanismo posibilita la importación continua de pedidos en tiempo real desde aplicaciones como PedidosYa. Con ello, el sistema asegura la actualización permanente del conjunto de datos, reduciendo la dependencia exclusiva de registros históricos y adaptándose a la dinámica diaria del negocio.
+\end{itemize}
+
+\subsection{Procesamiento Predictivo}\label{sec:procesamiento-predictivo}
+
+...
+\subsection{Cálculo de Inventario Sugerido}\label{sec:calculo-inventario}
+
+Una vez obtenidas las predicciones de ventas, los resultados obtenidos son vinculados con la lista de ingredientes definida por el restaurante. De esta manera, se genera un cálculo automático del inventario recomendado, minimizando tanto los riesgos de desabastecimiento como los costos derivados de un exceso de stock. 
+
+\subsection{Notificación de Alertas}\label{sec:alertas}
+
+El módulo de notificaciones cumple un rol preventivo. Cada vez que un insumo alcanza un nivel inferior al umbral configurado por el usuario, el sistema genera una alerta en el tablero principal y, en futuras versiones, podrá enviarlas vía correo electrónico o notificaciones push.
+
+El valor de este componente radica en su capacidad para evitar interrupciones operativas. En un negocio gastronómico, la ausencia de un ingrediente clave no solo afecta la venta de un plato específico, sino que también impacta en la experiencia del cliente y en la reputación del local. Por esta razón, las alertas de stock bajo no deben considerarse únicamente como un aviso técnico, sino como un mecanismo de aseguramiento de la calidad del servicio.
+
 
 \section{Arquitectura de la solución}\label{sec:arquitectura-solucion}
 En esta sección se presenta la arquitectura de SmartStocker, detallando las tecnologías empleadas para su diseño técnico y funcional. La arquitectura funciona como marco conceptual que sustenta cada componente del sistema y especifica las interacciones y dependencias entre las distintas partes que lo componen.
