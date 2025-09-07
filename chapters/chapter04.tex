@@ -81,6 +81,37 @@ La capacidad de anticipar la demanda de productos constituye la funcionalidad ce
     \label{fig:flujo-prediccion}
 \end{figure}
 
+\section{Diseño UX / UI}
+
+El diseño visual de \emph{SmartStocker} se sustenta en una paleta cromática la cual fue escogida con el propósito de transmitir profesionalismo, confianza y modernidad, atributos que resultan esenciales en un sistema orientado a la toma de decisiones estratégicas en el sector gastronómico. Ahora bien, la elección de los tonos se realizó considerando tanto la dimensión estética como la funcionalidad comunicativa de cada color dentro de la interfaz.
+
+Los colores principales corresponden a una gama de azules, donde el azul corporativo (\#1E40AF) se utiliza en encabezados, botones primarios y elementos de navegación clave. Este tono se asocia tradicionalmente con la seriedad, la estabilidad y la confianza, lo que refuerza la credibilidad del sistema frente a los usuarios que deben basar sus decisiones en datos precisos. Como complemento, el azul claro (\#3B82F6) aparece en estados de interacción como \emph{hover} y en componentes secundarios, aportando un contraste visual que mantiene la coherencia cromática y facilita la detección rápida de acciones disponibles.
+
+En cuanto a los colores semánticos, se definieron tres que cumplen un rol fundamental en la comunicación de estados del sistema: verde éxito (\#10B981), naranja advertencia (\#F59E0B) y rojo crítico (\#EF4444). Estos colores no solo cumplen con la convención culturalmente reconocida (verde como positivo, rojo como error), sino que también permiten que el usuario identifique de forma inmediata la condición de un insumo o la validez de una acción.
+
+Los colores de apoyo, grises en diferentes intensidades y blanco como fondo principal, cumplen la función de dar equilibrio visual. El gris oscuro (\#1F2937) se emplea en textos principales para asegurar legibilidad, mientras que el gris medio (\#6B7280) se reserva para información secundaria, evitando así la sobrecarga cognitiva. Además, el gris claro (\#F3F4F6) y el azul muy claro (\#EFF6FF) sirven como fondos sutiles y separadores, permitiendo estructurar la información en bloques diferenciados sin necesidad de líneas divisorias excesivas.
+
+En conjunto, esta paleta de colores no responde únicamente a una intención estética, sino que está al servicio de la usabilidad, la accesibilidad y la experiencia de usuario. Cada tonalidad se integra en un sistema visual coherente que facilita la navegación, refuerza el reconocimiento de patrones y garantiza que los usuarios puedan interactuar con la plataforma de forma intuitiva y eficiente.
+
+\begin{table}[htbp]
+    \centering
+    \begin{tabular}{|l|c|c|}
+        \hline
+        \textbf{Categoría} & \textbf{Color} & \textbf{Código Hex} \\ \hline
+        Azul corporativo & \cellcolor[HTML]{1E40AF} & \#1E40AF \\ \hline
+        Azul claro & \cellcolor[HTML]{3B82F6} & \#3B82F6 \\ \hline
+        Verde éxito & \cellcolor[HTML]{10B981} & \#10B981 \\ \hline
+        Naranja advertencia & \cellcolor[HTML]{F59E0B} & \#F59E0B \\ \hline
+        Rojo crítico & \cellcolor[HTML]{EF4444} & \#EF4444 \\ \hline
+        Gris oscuro (texto principal) & \cellcolor[HTML]{1F2937} & \#1F2937 \\ \hline
+        Gris medio (texto secundario) & \cellcolor[HTML]{6B7280} & \#6B7280 \\ \hline
+        Gris claro (fondos) & \cellcolor[HTML]{F3F4F6} & \#F3F4F6 \\ \hline
+        Azul muy claro (fondos) & \cellcolor[HTML]{EFF6FF} & \#EFF6FF \\ \hline
+    \end{tabular}
+    \caption{Paleta de colores empleada en \emph{SmartStocker}}
+    \label{tab:paleta-colores}
+\end{table}
+
 \section{Arquitectura de la solución}\label{sec:arquitectura-solucion}
 En esta sección se presenta la arquitectura de SmartStocker, detallando las tecnologías empleadas para su diseño técnico y funcional. La arquitectura funciona como marco conceptual que sustenta cada componente del sistema y especifica las interacciones y dependencias entre las distintas partes que lo componen.
 
