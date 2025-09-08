@@ -13,7 +13,7 @@
 \usepackage[T1]{fontenc} % Para poder copiar y pegar el texto desde un pdf
 \usepackage{lmodern}
 
-\usepackage[table]{xcolor}
+\usepackage[table,usenames]{xcolor}
 
 \usepackage[backend=biber, style=iso-authoryear, language=spanish]{biblatex}
 \DeclareUnicodeCharacter{202F}{~} % Para reemplazar el caracter 202F por un espacio
@@ -30,8 +30,8 @@
 
 \DeclareFieldFormat{urldate}{\mkbibbrackets{consultado\space#1}}
 
-% Para colores
-\usepackage[usenames]{color}
+% Para colores (ya incluido en xcolor arriba)
+% \usepackage[usenames]{color} % Comentado para evitar conflicto con xcolor
 
 % Para flotar figuras y tablas
 \usepackage{framed}
