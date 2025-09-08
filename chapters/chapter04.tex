@@ -208,6 +208,16 @@ El diseño de la base de datos se organiza alrededor de cinco entidades principa
     \label{fig:arquitectura-base-datos}
 \end{figure}
 
+\subsection{Pipeline ETL}\label{sec:pipeline-etl}
+
+Con el objetivo de permitir la ingesta automática de las ventas, a fin de actualizar tanto los dashboards visualizados en la aplicación, activar las correspondientes alertas de stock si fuera necesario y disponibilizar la información para el entrenamiento del modelo predictivo, se implementó un pipeline de ETL mediante el cual se procesan las distintas ventas. La primera parte de este proceso es recibir y procesar las ventas que ocurren, para lo cual se diseñaron distintas Lambdas, ajustadas al distinto formato en el que las plataformas pueden enviar los datos de una venta realizada. En estas se analiza la información recibida y en base a ello se genera una nueva entrada en la entidad Ventas. Dado que estas Lambdas estarán atendiendo peticiones de sistemas externos, se decidió que el procesamiento que ocurre en ellas sea lo más rápido y sencillo posible, a fin de devolver una respuesta a la brevedad.
+
+En base a esto, se implementó el uso de AWS SQS, permitiendo de esta forma que el resto de procesamiento requerido para transformar la venta en el dato requerido por el modelo ocurra en una Lambda distinta, que funciona como consumidor de la cola implementada en SQS, donde al finalizar la primer Lambda se encola un mensaje conteniendo el Id de la venta creada en DocumentDb, para que esta sea procesada por el consumidor. Esto nos brinda un procesamiento asincrónico y desacoplado de estas tareas que pueden ser más lentas, y permite que ocurran a un ritmo distinto de la Lambda inicial expuesta al resto de los sistemas de venta.
+
+Esta segunda Lambda se encargará de, en base a la información de la venta y consultas a APIs externas para la obtención de feriados y datos climáticos, generar las features que se considerarán en el entrenamiento del modelo, donde se consideran aspectos relacionados al momento cronológico de la venta, es decir, en qué turno de trabajo ocurre, si se realizó en un feriado, en que semana se hizo, si la venta ocurrió en un fin de semana, pero también se considera el aspecto climático, indicando tanto la estación como el estado climático en ese momento (nublado, despejado, lluvioso), a fin de lograr aspectos estacionales del consumo.
+Por último, al finalizar esta Lambda la información procesada es almacenada en un S3, disponible para ser usada al momento de entrenar el modelo.
+
+
 \subsection{Pipeline Machine Learning}\label{sec:pipeline-machine-learning}
 
 El pipeline de entrenamiento del modelo de machine learning se encuentra implementado mediante el uso de AWS EventBridge, a fin de programar entrenamientos periódicos de forma semanal. El EventBridge disparará un evento que activará una Lambda dedicada al entrenamiento, donde se harán los últimos ajustes a los datos de entrenamiento, se consolidaran los datos de venta, unificando las distintas ventas individuales de acuerdo a la fecha, turno, y producto y se programará la ejecución del entrenamiento en sí, utilizando para esto AWS Sagemaker. Luego del entrenamiento, el modelo será disponibilizado a través de un endpoint, accesible desde la API del backend de la aplicación.
