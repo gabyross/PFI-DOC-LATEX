@@ -285,7 +285,7 @@ Para la capa de negocio, se decidió implementar las distintas APIs requeridas m
 
 Esto también aplica para el pipeline de ETL, donde también se utiliza AWS Simple Queue Service (SQS) para desacoplar el procesamiento de las ventas, a fin de lograr velocidades de respuesta rápida ante los sistemas externos que enviaran las mismas, mientras que el procesamiento y enriquecimiento de las ventas se realiza en otra Lambda.
 
-Por último, se decidió usar AWS Sagemaker en el pipeline de ML, puesto que simplifica enormemente el entrenamiento del modelo, requiriendo suministrarle solamente el dataset a utilizar, y permite disponibilizar el modelo para ser usado para predicciones mediante endpoints, lo que brinda una consulta rápida y de facil implementacion.
+Por último, se decidió usar AWS Sagemaker en el pipeline de ML, puesto que simplifica enormemente el entrenamiento del modelo, requiriendo suministrarle solamente el dataset a utilizar, y permite disponibilizar el modelo para ser usado para predicciones mediante endpoints, lo que brinda una consulta rápida y de fácil implementación.
 
 \begin{figure}[htbp]
     \centering
