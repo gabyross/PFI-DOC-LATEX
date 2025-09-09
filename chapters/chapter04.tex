@@ -13,7 +13,7 @@ Los requerimientos funcionales describen las acciones observables que el sistema
     \item El sistema debe facilitar la administración de inventario, incluyendo actualización de cantidades disponibles y definición de umbrales mínimos de stock.
     \item El sistema debe conectarse con plataformas de delivery en CABA (por ejemplo, PedidosYa) para importar datos de ventas en tiempo real.
     \item El sistema debe permitir la carga manual de datos históricos de ventas a través de archivos en formato \texttt{.csv} o \texttt{.xlsx}.
-    \item El sistema debe ejecutar predicciones de ventas basadas en modelos de Machine Learning, considerando tanto información histórica como variables externas (clima, feriados, días de la semana).
+    \item El sistema debe ejecutar predicciones de ventas que sean basadas en modelos de Machine Learning, considerando tanto información histórica como variables externas (clima, feriados, días de la semana).
     \item El sistema debe calcular automáticamente la cantidad de inventario recomendada según los resultados de las predicciones generadas.
     \item El sistema debe emitir alertas cuando un insumo se encuentre por debajo del nivel mínimo configurado por el usuario.
     \item El sistema debe permitir al usuario proporcionar retroalimentación respecto a las predicciones, incorporando estos datos para el ajuste del modelo.
@@ -111,6 +111,101 @@ En conjunto, esta paleta de colores no responde únicamente a una intención est
     \caption{Paleta de colores empleada en SmartStocker}
     \label{tab:paleta-colores}
 \end{table}
+
+\section{Pantallas de la aplicación}
+
+A continuación, se presentan las principales pantallas de la aplicación SmartStocker, organizadas según el flujo de interacción del usuario. Estas capturas ilustran tanto la experiencia inicial (landing e inicio de sesión) como la gestión de datos (ingredientes, ítems) y las funcionalidades clave de predicción de ventas.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/landing1.png}
+    \caption{Pantalla de inicio (Landing) – Parte 1}
+    \label{fig:ux-landing1}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/landing2.png}
+    \caption{Pantalla de inicio (Landing) – Parte 2}
+    \label{fig:ux-landing2}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/landing3.png}
+    \caption{Pantalla de inicio (Landing) – Parte 3}
+    \label{fig:ux-landing3}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/landing4.png}
+    \caption{Pantalla de inicio (Landing) – Parte 4}
+    \label{fig:ux-landing4}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/landing5.png}
+    \caption{Pantalla de inicio (Landing) – Parte 5}
+    \label{fig:ux-landing5}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/login.png}
+    \caption{Pantalla de inicio de sesión}
+    \label{fig:ux-login}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/ingredientes.png}
+    \caption{Pantalla de gestión de ingredientes}
+    \label{fig:ux-ingredientes}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/items.png}
+    \caption{Pantalla de gestión de ítems}
+    \label{fig:ux-items}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/nuevoItem.png}
+    \caption{Pantalla para agregar un nuevo ítem}
+    \label{fig:ux-nuevo-item}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/nuevoIngrediente.png}
+    \caption{Pantalla para agregar un nuevo ingrediente}
+    \label{fig:ux-nuevo-ingrediente}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/predicciones.png}
+    \caption{Pantalla consolidada de predicciones}
+    \label{fig:ux-predicciones}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/prediccion1.png}
+    \caption{Resultado de predicciones}
+    \label{fig:ux-prediccion1}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/prediccion2.png}
+    \caption{Ingredientes necesarios}
+    \label{fig:ux-prediccion2}
+\end{figure}
 
 \section{Funcionalidades}\label{sec:funcionalidades}
 
