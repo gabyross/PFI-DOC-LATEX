@@ -23,7 +23,7 @@ Los requerimientos funcionales describen las acciones observables que el sistema
 Los requerimientos no funcionales especifican condiciones de calidad y restricciones técnicas que determinan cómo debe operar la solución, más allá de las funciones explícitas que ofrece \parencite{ieee2008}.
 \begin{enumerate}[label=\textbf{RNF\arabic*}, leftmargin=2.8cm]
     \item La interfaz debe ser adaptable (responsive) para asegurar su correcto uso en computadoras de escritorio, tablets y dispositivos móviles.
-    \item La aplicación debe garantizar disponibilidad continua (24x7) para el acceso a predicciones, métricas e informes en cualquier momento.
+    \item La aplicación debe garantizar disponibilidad continua ($24 \times 7$) para el acceso a predicciones, métricas e informes en cualquier momento.
     \item El sistema debe ser compatible con los navegadores más utilizados (Google Chrome, Mozilla Firefox, Microsoft Edge y Safari) en sus versiones estables recientes.
     \item La infraestructura debe poder escalar automáticamente para soportar un crecimiento sostenido de usuarios sin afectar el rendimiento.
     \item El sistema debe desplegarse en una plataforma en la nube (por ejemplo, AWS Amplify) que garantice al menos un 99\% de disponibilidad mensual.
@@ -229,6 +229,10 @@ El modelo predictivo requiere datos de calidad para generar resultados confiable
 
     \item \textbf{Integración automática con sistemas de venta}: este mecanismo posibilita la importación continua de pedidos en tiempo real desde aplicaciones como PedidosYa. Con ello, el sistema asegura la actualización permanente del conjunto de datos, reduciendo la dependencia exclusiva de registros históricos y adaptándose a la dinámica diaria del negocio.
 \end{itemize}
+
+\subsection{Gestion de ingredientes e items del menu}\label{sec:carga-datos}
+
+Para que el sistema pueda calcular el inventario sugerido, es necesario que el usuario cargue los ingredientes que utiliza en su local y los vincule con los productos gastronómicos que ofrece en su menú. Esta funcionalidad permite al usuario definir y administrar tanto los ingredientes como los items del menu, permitiendo, en el caso particular de los ingredientes, realizar esta carga no solo desde la UI, sino tambien de forma masiva a traves de un archivo, a fin de simplificar la operatoria en caso de que el usuario cuente con un listado extenso.
 
 \subsection{Procesamiento Predictivo}\label{sec:procesamiento-predictivo}
 

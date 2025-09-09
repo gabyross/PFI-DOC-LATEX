@@ -55,10 +55,10 @@ Basándonos en \parencite{hyndman2018forecasting, james2013isl} podemos pasar a 
         \mbox{MAE} = \frac{1}{n} \sum_{t=1}^{n} \left| y_t - \hat{y}_t \right|
     \]
 
-    \item \textbf{RMSE (Root Mean Squared Error)}: Cuantifica la diferencia promedio entre los valores reales observados y las predicciones de un modelo. Se calcula como el promedio del cuadrado de los errores, es decir, la diferencia entre los valores reales y los valores predichos. Es muy sensible a valores atípicos, y su unidad es el cuadrado de la unidad de error original, lo que hace que no sea de fácil interpretación.
+    \item \textbf{MSE (Mean Squared Error)}: Cuantifica la diferencia promedio entre los valores reales observados y las predicciones de un modelo. Se calcula como el promedio del cuadrado de los errores, es decir, la diferencia entre los valores reales y los valores predichos. Es muy sensible a valores atípicos, y su unidad es el cuadrado de la unidad de error original, lo que hace que no sea de fácil interpretación.
     
     \[
-        \mbox{RMSE} = \sqrt{ \frac{1}{n} \sum_{t=1}^{n} \left( y_t - \hat{y}_t \right)^2 }
+        \mbox{MSE} = \frac{1}{n} \sum_{t=1}^{n} \left( y_t - \hat{y}_t \right)^2 
     \]
 
     \item \textbf{RMSE – Root Mean Squared Error:} Similar al MSE, penaliza de igual forma a los valores atípicos, pero al aplicar una raíz cuadrada al error permite que este se mantenga en la misma escala que las unidades originales, solucionando el problema de interpretación del MSE.
