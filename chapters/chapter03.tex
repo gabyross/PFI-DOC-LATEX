@@ -32,18 +32,24 @@ Actualmente, en Argentina, el mercado del software especializado en el sector ga
 
 Ahora bien, con el objetivo de sintetizar las principales características de las soluciones comerciales vigentes en Argentina y contrastarlas con la propuesta de SmartStocker, se elaboró la siguiente tabla comparativa. En ella se ponen en relación funcionalidades clave vinculadas a la gestión del inventario, los reportes en tiempo real y, especialmente, la incorporación de modelos de Machine Learning.  
 \begin{table}[htbp]
-    \centering
-    \begin{tabular}{lccc}
-        \hline
-        \textbf{Funcionalidad} & \textbf{Maxirest} & \textbf{Restô} & \textbf{SmartStocker} \\
-        \hline
-        Reportes en tiempo real    & Sí & Sí & Sí \\
-        Control de inventario      & Sí & Sí & Sí \\
-        Predicción de demanda (ML) & No & No & Sí \\
-        Estimación de stock (ML)   & No & No & Sí \\
-        Ajuste dinámico (feedback) & No & No & Sí \\
-        \hline
-    \end{tabular}
+  \centering
+  \begin{tabular}{lccc}
+    \hline
+    \textbf{Funcionalidad} & \textbf{Maxirest} & \textbf{Restô} & \textbf{SmartStocker} \\
+    \hline
+    Reportes en tiempo real        & \cmark & \cmark & \cmark \\
+    Control de inventario          & \cmark & \cmark & \cmark \\
+    Integración con plataformas    & \cmark & \cmark & \cmark \\
+    Facturación/gestión admin.     & \cmark & \cmark & \xmark \\
+    Predicción de demanda (ML)     & \xmark & \xmark & \cmark \\
+    Estimación dinámica de stock   & \xmark & \xmark & \cmark \\
+    Variables externas en modelos  & \xmark & \xmark & \cmark \\
+    Feedback de usuarios (ajuste)  & \xmark & \xmark & \cmark \\
+    Tablero de métricas predictivas& \xmark & \xmark & \cmark \\
+    Alertas preventivas de stock   & \xmark & \xmark & \cmark \\
+    Enfoque exclusivo en gastronomía & \cmark & \cmark & \cmark \\
+    \hline
+  \end{tabular}
     \caption{Comparación de funcionalidades entre la competencia y SmartStocker.}
     \label{tab:comparacion-funcionalidades}
 \end{table}

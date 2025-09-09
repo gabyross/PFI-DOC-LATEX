@@ -15,9 +15,13 @@
 
 \usepackage[table,usenames]{xcolor}
 
+\usepackage{amssymb} % provee \checkmark y \times
+\newcommand{\cmark}{\ensuremath{\checkmark}}
+\newcommand{\xmark}{\ensuremath{\times}}
+
 \usepackage[backend=biber, style=iso-authoryear, language=spanish]{biblatex}
 \DeclareUnicodeCharacter{202F}{~} % Para reemplazar el caracter 202F por un espacio
-\bibliography{biblio.bib}
+\addbibresource{biblio.bib}
 \setcounter{tocdepth}{3}
 \setcounter{secnumdepth}{3}
 % Esto último es para la cantidad de niveles en el índice
@@ -40,10 +44,13 @@
 \usepackage[section,above,below]{placeins}
 
 % Para microtipograf\'{\i}a
-\usepackage{microtype}
+% \usepackage{microtype} % Moved below biblatex to avoid patch error
 
 % Permite tama\~no de fuentes arbitrarios
 \usepackage{anyfontsize}
+
+% Para resaltado de texto
+\usepackage{soul}
 
 % Itemize
 \usepackage{enumitem}
@@ -180,6 +187,7 @@
 
 \input{config/symbols}
 
+\usepackage{microtype} % Load microtype after biblatex
 \usepackage[normalem]{ulem}
 
 \usepackage{setspace}
