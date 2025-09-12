@@ -114,7 +114,7 @@ En conjunto, esta paleta de colores no responde únicamente a una intención est
 
 \section{Pantallas de la aplicación}
 
-A continuación, mostramos cómo fueron implementadas las consideraciones de UX/UI en SmartStocker, mediante capturas de varias de las pantallas implementadas actualmente.
+A continuación, se presentan las principales pantallas de la aplicación SmartStocker, organizadas según el flujo de interacción del usuario. Estas capturas ilustran tanto la experiencia inicial (Figura~\ref{fig:ux-landing1} a \ref{fig:ux-landing5})  como la gestión de datos (Figura~\ref{fig:ux-ingredientes} a Figura~\ref{fig:ux-nuevo-ingrediente}) y las funcionalidades clave de predicción de ventas (Figura~\ref{fig:ux-predicciones} a Figura~\ref{fig:ux-prediccion2}).
 
 \begin{figure}[htbp]
     \centering
@@ -207,19 +207,6 @@ A continuación, mostramos cómo fueron implementadas las consideraciones de UX/
     \label{fig:ux-prediccion2}
 \end{figure}
 
-Se referencian las pantallas de la aplicación para facilitar su consulta:
-\begin{itemize}
-    \item Figura~\ref{fig:ux-landing1} a \ref{fig:ux-landing5}: Pantallas de inicio
-    \item Figura~\ref{fig:ux-login}: Pantalla de inicio de sesión
-    \item Figura~\ref{fig:ux-ingredientes}: Pantalla de gestión de ingredientes
-    \item Figura~\ref{fig:ux-nuevo-ingrediente}: Pantalla para agregar un nuevo ingrediente
-    \item Figura~\ref{fig:ux-items}: Pantalla de gestión de ítems
-    \item Figura~\ref{fig:ux-nuevo-item}: Pantalla para agregar un nuevo ítem
-    \item Figura~\ref{fig:ux-predicciones}: Pantalla consolidada de predicciones
-    \item Figura~\ref{fig:ux-prediccion1}: Resultado de predicciones
-    \item Figura~\ref{fig:ux-prediccion2}: Ingredientes necesarios
-\end{itemize}
-
 \section{Funcionalidades}\label{sec:funcionalidades}
 
 \subsection{Predicción de Ventas}\label{sec:prediccion-ventas}
@@ -280,7 +267,7 @@ La Capa de Negocio (Business Layer) constituye el núcleo lógico de SmartStocke
 
 Por último, la Capa de Almacenamiento (Storage Layer) se organiza según los distintos casos de uso de la plataforma y está diseñada para optimizar rendimiento y costos. Los datos de la aplicación, tales como los ingredientes, productos, ventas realizadas,  y resultados de predicciones, se almacenan en DocumentDB, lo que facilita lecturas de baja latencia y flexibilidad en la estructura de los datos. Mientras tanto, los datos orientados al entrenamiento del modelo, tales como los datasets históricos, los artefactos de entrenamiento y los modelos exportados se almacenan en Amazon S3, aprovechando su durabilidad y su bajo costo.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{images/arquitectura_capas.png}
     \caption{Arquitectura conceptual de SmartStocker}
@@ -300,7 +287,7 @@ Esto también aplica para el pipeline de ETL, donde también se utiliza AWS Simp
 
 Por último, se decidió usar AWS Sagemaker en el pipeline de ML, puesto que simplifica enormemente el entrenamiento del modelo, requiriendo suministrarle solamente el dataset a utilizar, y permite disponibilizar el modelo para ser usado para predicciones mediante endpoints, lo que brinda una consulta rápida y de fácil implementación.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{images/arquitectura_despliegue.png}
     \caption{Arquitectura de Despliegue y Procesos de SmartStocker}
@@ -313,7 +300,7 @@ Para el diseño de la base de datos, se opto por utilizar DocumentDB, una de las
 
 El diseño de la base de datos se organiza alrededor de cinco entidades principales: Usuario, ItemMenu, Ingrediente, Predicción y Venta. La entidad Usuario representa a un negocio dentro de la plataforma. A su vez, la entidad Ingrediente almacena los insumos (nombre, unidad de medida, cantidad en stock y cantidad mínima) y su propietario (userId), mientras que ItemMenu registra los productos ofrecidos (código, nombre, estado activo) y contiene la lista de ingredientes necesarios para cada receta. Esa relación N:M entre ItemMenu e Ingrediente se materializa en la tabla/intersección (el subdocumento de ingredientes) que guarda, por cada par producto-ingrediente, la cantidad\_requerida. La entidad Predicción registra las predicciones de demanda vinculadas a un producto\_id (ItemMenu) con fecha\_prediccion, turno, cantidad\_predicha y el userId que la generó; y la entidad Venta recoge las transacciones reales (número de venta, ítem, producto, cantidad, precio unitario, subtotal, fecha, turno, plataforma, método de pago y estado) asociadas también a un userId. Todos los documentos incluyen timestamps (fecha\_creacion / fecha\_actualizacion) para auditoría.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{images/arquitectura-base-datos.png}
     \caption{Arquitectura de Base de Datos de SmartStocker}
