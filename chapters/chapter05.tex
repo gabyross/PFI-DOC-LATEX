@@ -181,7 +181,7 @@ Los VAN obtenidos para cada escenario son los siguientes:
 
 \begin{table}[H]
 \centering
-{\textbf{Tabla \ref{tab:van-escenarios}. Valor Actual Neto por escenario.}}\\[-0.3em]
+{\textbf{Tabla \ref{tab:van-escenarios}. Valor actual neto por escenario.}}\\[-0.3em]
 {\textit{Fuente: Elaboración propia.}}\\[0.8em]
 
 \renewcommand{\arraystretch}{1.25}
@@ -197,3 +197,103 @@ Pesimista & 3{,}467.69 \\ \hline
 \end{table}
 
 El análisis muestra que los tres escenarios presentan una VAN positiva, lo que indica que SmartStocker es financieramente viable bajo distintas condiciones de adopción. En el escenario optimista, el proyecto alcanza una rentabilidad elevada con un retorno temprano de la inversión; en el escenario neutral, la rentabilidad es moderada pero estable; mientras que en el escenario pesimista, aunque los ingresos crecen de forma más lenta, el proyecto igualmente genera beneficios al cierre del período analizado. Estos resultados reflejan la solidez económica de la propuesta y su potencial de sostenibilidad en el mercado gastronómico.
+\subsection{TIR}\label{subsec:tir}
+
+La Tasa Interna de Retorno (TIR) constituye un indicador que mide la rentabilidad porcentual que puede generar una inversión. Su cálculo se basa en identificar la tasa de descuento que hace que la VAN sea igual a cero, es decir, aquella que iguala los ingresos esperados con la inversión inicial, considerando los flujos de fondos a lo largo del tiempo.
+
+La expresión matemática se representa de la siguiente manera:
+
+\[
+0 = \sum_{t=1}^{n} \frac{C_t}{(1 + \text{TIR})^t} - C_0
+\]
+
+donde $C_t$ corresponde al flujo de caja neto del período $t$, \textit{TIR} a la tasa interna de retorno a determinar, $t$ al número de período (1, 2, \ldots, n), y $C_0$ a la inversión inicial del proyecto.
+
+Los valores calculados para cada escenario se presentan a continuación:
+
+\begin{table}[H]
+\centering
+{\textbf{Tabla \ref{tab:tir-escenarios}. Tasa interna de retorno por escenario.}}\\[-0.3em]
+{\textit{Fuente: Elaboración propia.}}\\[0.8em]
+
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{|>{\centering\arraybackslash}m{6cm}|>{\centering\arraybackslash}m{6cm}|}
+\hline
+\textbf{Escenario} & \textbf{TIR (\%)} \\ \hline
+Optimista & 174 \\ \hline
+Neutral & 53 \\ \hline
+Pesimista & 15 \\ \hline
+\end{tabular}
+
+\label{tab:tir-escenarios}
+\end{table}
+
+El análisis de los resultados evidencia una rentabilidad considerable en todos los escenarios planteados. En el escenario optimista, la TIR alcanza un 174 \%, lo que indica un retorno excepcionalmente alto respecto a la inversión inicial y una rápida recuperación del capital. En el escenario neutral, la rentabilidad se mantiene sólida con un 53 \%, lo que refleja un proyecto financieramente atractivo incluso con un crecimiento moderado. Por su parte, el escenario pesimista presenta una TIR del 15 \%, valor que, aunque más conservador, sigue siendo superior a la tasa de descuento empleada (7 \%), confirmando la factibilidad económica de SmartStocker aun bajo condiciones menos favorables.
+
+\subsection{Payback}\label{subsec:payback}
+
+El indicador de Período de Recuperación (Payback) permite determinar el tiempo que transcurre hasta recuperar el monto invertido en un proyecto a partir de los flujos netos de efectivo generados. A diferencia de otros indicadores financieros, el payback se centra en el aspecto temporal de la inversión, aportando una visión práctica sobre la liquidez y el riesgo asociado.
+
+Los valores obtenidos en los distintos escenarios se detallan en la siguiente tabla:
+
+\begin{table}[H]
+\centering
+{\textbf{Tabla \ref{tab:payback-escenarios}. Período de recuperación por escenario.}}\\[-0.3em]
+{\textit{Fuente: Elaboración propia.}}\\[0.8em]
+
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{|>{\centering\arraybackslash}m{6cm}|>{\centering\arraybackslash}m{6cm}|}
+\hline
+\textbf{Escenario} & \textbf{Payback (años)} \\ \hline
+Optimista & 1 \\ \hline
+Neutral & 2 \\ \hline
+Pesimista & 3 \\ \hline
+\end{tabular}
+
+\label{tab:payback-escenarios}
+\end{table}
+
+El análisis del período de recuperación evidencia que SmartStocker logra recuperar la inversión inicial en plazos relativamente cortos bajo todos los escenarios. En el caso optimista, el retorno se alcanza aproximadamente en el primer año, lo que refleja una rápida generación de ingresos y un riesgo financiero muy bajo. En el escenario neutral, la recuperación ocurre en torno a los dos años, manteniendo una relación equilibrada entre crecimiento y estabilidad. Finalmente, en el escenario pesimista, el capital se recupera en un plazo cercano a los tres años, lo que demuestra que, incluso en condiciones conservadoras, el proyecto mantiene su viabilidad económica y capacidad de autofinanciamiento a corto plazo.
+
+\subsection{Flujo de Fondos}\label{subsec:flujo-fondos}
+
+El flujo de fondos representa la evolución temporal de los ingresos y egresos de un proyecto, reflejando su capacidad para generar liquidez a lo largo del tiempo. Este instrumento resulta esencial para evaluar la sostenibilidad financiera y el comportamiento del capital invertido durante la ejecución del proyecto.
+
+La expresión general para su cálculo es:
+
+\[
+FC = \sum_{t=0}^{n} \frac{C_t}{(1 + r)^t}
+\]
+
+donde $FC$ representa el valor del flujo de fondos, $C_t$ el flujo neto de efectivo en el período $t$, $r$ la tasa de descuento o interés aplicada, y $t$ el período de análisis comprendido entre 0 y $n$.
+
+A partir de la inversión inicial y los flujos estimados de ingresos y egresos para cada escenario, se obtuvo el siguiente resumen:
+
+\begin{table}[H]
+\centering
+{\textbf{Tabla \ref{tab:flujo-fondos}. Flujo de fondos proyectado por escenario.}}\\[-0.3em]
+{\textit{Fuente: Elaboración propia.}}\\[0.8em]
+
+\renewcommand{\arraystretch}{1.25}
+\resizebox{0.9\textwidth}{!}{%
+\begin{tabular}{|c|r|r|r|r|}
+\hline
+\textbf{Escenario} & \textbf{Año 0 (USD)} & \textbf{Año 1 (USD)} & \textbf{Año 2 (USD)} & \textbf{Año 3 (USD)} \\ \hline
+Optimista & -12{,}720.00 & 17{,}791.00 & 28{,}591.00 & 50{,}191.00 \\ \hline
+Neutral   & -12{,}720.00 & 1{,}591.00  & 12{,}391.00 & 23{,}191.00 \\ \hline
+Pesimista & -12{,}720.00 & -9{,}209.00 & 6{,}991.00  & 23{,}191.00 \\ \hline
+\end{tabular}%
+}
+
+\label{tab:flujo-fondos}
+\end{table}
+
+El análisis de los flujos de fondos evidencia que SmartStocker comienza con una inversión inicial en el Año 0, que se compensa progresivamente en los períodos siguientes. En el escenario optimista, los flujos netos son positivos desde el Año 1, lo que permite recuperar la inversión de forma temprana. En el escenario neutral, los resultados se estabilizan a partir del Año 2, reflejando un crecimiento sostenido. Finalmente, en el escenario pesimista, los flujos se vuelven positivos en el Año 2 y aumentan significativamente en el Año 3, demostrando que incluso bajo condiciones conservadoras el proyecto alcanza rentabilidad operativa.
+
+\subsection{Conclusión del Análisis Económico}\label{subsec:conclusion-economica}
+
+El análisis económico de SmartStocker confirma la viabilidad financiera del proyecto bajo los tres escenarios evaluados. El VAN presenta resultados positivos en todos los casos, USD 65 280,74 en el escenario optimista, USD 17 308,84 en el neutral y USD 3 467,69 en el pesimista, lo que demuestra que los ingresos generados superan la inversión inicial, considerando una tasa de descuento del 7 \%.
+
+La TIR refuerza esta tendencia con valores del 174 \%, 53 \% y 15 \% respectivamente, todos ellos superiores a la tasa de descuento, lo que evidencia un nivel de rentabilidad sólido y sostenido. En cuanto al Payback, los resultados estimados son de 1 año para el escenario optimista, 2 años para el neutral y 3 años para el pesimista, en concordancia con los flujos proyectados.
+
+En síntesis, SmartStocker demuestra ser un proyecto financieramente sustentable y escalable. La inversión inicial se compensa en plazos breves y los flujos netos crecen de forma constante entre el Año 1 y el Año 3. A medida que aumenta la adopción de la plataforma, la rentabilidad se consolida, confirmando que la propuesta genera valor económico y representa una oportunidad sólida para su implementación en el sector gastronómico.
