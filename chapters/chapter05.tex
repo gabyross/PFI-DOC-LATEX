@@ -1,0 +1,199 @@
+\chapter{Análisis Económico}\label{chapter05}
+
+En esta sección se analiza el modelo de negocios y la factibilidad financiera de SmartStocker, considerando distintos escenarios de crecimiento y su impacto económico. El propósito es determinar la viabilidad del proyecto en el corto y mediano plazo mediante el uso de herramientas e indicadores financieros tales como el Valor Actual Neto (VAN), la Tasa Interna de Retorno (TIR) y el período de recuperación de la inversión (\textit{Payback}).
+
+\section{Modelo de Negocio}\label{sec:modelo-negocio}
+
+Para la descripción del modelo de negocio se toma como referencia el esquema del \textit{Business Model Canvas}, el cual permite representar de manera estructurada los componentes esenciales de la propuesta de valor de SmartStocker y su relación con los clientes, los recursos, las actividades clave y la estructura de costos.
+
+\subsection{Propuesta de Valor}\label{subsec:propuesta-valor}
+
+La propuesta de valor de SmartStocker consiste en ofrecer, a través de una plataforma web, una herramienta que simplifica y optimiza la gestión del inventario en establecimientos gastronómicos. El sistema permite reducir costos asociados a reposiciones innecesarias y evitar pérdidas de ventas por falta de stock, gracias a la utilización de modelos de predicción de demanda basados en inteligencia artificial. De este modo, el usuario puede tomar decisiones informadas que impactan positivamente en la rentabilidad de su negocio.
+
+\subsection{Segmentos de Clientes}\label{subsec:segmentos-clientes}
+
+El público objetivo de SmartStocker está conformado por pequeñas y medianas empresas (PyMEs) del sector gastronómico (restaurantes, bares y locales de comida rápida) que estén familiarizadas con el uso de la tecnología y de plataformas de delivery, y que busquen mejorar la eficiencia operativa de su negocio mediante herramientas digitales.
+
+\subsection{Canales}\label{subsec:canales}
+
+Para alcanzar al segmento de clientes definido, se emplearán campañas de marketing digital en redes sociales dirigidas específicamente a emprendedores gastronómicos y dueños de restaurantes, complementadas con estrategias de comunicación directa (correo electrónico y contacto personalizado) para presentar la propuesta de valor de forma personalizada y facilitar la adopción del sistema.
+
+\subsection{Relación con los Clientes}\label{subsec:relacion-clientes}
+
+Se ofrecerán servicios de capacitación inicial y \textit{onboarding} para acompañar al cliente en sus primeros pasos dentro de la plataforma. Además, se dispondrá de soporte técnico por correo electrónico, mensajería instantánea (como WhatsApp) y atención telefónica para los planes superiores, garantizando una comunicación fluida y una resolución ágil de incidencias.
+
+\subsection{Fuente de Ingresos}\label{subsec:fuente-ingresos}
+
+Dado que el sistema se ofrece bajo la modalidad \textit{Software as a Service} (SaaS), la fuente de ingresos será el cobro mensual de la licencia de uso de la plataforma, habiéndo definido tres categorías distintas para ello. Para cada uno de ellos, existe un límite en la cantidad de ventas que cada cliente puede registrar por mes, donde, en caso que el usuario lo supere, se le cobrará un monto adicional proporcional al excedente. El detalle de los planes se encuentra a continuación:
+
+\begin{table}[H]
+\centering
+{\textbf{Tabla \ref{tab:planes-suscripcion}. Planes de suscripción de SmartStocker.}}\\[-0.3em]
+{\textit{Fuente: Elaboración propia.}}\\[0.8em]
+
+\renewcommand{\arraystretch}{1.2} % aumenta la altura de filas
+\begin{tabular}{|>{\centering\arraybackslash}m{2.8cm}|>{\centering\arraybackslash}m{7cm}|>{\centering\arraybackslash}m{3cm}|}
+\hline
+\textbf{Nivel} & \textbf{Descripción} & \textbf{Precio (USD/mes)} \\ \hline
+Inicial & Integración con una única plataforma de delivery. Hasta 2000 ventas al mes. & 90 \\ \hline
+Intermedio & Integración con hasta dos plataformas de delivery. Soporte por mensajería. Hasta 5000 ventas al mes. & 120 \\ \hline
+Avanzado & Integración con todas las plataformas disponibles. Posibilidad de integraciones personalizadas. Soporte telefónico exclusivo. Hasta 8000 ventas al mes. & 140 \\ \hline
+\end{tabular}
+
+\label{tab:planes-suscripcion}
+\end{table}
+
+
+En caso de que el cliente supere el límite de ventas establecido para su plan, se aplicarán cargos adicionales según la siguiente tabla de excedentes:
+
+\begin{table}[H]
+\centering
+{\textbf{Tabla \ref{tab:excedentes}. Cargos por excedente de ventas.}}\\[-0.3em]
+{\textit{Fuente: Elaboración propia.}}\\[0.8em]
+
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{|>{\centering\arraybackslash}m{3cm}|>{\centering\arraybackslash}m{5cm}|>{\centering\arraybackslash}m{5cm}|}
+\hline
+\textbf{Nivel} & \textbf{Excedente de ventas} & \textbf{Precio por venta adicional (USD)} \\ \hline
+Inicial & Superior a 2000 & 0.25 \\ \hline
+Intermedio & Superior a 5000 & 0.20 \\ \hline
+Avanzado & Superior a 8000 & 0.10 \\ \hline
+\end{tabular}
+
+\label{tab:excedentes}
+\end{table}
+
+\subsection{Recursos Clave}\label{subsec:recursos-clave}
+
+Como recursos clave las plataformas de delivery (y el acceso a sus sistemas de notificaciones), la infraestructura en la nube de AWS para el despliegue y funcionamiento del sistema, y el equipo técnico encargado del desarrollo, mantenimiento y mejora continua de la solución.
+
+\subsection{Actividades Clave}\label{subsec:actividades-clave}
+
+Con el fin de mantener la propuesta de valor frente al cliente, las actividades clave comprenden el mantenimiento y la mejora continua de la solución, tanto en lo referente a la plataforma web como al desempeño del modelo de Machine Learning. Asimismo, se incluyen los esfuerzos de ventas y marketing, orientados a la captación de nuevos clientes mediante campañas digitales y contacto directo con potenciales usuarios.
+
+\subsection{Socios Clave}\label{subsec:socios-clave}
+
+Entre los socios estratégicos se incluyen las plataformas de delivery, por su rol central en la provisión de datos de ventas, y Amazon Web Services (AWS), que proporciona la infraestructura tecnológica que sustenta la operación del sistema.
+
+\subsection{Estructura de Costos}\label{subsec:estructura-costos}
+
+Los principales componentes de la estructura de costos de SmartStocker se distribuyen entre los costos de desarrollo inicial, los costos de mantenimiento operativo y los costos asociados a infraestructura en la nube. Durante el primer año, la inversión se concentra en el desarrollo de software, pruebas y puesta en producción. En los años posteriores, los costos se estabilizan, correspondiendo principalmente al mantenimiento de la infraestructura, soporte técnico y marketing digital.
+
+% --- Recursos e insumos (sin infraestructura) ---
+\begin{table}[H]
+\centering
+{\textbf{Tabla \ref{tab:recursos-insumos}. Recursos e insumos del proyecto (estimación por año).}}\\[-0.3em]
+{\textit{Fuente: Elaboración propia.}}\\[0.4em]
+{\small *El costo de \emph{Mantenimiento de software y operaciones} y las campañas de publicidad aplican desde el Año 1.}\\[0.8em]
+
+\renewcommand{\arraystretch}{1.25}
+\resizebox{0.95\textwidth}{!}{%
+\begin{tabular}{|>{\centering\arraybackslash}m{4.3cm}|>{\centering\arraybackslash}m{7.7cm}|>{\centering\arraybackslash}m{3.2cm}|>{\centering\arraybackslash}m{3.2cm}|}
+\hline
+\textbf{INSUMO} & \textbf{DESCRIPCIÓN} & \textbf{Año 0 (USD)} & \textbf{Año 1 en adelante (USD/año)} \\ \hline
+Desarrollo de software & 2 desarrolladores durante 9 meses (USD 4/hora). & 11{,}520.00 & 0.00 \\ \hline
+Mantenimiento de software y operaciones* & 3 personas (desarrollo, mantenimiento y operaciones) – costo anual. & 0.00 & 17{,}280.00 \\ \hline
+Puesta en producción & Servicios y gestiones de publicación (USD 100–115/mes). & 1{,}200.00 & 1{,}200.00 \\ \hline
+Gastos adicionales & Contingencias y costos no contemplados. & 0.00 & 1{,}000.00 \\ \hline
+Publicidad* & Campañas digitales básicas (USD 15/mes). & 0.00 & 180.00 \\ \hline
+\multicolumn{2}{|r|}{\textbf{TOTAL}} & \textbf{USD 12{,}720.00} & \textbf{USD 19{,}660.00} \\ \hline
+\end{tabular}%
+}
+
+\label{tab:recursos-insumos}
+\end{table}
+
+% --- Infraestructura AWS (anual) ---
+\begin{table}[H]
+\centering
+{\textbf{Tabla \ref{tab:infra-aws}. Costo de infraestructura AWS (anual).}}\\[-0.3em]
+{\textit{Fuente: Elaboración propia.}}\\[0.5em]
+{\small *AWS ofrece créditos y beneficios de uso gratuito durante el primer año para PyMEs; los costos aplican a partir del Año 1.}\\[0.8em]
+
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{|>{\centering\arraybackslash}m{4.2cm}|>{\centering\arraybackslash}m{8cm}|>{\centering\arraybackslash}m{3cm}|}
+\hline
+\textbf{SERVICIO} & \textbf{DESCRIPCIÓN} & \textbf{COSTO ANUAL (USD)} \\ \hline
+AWS EC2 & Cómputo elástico para backend y APIs. & 99.00 \\ \hline
+AWS RDS & Base de datos gestionada (DocumentDB/NoSQL). & 78.00 \\ \hline
+AWS S3 & Almacenamiento de datasets y modelos. & 24.00 \\ \hline
+S3 + CDN & Distribución estática y caché de contenido. & 15.00 \\ \hline
+AWS SageMaker & Entrenamiento y endpoints de inferencia del modelo. & 90.00 \\ \hline
+Batch Inference & Procesamiento por lotes para predicciones. & 43.00 \\ \hline
+\multicolumn{2}{|r|}{\textbf{TOTAL ANUAL ESTIMADO:}} & \textbf{USD 349.00} \\ \hline
+\end{tabular}
+
+\label{tab:infra-aws}
+\end{table}
+
+
+\section{Análisis Financiero}\label{sec:analisis-financiero}
+
+En esta sección se presenta el análisis financiero de SmartStocker, con el fin de evaluar su factibilidad económica y determinar la rentabilidad esperada en distintos escenarios. Para ello, se emplean los principales indicadores financieros: Valor Actual Neto (VAN), Tasa Interna de Retorno (TIR) y Payback (tiempo de recuperación de la inversión). Se definen las siguientes variables:
+
+\begin{itemize}
+    \item $I_0$ (Inversión inicial) = USD 12.720
+    \item $n$ (período de tiempo) = 3 años
+    \item $i$ (tasa de descuento) = 7\% anual
+\end{itemize}
+
+A partir de estas variables, se calcularon los flujos de fondos netos (FFN) para tres escenarios financieros: optimista, neutral y pesimista.
+
+\subsection{Escenarios}\label{subsec:escenarios}
+
+En este apartado se describen los tres escenarios financieros proyectados para SmartStocker. Cada uno de ellos representa una combinación distinta de ritmo de adopción, crecimiento de usuarios e ingresos esperados, lo cual permite estimar la rentabilidad del proyecto bajo distintas condiciones de mercado.
+
+\subsubsection{Escenario Optimista}\label{subsubsec:escenario-optimista}
+
+El escenario optimista plantea una adopción rápida y sostenida de SmartStocker desde su lanzamiento, impulsada por estrategias comerciales efectivas y un alto nivel de interés del sector gastronómico en soluciones basadas en inteligencia artificial. 
+
+Durante el primer año, se estima la incorporación de 35 restaurantes al sistema, que acceden al plan básico con funcionalidades de predicción de demanda e inventario automatizado. A partir del segundo año, se consolidan alianzas con cadenas gastronómicas y franquicias locales, ampliando la base de usuarios a 45 establecimientos. En el tercer año, el número de suscripciones asciende a 65, con una fuerte presencia en el mercado de CABA y expansión hacia otras ciudades del país.
+
+Los ingresos alcanzan USD 37.800 el primer año, USD 48.600 el segundo y USD 70.200 el tercero, mientras que los costos operativos se mantienen estables gracias a la infraestructura en la nube y un equipo técnico reducido. Este escenario presenta una rentabilidad temprana, con retorno de la inversión antes del primer año y una proyección de crecimiento sólida a mediano plazo.
+
+\subsubsection{Escenario Neutral}\label{subsubsec:escenario-neutral}
+
+En el escenario neutral, el crecimiento es sostenido pero más gradual. Durante el primer año, el sistema alcanza 20 suscripciones activas, principalmente de restaurantes medianos que buscan mejorar su gestión mediante herramientas simples de predicción.
+
+Durante el segundo año, el proyecto gana visibilidad a través de campañas digitales y recomendaciones de los primeros clientes satisfechos, alcanzando 30 suscripciones activas. En el tercer año, se proyecta un incremento moderado hasta 40 restaurantes del segmento PyME gastronómico.
+
+Los ingresos anuales estimados son USD 21.600 en el primer año, USD 32.400 en el segundo y USD 43.200 en el tercero. Los egresos se mantienen cercanos a USD 20.000 anuales, generando resultados positivos a partir del segundo año. Este escenario refleja un crecimiento estable y sostenible, con retorno de inversión hacia mediados del segundo año.
+
+\subsubsection{Escenario Pesimista}\label{subsubsec:escenario-pesimista}
+
+El escenario pesimista contempla un proceso de adopción más lento y una inserción gradual en el mercado gastronómico. En esta situación, SmartStocker enfrenta mayores desafíos para captar clientes debido a la competencia, la falta de conocimiento del producto o la resistencia inicial a implementar tecnologías predictivas.
+
+Durante el primer año, se prevé un total de 10 suscripciones, que aumentan a 25 en el segundo y 40 en el tercero, con un precio fijo de USD 90 por suscripción. Los costos iniciales incluyen el desarrollo del software, la puesta en producción y la infraestructura mínima de servicios, alcanzando una inversión inicial de USD 12.720.
+
+A pesar de la adopción limitada, el proyecto logra alcanzar el punto de equilibrio en el tercer año, con ingresos de USD 10.800, USD 27.000 y USD 43.200 respectivamente. Este escenario representa una evolución más lenta, donde el retorno de la inversión se produce recién al cierre del período evaluado, pero sin comprometer la continuidad operativa del proyecto.
+
+\subsection{VAN}\label{subsec:indicadores-financieros}
+
+El Valor Actual Neto es un indicador que permite determinar la rentabilidad de un proyecto, calculando la diferencia entre los flujos de fondos descontados y la inversión inicial. La fórmula utilizada es la siguiente:
+
+\[
+VAN = \sum_{t=1}^{n} \frac{C_t}{(1 + r)^t} - C_0
+\]
+
+donde $C_t$ representa el flujo neto en el período $t$, $r$ la tasa de descuento, $t$ el período, y $C_0$ la inversión inicial.
+
+Los VAN obtenidos para cada escenario son los siguientes:
+
+\begin{table}[H]
+\centering
+{\textbf{Tabla \ref{tab:van-escenarios}. Valor Actual Neto por escenario.}}\\[-0.3em]
+{\textit{Fuente: Elaboración propia.}}\\[0.8em]
+
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{|>{\centering\arraybackslash}m{6cm}|>{\centering\arraybackslash}m{6cm}|}
+\hline
+\textbf{Escenario} & \textbf{VAN (USD)} \\ \hline
+Optimista & 65{,}280.74 \\ \hline
+Neutral & 17{,}308.84 \\ \hline
+Pesimista & 3{,}467.69 \\ \hline
+\end{tabular}
+
+\label{tab:van-escenarios}
+\end{table}
+
+El análisis muestra que los tres escenarios presentan una VAN positiva, lo que indica que SmartStocker es financieramente viable bajo distintas condiciones de adopción. En el escenario optimista, el proyecto alcanza una rentabilidad elevada con un retorno temprano de la inversión; en el escenario neutral, la rentabilidad es moderada pero estable; mientras que en el escenario pesimista, aunque los ingresos crecen de forma más lenta, el proyecto igualmente genera beneficios al cierre del período analizado. Estos resultados reflejan la solidez económica de la propuesta y su potencial de sostenibilidad en el mercado gastronómico.
