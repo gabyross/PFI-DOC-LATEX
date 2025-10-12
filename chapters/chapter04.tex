@@ -475,12 +475,26 @@ Luego de estas etapas, se registra el modelo, asociando a él un tercer script d
 
 \subsection{Inclusión del Feedback de usuario}\label{sec:inclusion-feedback-usuario}
 
-A fin de incluir el feedback del usuario dentro de las predicciones, se decidió la inclusión de un segundo modelo, cuyo propósito será ajustar la salida del modelo principal, considerando, para cada combinación de producto, turno, y fecha: 
+A fin de incluir el feedback del usuario en las predicciones, se decidió implementar una lógica que ajuste la salida del modelo. Para ello, cada vez que el usuario informe que una predicción no es precisa en base a su experiencia, podrá informar el valor de ventas que él considera adecuado, ajustando esto el cálculo de stock requerido. Cuando esto ocurra de forma reiterada para una cierta combinación producto/turno dentro de un plazo de tiempo, se utilizaran los valores corregidos para calcular un valor de ajuste, teniendo más peso las correcciones recientes, y se aplicará a la predicción obtenida del modelo. 
 
-\begin{itemize}
-    \item la cantidad de ventas predecida por el modelo.
-    \item la cantidad de ventas que efectivamente ocurrieron.
-    \item la cantidad de ventas que el usuario espera, brindado como feedback.
-\end{itemize}
+Esto permite realizar ajustes sobre posibles tendencias que están ocurriendo de forma más rápida de la que el modelo es capaz de captarlas, sin modificar el proceso de entrenamiento del mismo, ya que eventualmente, si estos cambios en las tendencias pasarán a ser el comportamiento normal, el modelo lo aprenderá de forma natural conforme va accediendo a nueva información.
 
-Este modelo será utilizado para ajustar únicamente las predicciones de productos en las cuales el usuario haya brindado algún feedback, usando únicamente el modelo principal para el resto de productos. Su entrenamiento ocurre en un pipeline similar al del modelo principal, usando como datos de entrenamiento los descritos previamente. A la hora de ejecutar las predicciones, en caso de que haya productos que han recibido feedback por parte del usuario de forma reiterada, esta predicción original será pasada por el segundo modelo, a fin de ajustarla.
+\section{Metodología de Desarrollo}\label{sec:metodologia-desarrollo}
+
+El desarrollo de SmartStocker se realizó bajo el modelo de desarrollo en cascada, una metodología tradicional que organiza el trabajo en etapas secuenciales y claramente definidas. Cada fase depende del cumplimiento de la anterior, lo que permite mantener un flujo ordenado, documentado y con una trazabilidad precisa de los avances. Se consideró que este enfoque era el adecuado, dado que, luego del User Research,  contamos con requerimientos bien definidos, lo que favoreció la planificación y la validación progresiva de resultados.
+
+\subsection{Análisis y definición de requerimientos}\label{sec:analisis-definicion-requerimientos}
+
+Tomando como base el User Research realizado, se comenzó con la identificación detallada de las necesidades del sistema, tanto funcionales como técnicas. Se establecieron los objetivos generales —optimización del stock y predicción de ventas en el sector gastronómico— junto con los requerimientos específicos de usabilidad, almacenamiento y procesamiento de datos. Esta etapa permitió definir con claridad el alcance del sistema y reducir incertidumbres en fases posteriores.
+
+\subsection{Diseño conceptual y arquitectónico}\label{sec:diseño-conceptual-arquitectonico}
+
+En esta instancia se elaboró la arquitectura general de SmartStocker, estructurada en tres capas: presentación, negocio y almacenamiento. Se seleccionaron tecnologías compatibles entre sí dentro del ecosistema AWS, priorizando la escalabilidad, la modularidad y la integración entre servicios. El diseño incluyó diagramas de componentes, flujos de datos y la definición de las interacciones entre los distintos módulos. Esto también incluyó las definiciones de qué aspectos serían considerados por el modelo de Machine Learning.
+
+\subsection{Implementación y desarrollo}\label{sec:implementacion-desarrollo}
+
+Durante esta fase se construyeron los distintos componentes del sistema siguiendo las especificaciones del diseño. El frontend fue desarrollado en Next.js y gestionado mediante AWS Amplify, mientras que la lógica de negocio se implementó en Node.js sobre funciones Lambda. Los modelos de machine learning se entrenaron y desplegaron utilizando Amazon SageMaker, integrando los flujos de datos procesados y almacenados en DocumentDB y S3.
+
+\subsection{Validación e integración final}\label{sec:validacion-integracion-final}
+
+Finalizada la implementación, se llevaron a cabo pruebas de validación funcional, de rendimiento y de integración entre servicios. Se verificó el correcto funcionamiento de las integraciones, la coherencia de las predicciones y la estabilidad del entorno de despliegue, junto con el cumplimiento de los requerimientos tanto funcionales como no funcionales.
