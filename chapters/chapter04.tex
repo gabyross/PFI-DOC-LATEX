@@ -85,7 +85,44 @@ La capacidad de anticipar la demanda de productos constituye la funcionalidad ce
     \label{fig:flujo-prediccion}
 \end{figure}
 
-\section{Diseño UX / UI}
+\section{Identidad de marca}\label{subsec:identidad-marca}
+SmartStocker es una marca centrada en la toma de decisiones basada en datos para la gestión de inventarios gastronómicos. Su identidad se sostiene en tres ejes: claridad (información entendible y accionable), confiabilidad (resultados consistentes) y agilidad (respuestas oportunas para planificar compras y evitar quiebres o excedentes). La narrativa de marca comunica simplicidad y precisión: transformar registros de venta y contexto operativo en recomendaciones concretas de stock y alertas preventivas.
+
+\subsection{Misión}\label{subsec:mision}
+Impulsar la rentabilidad de restaurantes y locales gastronómicos mediante una plataforma que integra datos de venta en tiempo real, predice la demanda y traduce esos resultados en recomendaciones de compra y niveles de stock accionables. SmartStocker reduce quiebres y desperdicios, simplifica la operación diaria y convierte la gestión de inventario en un proceso preciso, automatizado y basado en evidencia.
+
+\subsection{Visión}\label{subsec:vision}
+Ser la referencia regional en optimización de inventarios gastronómicos mediante analítica predictiva, integrando datos operativos y conocimiento experto para elevar la toma de decisiones cotidiana.
+
+\subsection{Nombre}\label{subsec:nombre}
+El nombre SmartStocker combina \textit{Smart} (inteligente) y \textit{Stocker} (almacenista). La construcción comunica de manera directa el beneficio central: administrar inventarios con inteligencia. Es breve, fácil de pronunciar y recordar, y al estar en inglés facilita su adopción en distintos mercados y contextos tecnológicos.
+
+\subsection{Identidad visual}\label{subsec:identidad-visual}
+\paragraph{Concepto.} La identidad visual representa el pasaje de datos a decisiones. Se recurre a formas claras y proporciones estables que remiten a control, previsión y orden, evitando recursos recargados que resten legibilidad en entornos digitales.
+
+\paragraph{Logotipo tipográfico.}
+El logotipo tipográfico prioriza legibilidad y memorabilidad. La diferenciación visual se logra por color: \textit{Smart} en tono oscuro (negro/gris muy profundo) y \textit{Stocker} en azul corporativo, lo que facilita la lectura y refuerza el territorio semántico del producto (gestión de stock). Además, se utiliza capitalización inicial en cada palabra y composición en una sola línea.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.80\textwidth]{images/smartstocker-logotipo-tipografico.png}
+    \caption{Logotipo tipográfico de SmartStocker.}
+    {\textit{Fuente: Elaboración propia.}}
+    \label{fig:logo-tipografico-smartstocker}
+\end{figure}
+
+\paragraph{Imagotipo (isotipo + logotipo).}
+El imagotipo integra un isotipo geométrico que sugiere \textit{contenedor/caja} (inventario) y una flecha ascendente (proyección/abastecimiento), combinado con el logotipo. El isotipo admite uso independiente en tamaños reducidos (favicon, icono de app), mientras que el imagotipo es la versión preferente para cabeceras, presentaciones y piezas institucionales.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.70\textwidth]{images/smartstocker-imagotipo.png}
+    \caption{Imagotipo de SmartStocker (composición isotipo + logotipo).}
+    {\textit{Fuente: Elaboración propia.}}
+    \label{fig:imagotipo-smartstocker}
+\end{figure}
+
+\subsection{Paleta de Colores}\label{subsec:paleta-colores}
 
 El diseño visual de SmartStocker se sustenta en una paleta cromática la cual fue escogida con el propósito de transmitir profesionalismo, confianza y modernidad, atributos que resultan esenciales en un sistema orientado a la toma de decisiones estratégicas en el sector gastronómico. Ahora bien, la elección de los tonos se realizó considerando tanto la dimensión estética como la funcionalidad comunicativa de cada color dentro de la interfaz.
 
@@ -116,9 +153,8 @@ En conjunto, esta paleta de colores no responde únicamente a una intención est
     \label{tab:paleta-colores}
 \end{table}
 
-\section{Pantallas de la aplicación}
-
-A continuación, se presentan las principales pantallas de la aplicación SmartStocker, organizadas según el flujo de interacción del usuario. Estas capturas ilustran tanto la experiencia inicial (Figura~\ref{fig:ux-landing1} a \ref{fig:ux-landing5})  como la gestión de datos (Figura~\ref{fig:ux-ingredientes} a Figura~\ref{fig:ux-nuevo-ingrediente}) y las funcionalidades clave de predicción de ventas (Figura~\ref{fig:ux-predicciones} a Figura~\ref{fig:ux-prediccion2}).
+\subsection{Pantallas de la aplicación}\label{subsec:pantallas-aplicacion}
+A continuación se presentan las principales pantallas de la aplicación SmartStocker, ordenadas según el flujo de interacción. Estas capturas abarcan: la experiencia inicial (Figuras~\ref{fig:ux-landing1} a \ref{fig:ux-landing5} y \ref{fig:ux-login}); el dashboard (Figuras~\ref{fig:ux-dashboard1} a \ref{fig:ux-dashboard3}); la gestión de datos (Figuras~\ref{fig:ux-ingredientes}, \ref{fig:ux-items}, \ref{fig:ux-nuevo-item} y \ref{fig:ux-nuevo-ingrediente}); y las funcionalidades de predicción de ventas (Figuras~\ref{fig:ux-predicciones} a \ref{fig:ux-prediccion2}).
 
 \begin{figure}[htbp]
     \centering
@@ -166,6 +202,30 @@ A continuación, se presentan las principales pantallas de la aplicación SmartS
     \caption{Pantalla de inicio de sesión.}
     {\textit{Fuente: Elaboración propia.}}
     \label{fig:ux-login}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/dashboard1.png}
+    \caption{Dashboard – Vista general con métricas clave.}
+    {\textit{Fuente: Elaboración propia.}}
+    \label{fig:ux-dashboard1}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/dashboard2.png}
+    \caption{Dashboard – Predicciones de demanda y niveles de stock sugeridos.}
+    {\textit{Fuente: Elaboración propia.}}
+    \label{fig:ux-dashboard2}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/dashboard3.png}
+    \caption{Dashboard – Alertas y seguimiento de inventario por insumo.}
+    {\textit{Fuente: Elaboración propia.}}
+    \label{fig:ux-dashboard3}
 \end{figure}
 
 \begin{figure}[htbp]
