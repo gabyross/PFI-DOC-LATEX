@@ -271,12 +271,47 @@ El módulo de notificaciones cumple un rol preventivo. Cada vez que un insumo al
 
 El valor de este componente radica en su capacidad para evitar interrupciones operativas. En un negocio gastronómico, la ausencia de un ingrediente clave no solo afecta la venta de un plato específico, sino que también impacta en la experiencia del cliente y en la reputación del local. Por esta razón, las alertas de stock bajo no deben considerarse únicamente como un aviso técnico, sino como un mecanismo de aseguramiento de la calidad del servicio.
 
+\section{Tecnologías utilizadas}\label{sec:tecnologias-utilizadas}
+
+SmartStocker se basa en una serie de tecnologías y herramientas que permiten su funcionamiento eficiente y escalable. A continuación, se detallan las principales tecnologías utilizadas en el desarrollo de la solución:
+
+\subsection{Next.js}\label{sec:nextjs}
+
+Framework basado en React que permite crear aplicaciones web optimizadas con renderizado del lado del servidor. El uso de React se basa en que es ampliamente utilizado en el ecosistema de desarrollo frontend actual, lo que simplifica su mantenimiento a futuro y nos provee de múltiples librerías para utilizar en el desarrollo.
+
+\subsection{Express}\label{sec:express}
+
+Framework de Node.js que facilita la creación de aplicaciones web y APIs. Utilizado debido a que es fácilmente desplegable de forma serverless, y porque no se detectó la necesidad de utilizar un lenguaje fuertemente tipado.
+
+\subsection{Python}\label{sec:python}
+
+Lenguaje de programación de alto nivel, versátil y ampliamente utilizado en ciencia de datos y machine learning. Su uso radica en la enorme cantidad de librerías disponibles para realizar trabajos con datasets, tales como Panda y Numpy, entre otras.
+
+\subsection{Amazon Web Services}\label{sec:aws}
+
+Para el despliegue y operación de SmartStocker se utiliza Amazon Web Services (AWS), una plataforma en la nube que permite implementar una arquitectura escalable, segura y altamente disponible. Dentro del ecosistema de AWS se emplean los siguientes servicios principales:
+
+\begin{itemize}
+    \item \textbf{AWS Amplify:} Plataforma que simplifica la creación, configuración y despliegue de aplicaciones web y móviles, integrando backend, hosting y flujos de desarrollo continuo. Se optó por su uso a fin de simplificar lo más posible los aspectos relacionados al despliegue del frontend, su capacidad de escalamiento ante la demanda, y su soporte nativo para Next.js.
+
+    \item \textbf{Amazon S3 (Simple Storage Service):} Servicio de almacenamiento de objetos que permite guardar y recuperar grandes volúmenes de datos de forma segura, duradera y altamente disponible. Optamos por su uso debido a que, por su bajo costo y durabilidad, nos permite guardar de forma segura los datos históricos y modelos entrenados para cada usuario.
+
+    \item \textbf{AWS Lambda:} Servicio de computación serverless que permite ejecutar código en respuesta a eventos sin necesidad de administrar servidores. Se decidió su uso a fin de facilitar la gestión de los procesos que corren en los pipelines y para reducir costos, dado que AWS factura su uso únicamente en base a las ejecuciones realizadas.
+
+    \item \textbf{Amazon EventBridge:} Servicio de gestión de eventos que facilita la conexión entre aplicaciones y la automatización de flujos mediante reglas y programación de tareas. Cumple de forma nativa con nuestro requerimiento de realizar entrenamientos de forma periódica.
+
+    \item \textbf{Amazon SageMaker:} Plataforma integral de machine learning que permite construir, entrenar y desplegar modelos de Machine Learning. Como la solución nativa de AWS para este tipo de aplicaciones, nos provee la capacidad de ejecutar nuestros procesos dentro de su entorno, lo que permite contar con una mayor disponibilidad de recursos en comparación con otras alternativas, como EC2 o Lambdas.
+
+    \item \textbf{Amazon DocumentDB:} Servicio de base de datos NoSQL compatible con MongoDB, diseñado para almacenar, consultar y escalar datos en formato de documentos JSON. Ofrece alta disponibilidad, seguridad integrada y capacidad de escalado automático. Optamos por su uso tanto por la flexibilidad que otorga en términos de esquema como por su integración natural con Node.js.
+
+    \item \textbf{Amazon SQS (Simple Queue Service):} Servicio de colas de mensajería que permite desacoplar y coordinar componentes de sistemas distribuidos. Facilita la comunicación asíncrona, el procesamiento escalable y la tolerancia a fallos entre servicios. Se incluyó en la solución a fin de ejecutar ciertos procesos de forma asíncrona, separados del componente que los inició originalmente, como el procesamiento de una venta.
+\end{itemize}
 
 \section{Arquitectura de la solución}\label{sec:arquitectura-solucion}
-En esta sección se presenta la arquitectura de SmartStocker, detallando las tecnologías empleadas para su diseño técnico y funcional. La arquitectura funciona como marco conceptual que sustenta cada componente del sistema y especifica las interacciones y dependencias entre las distintas partes que lo componen.
+En esta sección se presenta la arquitectura de SmartStocker, detallando como las tecnologías empleadas se implementan en el diseño técnico y funcional. La arquitectura funciona como marco conceptual que sustenta cada componente del sistema y especifica las interacciones y dependencias entre las distintas partes que lo componen.
 
 \subsection{Diagrama de Arquitectura conceptual}\label{sec:arquitectura-conceptual}
-En relación con la arquitectura de alto nivel de SmartStocker, se propone un modelo de tres capas que organiza la solución, asegurando una separación clara de responsabilidades y mejorando la escalabilidad. Esta estructura está diseñada para optimizar tanto la interacción con el usuario como el procesamiento y almacenamiento de los registros de venta y los resultados de inferencia generados por los modelos predictivos.
+En relación con la arquitectura de alto nivel de SmartStocker, se propone un modelo de tres capas que organiza la solución, asegurando una separación clara de responsabilidades y mejorando la escalabilidad. Esta estructura está diseñada para optimizar tanto la interacción con el usuario como el procesamiento y almacenamiento de los registros de venta y los resultados de inferencia generados por el modelo predictivo.
 
 La primera capa —Capa de Presentación (Presentation Layer)— agrupa la interfaz y la experiencia de usuario. En ella se implementa el frontend de SmartStocker con Next.js y se despliega mediante AWS Amplify, aprovechando sus capacidades de hosting y CI/CD. Esta capa permite a los usuarios interactuar con la plataforma, gestionar sus productos e ingredientes, visualizar recomendaciones y alertas, y realizar operaciones de predicciones de venta de forma responsiva y orientada a la operativa diaria.
 
@@ -303,7 +338,7 @@ Para la capa de negocio, se decidió implementar las distintas APIs requeridas m
 
 Esto también aplica para el pipeline de ETL, donde también se utiliza AWS Simple Queue Service (SQS) para desacoplar el procesamiento de las ventas, a fin de lograr velocidades de respuesta rápida ante los sistemas externos que enviaran las mismas, mientras que el procesamiento y enriquecimiento de las ventas se realiza en otra Lambda.
 
-Por último, se decidió usar AWS Sagemaker en el pipeline de ML, puesto que simplifica enormemente el entrenamiento del modelo, requiriendo suministrarle solamente el dataset a utilizar, y permite disponibilizar el modelo para ser usado para predicciones mediante endpoints, lo que brinda una consulta rápida y de fácil implementación.
+Por último, se decidió usar AWS Sagemaker en el pipeline de ML, puesto que simplifica el entrenamiento del modelo, requiriendo suministrarle los dataset de entrenamiento y validación a utilizar, y permite disponibilizar el modelo para ser usado para predicciones mediante endpoints, lo que brinda una consulta rápida y de facil implementacion.
 
 \begin{figure}[H]
     \centering
@@ -333,9 +368,9 @@ Con el objetivo de permitir la ingesta automática de las ventas, a fin de actua
 
 En base a esto, se implementó el uso de AWS SQS, permitiendo de esta forma que el resto de procesamiento requerido para transformar la venta en el dato requerido por el modelo ocurra en una Lambda distinta, que funciona como consumidor de la cola implementada en SQS, donde al finalizar la primer Lambda se encola un mensaje conteniendo el Id de la venta creada en DocumentDb, para que esta sea procesada por el consumidor. Esto nos brinda un procesamiento asincrónico y desacoplado de estas tareas que pueden ser más lentas, y permite que ocurran a un ritmo distinto de la Lambda inicial expuesta al resto de los sistemas de venta.
 
-Esta segunda Lambda se encargará de, en base a la información de la venta y consultas a APIs externas para la obtención de feriados y datos climáticos, generar las features que se considerarán en el entrenamiento del modelo, donde se consideran aspectos relacionados al momento cronológico de la venta, es decir, en qué turno de trabajo ocurre, si se realizó en un feriado, en que semana se hizo, si la venta ocurrió en un fin de semana, pero también se considera el aspecto climático, indicando tanto la estación como el estado climático en ese momento (nublado, despejado, lluvioso), a fin de lograr aspectos estacionales del consumo.
-Por último, al finalizar esta Lambda la información procesada es almacenada en un S3, disponible para ser usada al momento de entrenar el modelo.
+Esta segunda Lambda se encargará de procesar la venta, actualizando los niveles de stock y generando alertas de nivel del mismo si fuera necesario, para cada ingrediente utilizado en cada uno de los productos que integran cada venta.
 
+Por último, al finalizar esta Lambda la información de cada una de las ventas es almacenada en S3 en formato CSV, generando una fila por cada producto involucrado en cada una de las ventas, disponible para ser usada al momento de entrenar el modelo, durante el paso de consolidación histórica, donde la información correspondiente a cada usuario se encontrará separada mediante el identificador único del usuario, a fin de garantizar la integridad de la información en los usos subsecuentes.
 
 \subsection{Pipeline Machine Learning}\label{sec:pipeline-machine-learning}
 
