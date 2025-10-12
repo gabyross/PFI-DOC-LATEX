@@ -40,7 +40,9 @@ El aprendizaje supervisado es una de las principales ramas de Machine Learning y
 
 Formalmente, el aprendizaje supervisado parte de un conjunto de entrenamiento conformado por $n$ ejemplos etiquetados:
 
-\[(x_1, y_1), (x_2, y_2), \ldots, (x_n, y_n)\]
+\begin{equation}
+(x_1, y_1), (x_2, y_2), \ldots, (x_n, y_n)
+\end{equation}
 
 \noindent donde cada $x_n$ es una entrada (también conocida como vector de características) y cada $y_n$ es la salida o etiqueta correspondiente. Estos ejemplos son generados por una función desconocida $f(x)$, y el objetivo del algoritmo es encontrar una función aproximada $h(x)$, denominada \emph{hipótesis}, que generalice correctamente sobre datos no vistos.
 
@@ -65,21 +67,21 @@ Basándonos en \parencite{hyndman2018forecasting, james2013isl} podemos pasar a 
 \begin{itemize}
     \item \textbf{MAE (Mean Absolute Error)}: Mide el promedio de las diferencias absolutas entre los valores predichos por el modelo y los valores reales observados, sin considerar la dirección del error. La unidad utilizada es la misma de lo que se está prediciendo, lo que facilita su interpretación, y es menos sensible a valores atípicos en comparación con otras métricas como MSE y RMSE. Se define como:
 
-    \[
+    \begin{equation}
         \mbox{MAE} = \frac{1}{n} \sum_{t=1}^{n} \left| y_t - \hat{y}_t \right|
-    \]
+    \end{equation}
 
     \item \textbf{MSE (Mean Squared Error)}: Cuantifica la diferencia promedio entre los valores reales observados y las predicciones de un modelo. Se calcula como el promedio del cuadrado de los errores, es decir, la diferencia entre los valores reales y los valores predichos. Es muy sensible a valores atípicos, y su unidad es el cuadrado de la unidad de error original, lo que hace que no sea de fácil interpretación.
     
-    \[
+    \begin{equation}
         \mbox{MSE} = \frac{1}{n} \sum_{t=1}^{n} \left( y_t - \hat{y}_t \right)^2 
-    \]
+    \end{equation}
 
     \item \textbf{RMSE – Root Mean Squared Error:} Similar al MSE, penaliza de igual forma a los valores atípicos, pero al aplicar una raíz cuadrada al error permite que este se mantenga en la misma escala que las unidades originales, solucionando el problema de interpretación del MSE.
 
-    \[
+    \begin{equation}
         \mbox{RMSE} = \sqrt{ \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 }
-    \]
+    \end{equation}
 \end{itemize}
 
 \subsection{CatBoost}
