@@ -360,7 +360,7 @@ Para el despliegue y operación de SmartStocker se utiliza Amazon Web Services (
 \begin{itemize}
     \item \textbf{AWS Amplify:} Plataforma que simplifica la creación, configuración y despliegue de aplicaciones web y móviles, integrando backend, hosting y flujos de desarrollo continuo. Se optó por su uso a fin de simplificar lo más posible los aspectos relacionados al despliegue del frontend, su capacidad de escalamiento ante la demanda, y su soporte nativo para Next.js.
 
-    \item \textbf{Amazon S3 (Simple Storage Service):} Servicio de almacenamiento de objetos que permite guardar y recuperar grandes volúmenes de datos de forma segura, duradera y altamente disponible. Optamos por su uso debido a que, por su bajo costo y durabilidad, nos permite guardar de forma segura los datos históricos y modelos entrenados para cada usuario.
+    \item \textbf{Amazon S3 (Simple Storage Service):} Servicio de almacenamiento de objetos que permite guardar y recuperar grandes volúmenes de datos de forma segura, duradera y altamente disponible. Se optó por su uso debido a que, por su bajo costo y durabilidad, nos permite guardar de forma segura los datos históricos y modelos entrenados para cada usuario.
 
     \item \textbf{AWS Lambda:} Servicio de computación serverless que permite ejecutar código en respuesta a eventos sin necesidad de administrar servidores. Se decidió su uso a fin de facilitar la gestión de los procesos que corren en los pipelines y para reducir costos, dado que AWS factura su uso únicamente en base a las ejecuciones realizadas.
 
@@ -368,7 +368,7 @@ Para el despliegue y operación de SmartStocker se utiliza Amazon Web Services (
 
     \item \textbf{Amazon SageMaker:} Plataforma integral de machine learning que permite construir, entrenar y desplegar modelos de Machine Learning. Como la solución nativa de AWS para este tipo de aplicaciones, nos provee la capacidad de ejecutar nuestros procesos dentro de su entorno, lo que permite contar con una mayor disponibilidad de recursos en comparación con otras alternativas, como EC2 o Lambdas.
 
-    \item \textbf{Amazon DocumentDB:} Servicio de base de datos NoSQL compatible con MongoDB, diseñado para almacenar, consultar y escalar datos en formato de documentos JSON. Ofrece alta disponibilidad, seguridad integrada y capacidad de escalado automático. Optamos por su uso tanto por la flexibilidad que otorga en términos de esquema como por su integración natural con Node.js.
+    \item \textbf{Amazon DocumentDB:} Servicio de base de datos NoSQL compatible con MongoDB, diseñado para almacenar, consultar y escalar datos en formato de documentos JSON. Ofrece alta disponibilidad, seguridad integrada y capacidad de escalado automático. Se decidió optar por su uso tanto por la flexibilidad que otorga en términos de esquema como por su integración natural con Node.js.
 
     \item \textbf{Amazon SQS (Simple Queue Service):} Servicio de colas de mensajería que permite desacoplar y coordinar componentes de sistemas distribuidos. Facilita la comunicación asíncrona, el procesamiento escalable y la tolerancia a fallos entre servicios. Se incluyó en la solución a fin de ejecutar ciertos procesos de forma asíncrona, separados del componente que los inició originalmente, como el procesamiento de una venta.
 \end{itemize}
@@ -494,7 +494,7 @@ Esto permite realizar ajustes sobre posibles tendencias que están ocurriendo de
 
 \section{Metodología de Desarrollo}\label{sec:metodologia-desarrollo}
 
-El desarrollo de SmartStocker se realizó bajo el modelo de desarrollo en cascada, una metodología tradicional que organiza el trabajo en etapas secuenciales y claramente definidas. Cada fase depende del cumplimiento de la anterior, lo que permite mantener un flujo ordenado, documentado y con una trazabilidad precisa de los avances. Se consideró que este enfoque era el adecuado, dado que, luego del User Research,  contamos con requerimientos bien definidos, lo que favoreció la planificación y la validación progresiva de resultados.
+El desarrollo de SmartStocker se realizó bajo el modelo de desarrollo en cascada, una metodología tradicional que organiza el trabajo en etapas secuenciales y claramente definidas. Cada fase depende del cumplimiento de la anterior, lo que permite mantener un flujo ordenado, documentado y con una trazabilidad precisa de los avances. Se consideró que este enfoque era el adecuado, dado que, luego del User Research, se cuenta con requerimientos bien definidos, lo que favoreció la planificación y la validación progresiva de resultados.
 
 \subsection{Análisis y definición de requerimientos}\label{sec:analisis-definicion-requerimientos}
 
