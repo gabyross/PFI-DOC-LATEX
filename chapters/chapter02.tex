@@ -62,7 +62,7 @@ A la hora de implementar algún algoritmo predictivo, es fundamental tener la ca
 
 Para el caso específico de regresión, se utilizan métricas que calculan el grado de error entre los valores reales y los valores predichos por el modelo
 
-Basándonos en \parencite{hyndman2018forecasting, james2013isl} podemos pasar a definir las tres métricas principales para modelos de regresión.
+Basándonos en \parencite{hyndman2018forecasting, james2013isl} se procede a definir las tres métricas principales para modelos de regresión.
 
 \begin{itemize}
     \item \textbf{MAE (Mean Absolute Error)}: Mide el promedio de las diferencias absolutas entre los valores predichos por el modelo y los valores reales observados, sin considerar la dirección del error. La unidad utilizada es la misma de lo que se está prediciendo, lo que facilita su interpretación, y es menos sensible a valores atípicos en comparación con otras métricas como MSE y RMSE. Se define como:
@@ -92,11 +92,11 @@ Una \emph{función de pérdida} es una función matemática que cuantifica el er
 
 Formalmente, dada una función de predicción $f(x)$ y un valor objetivo $y$, una función de pérdida $L(y, f(x))$ devuelve un valor escalar que representa la penalización por la discrepancia entre ambos.
 
-Definido el concepto de función de pérdida, podemos pasar a explicar el concepto de Gradient Boosting, siendo este una técnica de ensamble supervisado que construye un modelo predictivo fuerte mediante la combinación secuencial de múltiples modelos débiles, generalmente árboles de decisión, con el objetivo de corregir los errores residuales del conjunto anterior. A cada paso, el nuevo modelo es entrenado para minimizar el error del conjunto previo, utilizando métodos de optimización basados en el gradiente de una función de pérdida.
+Definido el concepto de función de pérdida, se procede a explicar el concepto de Gradient Boosting, siendo este una técnica de ensamble supervisado que construye un modelo predictivo fuerte mediante la combinación secuencial de múltiples modelos débiles, generalmente árboles de decisión, con el objetivo de corregir los errores residuales del conjunto anterior. A cada paso, el nuevo modelo es entrenado para minimizar el error del conjunto previo, utilizando métodos de optimización basados en el gradiente de una función de pérdida.
 
 En este caso, la función utilizada por CatBoost es RMSE, cuya fórmula matemática ha sido definida previamente
 
-Dada la definición de Gradient Boosting, podemos pasar a explicar CatBoost (Categorical Boosting), definido en \parencite{dorogush2018catboost}, como uno de los algoritmos implementados con esta técnica. Está diseñado específicamente para manejar datasets que contienen una combinación de variables numéricas y categóricas, destacándose por su capacidad para procesar variables categóricas sin necesidad de codificación previa (como one-hot o label encoding), y de reducir el overfitting que ocurre durante el entrenamiento mediante una técnica llamada Ordered Boosting. 
+Dada la definición de Gradient Boosting, se continúa con la explicación de CatBoost (Categorical Boosting), definido en \parencite{dorogush2018catboost}, como uno de los algoritmos implementados con esta técnica. Está diseñado específicamente para manejar datasets que contienen una combinación de variables numéricas y categóricas, destacándose por su capacidad para procesar variables categóricas sin necesidad de codificación previa (como one-hot o label encoding), y de reducir el overfitting que ocurre durante el entrenamiento mediante una técnica llamada Ordered Boosting. 
 
 A su vez, es uno de los algoritmos de Machine Learning más performantes a la hora de trabajar con datasets de las características a utilizar en esta tesis.
 
