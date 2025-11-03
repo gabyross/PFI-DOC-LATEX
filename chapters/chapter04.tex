@@ -557,8 +557,19 @@ A continuacion, se muestra un grafico donde se visualiza la importancia de las d
 
 El modelo se entrenó con \textbf{2000 iteraciones} y una \textbf{tasa de aprendizaje de 0.0347}, lo que permite una convergencia progresiva sin sobreajuste. La \textbf{profundidad de los árboles (5 niveles)} limita la complejidad y mejora la estabilidad del modelo. Se utilizó una \textbf{regularización L2 de 44.95} y una \textbf{temperatura de muestreo de 1.79}, favoreciendo la diversidad de los árboles y reduciendo la varianza.  
 
-El entrenamiento incorpora la técnica de \textit{early stopping} con \textbf{100 iteraciones de paciencia}, finalizando cuando no se observan mejoras significativas. Se empleó la política de crecimiento \textit{SymmetricTree}, propia de CatBoost, que genera árboles balanceados y eficientes.  
+El entrenamiento incorpora la técnica de \textit{early stopping} con \textbf{100 iteraciones de paciencia}, finalizando cuando no se observan mejoras significativas. Se empleó la política de crecimiento \textit{SymmetricTree}, propia de CatBoost, que genera árboles balanceados y eficientes.
 
+Usando estos hiperparametros, logramos los siguientes resultados al evaluar el modelo:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{images/resultados.png}
+    \caption{Resultados del modelo.}
+    {\textit{Fuente: Elaboración propia.}}
+    \label{fig:resultados-modelo}
+\end{figure}
+
+Podemos ver que tanto el RMSE como el MAE presentan valores bajos, lo que indica que el modelo es apto para la tarea de predicción de ventas enfocada a la gestion de inventario.
 
 \subsection{Inclusión del Feedback de usuario}\label{sec:inclusion-feedback-usuario}
 
