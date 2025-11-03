@@ -486,6 +486,80 @@ Luego de estas etapas, se registra el modelo, asociando a él un tercer script d
     \label{fig:diagrama-pipeline-ml}
 \end{figure}
 
+\subsection{Feature Engineering}\label{sec:feature-engineering}
+
+Dentro del proceso de Feature Engineering, se generan una serie de features adicionales a partir de los datos históricos de ventas, con el objetivo de enriquecer el modelo y permitirle capturar patrones relevantes en la demanda, partiendo de los siguientes datos correspondientes al dataset generado en base a las ventas:
+
+\begin{itemize}
+    \item \textbf{cantidad}: Cantidad vendida de un producto, para una determinada fecha, siendo esta la variable a predecir por el modelo.
+    \item \textbf{fecha}: Fecha de la venta en formato DD/MM/YYYY (usado para agrupación y features temporales)
+    \item \textbf{producto}: Código del producto/ítem del menú.
+    \item \textbf{turno}: Turno de venta.
+\end{itemize}
+
+A partir de estos datos, se generan los siguientes tipos de features adicionales:
+
+\textbf{Features Temporales:} Representan los aspectos cronologicos de una venta. A fin de capturar la naturaleza ciclica de estos datos, se opto por representar a las variables de dia, semana y mes mediante el resultado de aplicar las funciones trigonométricas seno y coseno a sus correspondientes valores numericos, de esta forma, se logra que el modelo pueda captar la continuidad entre el final y el comienzo de cada ciclo (por ejemplo, entre el dia 31 y el dia 1).
+\textbf{Features Climáticas:} Representan los aspectos climáticos del momento donde se concretó una venta.
+\textbf{Features de Lag:} Corresponden a variables que incorporan información de ventas pasadas en un intervalo temporal específico, permitiendo que el modelo aprenda patrones de comportamiento recurrentes en el tiempo. Por ejemplo, la variable \textit{lag\_1\_semana} representa el valor de ventas observado exactamente una semana antes del registro actual.
+\textbf{Rolling Features:} Estas variables se obtienen a partir del cálculo de estadísticas móviles (como medias o desviaciones estándar) sobre ventanas temporales deslizantes. Su objetivo es reflejar la tendencia y la estabilidad reciente de las ventas, suavizando las fluctuaciones diarias. De esta forma, el modelo puede identificar cambios graduales en la demanda y diferenciar entre comportamientos estables y volátiles a corto o mediano plazo. En este caso, se calcularon medias(mean) y desviaciones estándar móviles(std) para ventanas de 1 semana(1w), 2 semanas(2w) y 4 semanas(4w), para cada producto(p), y las combinaciones producto-turno(pt) y producto-día(pdw).
+
+Al finalizar el proceso de Feature Engineering, el dataset resultante contiene las siguientes variables:
+\textbf{Features Temporales:}
+\begin{itemize}
+    \item \textbf{semana}: Semana del mes.
+    \item \textbf{semana\_cos}: Coseno del valor numerico de la semana.
+    \item \textbf{semana\_sin}: Seno del valor numerico de la semana.
+    \item \textbf{mes}: Número del mes (1-12)
+    \item \textbf{mes\_cos}: Coseno del valor numerico del mes.
+    \item \textbf{mes\_sin}: Seno del valor numerico del mes.
+    \item \textbf{dia\_mes}: Día del mes (1-31)
+    \item \textbf{dia\_mes\_cos}: Coseno del valor numerico del dia del mes.
+    \item \textbf{dia\_mes\_sin}: Seno del valor numerico del dia del mes.
+    \item \textbf{es\_fin\_de\_semana}: Indicador si es sábado o domingo.
+    \item \textbf{es\_feriado}: Indicador si es feriado argentino.
+    \item \textbf{estacion}: Estación del año en Hemisferio Sur (categórica).
+\end{itemize}
+
+\textbf{Features Climáticas:}
+\begin{itemize}
+    \item \textbf{temperatura\_promedio}: Categoría de temperatura.
+    \item \textbf{llovio}: Indicador si llovió en el día.
+    \item \textbf{clima\_adverso}: Indicador de condiciones climáticas adversas.
+    \item \textbf{descripcion\_clima}: Descripción textual del clima.
+\end{itemize}
+
+\textbf{Features de Lag:}
+\begin{itemize}
+    \item \textbf{lag\_1\_semana}: Total de ventas para la combinación de producto y turno exactamente una semana atrás.
+    \item \textbf{lag\_4\_semanas}: Total de ventas para la combinación de producto y turno exactamente cuatro semanas atrás.
+\end{itemize}
+
+\textbf{Rolling Features:} Por cada una de las siguientes ventanas temporales: 1 semana(1w), 2 semanas(2w) y 4 semanas(4w), y combinaciones de producto(p), producto-turno(pt) y producto-día(pdw):
+\begin{itemize}
+    \item \textbf{roll\_mean\_[ventana]\_[combinacion]}: Promedio móvil de ventas.
+    \item \textbf{roll\_std\_[ventana]\_[combinacion]}: Desviación estándar móvil de ventas.
+\end{itemize}
+
+\subsection{Entrenamiento del modelo}\label{sec:entrenamiento-modelo}
+
+Como parte del entrenamiento, se decidio usar la funcion de perdida Tweedie, debido a su capacidad para modelar variables continuas no negativas con distribución asimétrica y presencia de ceros, como ocurre en las ventas diarias de productos gastronómicos, donde es una ocurrencia normal que ciertos productos no sean vendidos en determinados días. Esto permite que el modelo se adapte mejor a estos patrones, mejorando la precisión de las predicciones.
+
+A continuacion, se muestra un grafico donde se visualiza la importancia de las diez features mas relevantes, calculado usando la funcion PredictionValuesChange de CatBoost, la cual mide el impacto de cada feature en las predicciones del modelo al observar los cambios en los valores predichos cuando se modifica cada feature individualmente.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{images/importancia.png}
+    \caption{Importancia de las features en el modelo.}
+    {\textit{Fuente: Elaboración propia.}}
+    \label{fig:importancia-features}
+\end{figure}
+
+El modelo se entrenó con \textbf{2000 iteraciones} y una \textbf{tasa de aprendizaje de 0.0347}, lo que permite una convergencia progresiva sin sobreajuste. La \textbf{profundidad de los árboles (5 niveles)} limita la complejidad y mejora la estabilidad del modelo. Se utilizó una \textbf{regularización L2 de 44.95} y una \textbf{temperatura de muestreo de 1.79}, favoreciendo la diversidad de los árboles y reduciendo la varianza.  
+
+El entrenamiento incorpora la técnica de \textit{early stopping} con \textbf{100 iteraciones de paciencia}, finalizando cuando no se observan mejoras significativas. Se empleó la política de crecimiento \textit{SymmetricTree}, propia de CatBoost, que genera árboles balanceados y eficientes.  
+
+
 \subsection{Inclusión del Feedback de usuario}\label{sec:inclusion-feedback-usuario}
 
 A fin de incluir el feedback del usuario en las predicciones, se decidió implementar una lógica que ajuste la salida del modelo. Para ello, cada vez que el usuario informe que una predicción no es precisa en base a su experiencia, podrá informar el valor de ventas que él considera adecuado, ajustando esto el cálculo de stock requerido. Cuando esto ocurra de forma reiterada para una cierta combinación producto/turno dentro de un plazo de tiempo, se utilizaran los valores corregidos para calcular un valor de ajuste, teniendo más peso las correcciones recientes, y se aplicará a la predicción obtenida del modelo. 
