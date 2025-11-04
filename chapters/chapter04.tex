@@ -376,7 +376,7 @@ SmartStocker se basa en una serie de tecnologías y herramientas que permiten su
 
 \subsection{Next.js}\label{sec:nextjs}
 
-Framework basado en React que permite crear aplicaciones web optimizadas con renderizado del lado del servidor. El uso de React se basa en que es ampliamente utilizado en el ecosistema de desarrollo frontend actual, lo que simplifica su mantenimiento a futuro y nos provee de múltiples librerías para utilizar en el desarrollo.
+Framework basado en React que permite crear aplicaciones web optimizadas con renderizado del lado del servidor. El uso de React se basa en que es ampliamente utilizado en el ecosistema de desarrollo frontend actual, lo que simplifica su mantenimiento a futuro debido a que provee múltiples librerías para utilizar en el desarrollo.
 
 \subsection{Express}\label{sec:express}
 
@@ -393,13 +393,13 @@ Para el despliegue y operación de SmartStocker se utiliza Amazon Web Services (
 \begin{itemize}
     \item \textbf{AWS Amplify:} Plataforma que simplifica la creación, configuración y despliegue de aplicaciones web y móviles, integrando backend, hosting y flujos de desarrollo continuo. Se optó por su uso a fin de simplificar lo más posible los aspectos relacionados al despliegue del frontend, su capacidad de escalamiento ante la demanda, y su soporte nativo para Next.js.
 
-    \item \textbf{Amazon S3 (Simple Storage Service):} Servicio de almacenamiento de objetos que permite guardar y recuperar grandes volúmenes de datos de forma segura, duradera y altamente disponible. Se optó por su uso debido a que, por su bajo costo y durabilidad, nos permite guardar de forma segura los datos históricos y modelos entrenados para cada usuario.
+    \item \textbf{Amazon S3 (Simple Storage Service):} Servicio de almacenamiento de objetos que permite guardar y recuperar grandes volúmenes de datos de forma segura, duradera y altamente disponible. Se optó por su uso debido a que, por su bajo costo y durabilidad, permite guardar de forma segura los datos históricos y modelos entrenados para cada usuario.
 
     \item \textbf{AWS Lambda:} Servicio de computación serverless que permite ejecutar código en respuesta a eventos sin necesidad de administrar servidores. Se decidió su uso a fin de facilitar la gestión de los procesos que corren en los pipelines y para reducir costos, dado que AWS factura su uso únicamente en base a las ejecuciones realizadas.
 
     \item \textbf{Amazon EventBridge:} Servicio de gestión de eventos que facilita la conexión entre aplicaciones y la automatización de flujos mediante reglas y programación de tareas. Cumple de forma nativa con nuestro requerimiento de realizar entrenamientos de forma periódica.
 
-    \item \textbf{Amazon SageMaker:} Plataforma integral de machine learning que permite construir, entrenar y desplegar modelos de Machine Learning. Como la solución nativa de AWS para este tipo de aplicaciones, nos provee la capacidad de ejecutar nuestros procesos dentro de su entorno, lo que permite contar con una mayor disponibilidad de recursos en comparación con otras alternativas, como EC2 o Lambda.
+    \item \textbf{Amazon SageMaker:} Plataforma integral de machine learning que permite construir, entrenar y desplegar modelos de Machine Learning. Al ser la solución nativa de AWS para este tipo de aplicaciones, proporciona la capacidad de ejecutar los procesos dentro de su propio entorno, lo que garantiza una mayor disponibilidad de recursos en comparación con otras alternativas, como EC2 o Lambda.
 
     \item \textbf{Amazon DocumentDB:} Servicio de base de datos NoSQL compatible con MongoDB, diseñado para almacenar, consultar y escalar datos en formato de documentos JSON. Ofrece alta disponibilidad, seguridad integrada y capacidad de escalado automático. Se decidió optar por su uso tanto por la flexibilidad que otorga en términos de esquema como por su integración natural con Node.js.
 
@@ -414,7 +414,7 @@ En relación con la arquitectura de alto nivel de SmartStocker, se propone un mo
 
 La primera capa —Capa de Presentación (Presentation Layer)— agrupa la interfaz y la experiencia de usuario. En ella se implementa el frontend de SmartStocker con Next.js y se despliega mediante AWS Amplify, aprovechando sus capacidades de hosting y CI/CD. Esta capa permite a los usuarios interactuar con la plataforma, gestionar sus productos e ingredientes, visualizar recomendaciones y alertas, y realizar operaciones de predicciones de venta de forma responsiva y orientada a la operativa diaria.
 
-La Capa de Negocio (Business Layer) constituye el núcleo lógico de SmartStocker y se organiza en tres componentes principales. El primero es una API REST que actúa como puente entre la capa de presentación y los servicios backend. A través de ella se gestionan las sesiones y la autorización, se exponen los endpoints para solicitar predicciones y gestionar productos, ingredientes, y alertas, y se incluye la lógica necesaria para atender las demandas de la interfaz de usuario de forma segura y consistente. Esta se encuentra desarollada con Node.js, a fin de aprovechar lo mas posible su integracion nativa con Next.js, y la simpleza a la hora de desplegar la API de forma serverless mediante AWS Lambda. El segundo es el pipeline de ETL, encargado de recibir los datos de ventas en tiempo real desde los sistemas externos, procesarlos, enriquecerlos, y dejarlos listos para ser usados por el modelo. Por último, el pipeline de ML será el encargado de realizar el entrenamiento del modelo, ya sea de forma periódica u bajo demanda, y de dejarlo disponible para su uso en las operaciones de inferencia. La logica de ambos pipelines se encuentra desarollada en Python, a fin de aprovechar las distintas librerías y frameworks disponibles para el procesamiento de datos y machine learning, y se encuentran implementados mediante AWS Lambda.
+La Capa de Negocio (Business Layer) constituye el núcleo lógico de SmartStocker y se organiza en tres componentes principales. El primero es una API REST que actúa como puente entre la capa de presentación y los servicios backend. A través de ella se gestionan las sesiones y la autorización, se exponen los endpoints para solicitar predicciones y gestionar productos, ingredientes, y alertas, y se incluye la lógica necesaria para atender las demandas de la interfaz de usuario de forma segura y consistente. Esta se encuentra desarollada con Node.js, a fin de aprovechar lo más posible su integración nativa con Next.js, y la simpleza a la hora de desplegar la API de forma serverless mediante AWS Lambda. El segundo es el pipeline de ETL, encargado de recibir los datos de ventas en tiempo real desde los sistemas externos, procesarlos, enriquecerlos, y dejarlos listos para ser usados por el modelo. Por último, el pipeline de ML será el encargado de realizar el entrenamiento del modelo, ya sea de forma periódica u bajo demanda, y de dejarlo disponible para su uso en las operaciones de inferencia. La lógica de ambos pipelines se encuentra desarollada en Python, a fin de aprovechar las distintas librerías y frameworks disponibles para el procesamiento de datos y machine learning, y se encuentran implementados mediante AWS Lambda.
 
 Por último, la Capa de Almacenamiento (Storage Layer) se organiza según los distintos casos de uso de la plataforma y está diseñada para optimizar rendimiento y costos. Los datos de la aplicación, tales como los ingredientes, productos, ventas realizadas,  y resultados de predicciones, se almacenan en DocumentDB, lo que facilita lecturas de baja latencia y flexibilidad en la estructura de los datos. Mientras tanto, los datos orientados al entrenamiento del modelo, tales como los datasets históricos, los artefactos de entrenamiento y los modelos exportados se almacenan en Amazon S3, aprovechando su durabilidad y su bajo costo.
 
@@ -431,7 +431,7 @@ Se decidió usar Amazon Web Services (AWS) como solución de despliegue debido a
 
 Analizando la capa de presentación, esta se encuentra desarrollada con Next.js, y desplegado a través de AWS Amplify. Se eligió este servicio puesto que simplifica enormemente la gestión de la aplicación, permitiendo, mediante una simple configuración inicial, encargarse de aspectos tales como el despliegue (permitiendo CI/CD integrado a GitHub), hasta del escalamiento en sí.
 
-Para la capa de almacenamiento, se optaron por dos soluciones. Primero, DocumentDB como base de datos NoSQL, seleccionado debido a la naturaleza no estructurada de los datos a utilizar, y que nos brinda la posibilidad de modificar el schema con facilidad, además de ser una base serverless escalable. Asimismo, S3, para contener la información en formato \verb|csv| requerida para los entrenamientos del modelo, y para almacenar los archivos correspondientes al modelo entrenado en si.
+Para la capa de almacenamiento, se optaron por dos soluciones. Primero, DocumentDB como base de datos NoSQL, seleccionado debido a la naturaleza no estructurada de los datos a utilizar, la cual brinda la posibilidad de modificar el schema con facilidad, además de ser una base serverless escalable. Asimismo, S3, para contener la información en formato \verb|csv| requerida para los entrenamientos del modelo, y para almacenar los archivos correspondientes al modelo entrenado en si.
 
 Para la capa de negocio, se decidió implementar las distintas APIs requeridas mediante AWS Lambda, dado que su enfoque serverless permite abstraernos de la gestión de la infraestructura, acelerando el desarrollo y la puesta en producción, escalando cuando la demanda lo requiera, y reduciendo los costos fijos.
 
@@ -449,7 +449,7 @@ Por último, se decidió usar AWS Sagemaker en el pipeline de ML, puesto que sim
 
 \subsection{Diagrama de Base de datos}\label{sec:arquitectura-base-datos}
 
-Para el diseño de la base de datos, se opto por utilizar DocumentDB, una de las alternativas NoSQL brindadas por AWS, debido a la flexibilidad y capacidades de escalado automaáico que esta nos provee, siendo la flexibilidad del schema algo critico dada la necesidad de agregar campos adicionales conforme el proceso de ETL o entrenamiento del modelo de ML lo requieran.
+Para el diseño de la base de datos, se optó por utilizar DocumentDB, una de las alternativas NoSQL brindadas por AWS, debido a la flexibilidad y capacidades de escalado automático que esta provee, siendo la flexibilidad del schema algo crítico dada la necesidad de agregar campos adicionales conforme el proceso de ETL o entrenamiento del modelo de ML lo requieran.
 
 El diseño de la base de datos se estructura en torno a siete entidades principales: Usuario, ItemMenu, Ingrediente, ItemMenu\_Ingrediente, Venta, DetalleVenta,CorreccionPrediccion y Alerta.
 La entidad Usuario representa a cada negocio dentro de la plataforma, almacenando información básica de acceso (nombre de usuario, email, contraseña), su estado de actividad y los identificadores de integración con plataformas externas como PedidosYa, Rappi u OláClick.
@@ -477,11 +477,11 @@ Todos los documentos incluyen timestamps (fecha\_creacion / fecha\_actualizacion
 
 Con el objetivo de permitir la ingesta automática de las ventas, a fin de actualizar tanto los dashboards visualizados en la aplicación, activar las correspondientes alertas de stock si fuera necesario y disponibilizar la información para el entrenamiento del modelo predictivo, se implementó un pipeline de ETL mediante el cual se procesan las distintas ventas. La primera parte de este proceso es recibir y procesar las ventas que ocurren, para lo cual se diseñaron distintas Lambdas, ajustadas al distinto formato en el que las plataformas pueden enviar los datos de una venta realizada. En estas se analiza la información recibida y en base a ello se genera una nueva entrada en la entidad Ventas. Dado que estas instancias Lambda estarán atendiendo peticiones de sistemas externos, se decidió que el procesamiento que ocurre en ellas sea lo más rápido y sencillo posible, a fin de devolver una respuesta a la brevedad.
 
-En base a esto, se implementó el uso de AWS SQS, permitiendo de esta forma que el resto de procesamiento requerido para transformar la venta en el dato requerido por el modelo ocurra en una Lambda distinta, que funciona como consumidor de la cola implementada en SQS, donde al finalizar la primer Lambda se encola un mensaje conteniendo el Id de la venta creada en DocumentDb, para que esta sea procesada por el consumidor. Esto nos brinda un procesamiento asincrónico y desacoplado de estas tareas que pueden ser más lentas, y permite que ocurran a un ritmo distinto de la Lambda inicial expuesta al resto de los sistemas de venta.
+En base a esto, se implementó el uso de AWS SQS, permitiendo de esta forma que el resto de procesamiento requerido para transformar la venta en el dato requerido por el modelo ocurra en una Lambda distinta, que funciona como consumidor de la cola implementada en SQS, donde al finalizar la primer Lambda se encola un mensaje conteniendo el Id de la venta creada en DocumentDb, para que esta sea procesada por el consumidor. Esto brinda un procesamiento asincrónico y desacoplado de estas tareas que pueden ser más lentas, y permite que ocurran a un ritmo distinto de la Lambda inicial expuesta al resto de los sistemas de venta.
 
-Esta segunda Lambda se encargará de procesar la venta, actualizando los niveles de stock y generando alertas de nivel del mismo si fuera necesario, para cada ingrediente utilizado en cada uno de los productos que integran cada venta.
+Esta segunda Lambda se encarga de procesar la venta, actualizando los niveles de stock y generando alertas de nivel del mismo si fuera necesario, para cada ingrediente utilizado en cada uno de los productos que integran cada venta.
 
-Por último, al finalizar esta Lambda la información de cada una de las ventas es almacenada en S3 en formato CSV, generando una fila por cada producto involucrado en cada una de las ventas, disponible para ser usada al momento de entrenar el modelo, durante el paso de consolidación histórica, donde la información correspondiente a cada usuario se encontrará separada mediante el identificador único del usuario, a fin de garantizar la integridad de la información en los usos subsecuentes.
+Por último, al finalizar esta Lambda la información de cada una de las ventas es almacenada en S3 en formato CSV, generando una fila por cada producto involucrado en cada una de las ventas, disponible para ser usada al momento de entrenar el modelo, durante el paso de consolidación histórica, donde la información correspondiente a cada usuario se encuentra separada mediante el identificador único del usuario, a fin de garantizar la integridad de la información en los usos subsecuentes.
 
 \subsection{Pipeline Machine Learning}\label{sec:pipeline-machine-learning}
 
@@ -501,7 +501,7 @@ Para la ejecución del entrenamiento en sí, se utilizan SageMaker Jobs, especí
 
 Para ser capaces de realizar todo el proceso de entrenamiento de forma individual para cada usuario, se optó por implementar un pipeline, cuyo objetivo es entrenar de forma periódica un modelo actualizado para cada uno de ellos.
 
-El mismo se encuentra implementado mediante el uso de AWS EventBridge, a fin de programar entrenamientos periódicos de forma semanal. Este disparará un evento que activará la primera Lambda, dedicada a consolidar los datos de la semana, y unificarlos con el dataset histórico ya existente. Como parte de esta, también se obtendrán los datos correspondientes a feriados y aspectos climáticos.
+El mismo se encuentra implementado mediante el uso de AWS EventBridge, a fin de programar entrenamientos periódicos de forma semanal. Este dispara un evento que activa la primera Lambda, dedicada a consolidar los datos de la semana, y unificarlos con el dataset histórico ya existente. Como parte de esta, también se obtendrán los datos correspondientes a feriados y aspectos climáticos.
 
 La segunda Lambda es la dedicada propiamente a coordinar las distintas fases del proceso de entrenamiento, Feature Engineering y Entrenamiento, cuya lógica se encuentra definida en sus respectivos scripts en Python.
 
@@ -656,9 +656,9 @@ roll\_std\_[ventana]\_[combinacion] & Desviación estándar móvil de ventas \\
 
 \subsection{Entrenamiento del modelo}\label{sec:entrenamiento-modelo}
 
-Como parte del entrenamiento, se decidio usar la funcion de perdida Tweedie, debido a su capacidad para modelar variables continuas no negativas con distribución asimétrica y presencia de ceros, como ocurre en las ventas diarias de productos gastronómicos, donde es una ocurrencia normal que ciertos productos no sean vendidos en determinados días. Esto permite que el modelo se adapte mejor a estos patrones, mejorando la precisión de las predicciones.
+Como parte del entrenamiento, se decidio usar la función de perdida Tweedie, debido a su capacidad para modelar variables continuas no negativas con distribución asimétrica y presencia de ceros, como ocurre en las ventas diarias de productos gastronómicos, donde es una ocurrencia normal que ciertos productos no sean vendidos en determinados días. Esto permite que el modelo se adapte mejor a estos patrones, mejorando la precisión de las predicciones.
 
-A continuacion, se muestra un grafico donde se visualiza la importancia de las diez features mas relevantes, calculado usando la funcion PredictionValuesChange de CatBoost, la cual mide el impacto de cada feature en las predicciones del modelo al observar los cambios en los valores predichos cuando se modifica cada feature individualmente.
+A continuación, se muestra un gráfico donde se visualiza la importancia de las diez features más relevantes, calculado usando la función PredictionValuesChange de CatBoost, la cual mide el impacto de cada feature en las predicciones del modelo al observar los cambios en los valores predichos cuando se modifica cada feature individualmente.
 
 \begin{figure}[H]
     \centering
@@ -672,23 +672,23 @@ El modelo se entrenó con \textbf{2000 iteraciones} y una \textbf{tasa de aprend
 
 El entrenamiento incorpora la técnica de \textit{early stopping} con \textbf{100 iteraciones}, de manera tal que el entrenamiento es finalizando cuando no se observan mejoras significativas entre iteraciones. Se empleó la política de crecimiento \textit{SymmetricTree}, propia de CatBoost, que genera árboles balanceados y eficientes.
 
-Usando estos hiperparametros, logramos los siguientes resultados al evaluar el modelo:
+Usando estos hiperparámetros, se logran los siguientes resultados al evaluar el modelo:
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{images/resultados.png}
+    \includegraphics[width=0.9\textwidth]{images/resultados.png}
     \caption{Resultados del modelo.}
     {\textit{Fuente: Elaboración propia.}}
     \label{fig:resultados-modelo}
 \end{figure}
 
-Podemos ver que tanto el RMSE como el MAE presentan valores bajos, lo que indica que el modelo es apto para la tarea de predicción de ventas enfocada a la gestion de inventario.
+Podemos ver que tanto el RMSE como el MAE presentan valores bajos, lo que indica que el modelo es apto para la tarea de predicción de ventas enfocada a la gestión de inventario.
 
 \subsection{Inclusión del Feedback de usuario}\label{sec:inclusion-feedback-usuario}
 
 A fin de incluir el feedback del usuario en las predicciones, se decidió implementar una lógica que ajuste la salida del modelo. Para ello, cada vez que el usuario informe que una predicción no es precisa en base a su experiencia, podrá informar el valor de ventas que él considera adecuado, ajustando esto el cálculo de stock requerido. Cuando esto ocurra de forma reiterada para una cierta combinación producto/turno dentro de un plazo de tiempo, se utilicen los valores corregidos para calcular un valor de ajuste, teniendo más peso las correcciones recientes, y se aplicará a la predicción obtenida del modelo. 
 
-Esto permite realizar ajustes sobre posibles tendencias que están ocurriendo de forma más rápida de la que el modelo es capaz de captarlas, sin modificar el proceso de entrenamiento del mismo, ya que eventualmente, si estos cambios en las tendencias pasarán a ser el comportamiento normal, el modelo lo aprenderá de forma natural conforme va accediendo a nueva información.
+Esto permite realizar ajustes sobre posibles tendencias que están ocurriendo con mayor rapidez de la que el modelo es capaz de captar, sin modificar su proceso de entrenamiento. Eventualmente, si estos cambios en las tendencias llegan a consolidarse como el comportamiento normal, el modelo los aprenderá de forma natural a medida que acceda a nueva información.
 
 \section{Metodología de Desarrollo}\label{sec:metodologia-desarrollo}
 
