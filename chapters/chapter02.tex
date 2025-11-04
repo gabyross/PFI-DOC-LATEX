@@ -30,21 +30,13 @@ Focalizándose en el rubro gastronómico, esto implica gestionar la compra, alma
     \item A su vez, los pagos a proveedores tienden a ocurrir al menos una semana luego de la entrega de mercadería, lo que implica que cualquier desvío, ya sea en cantidad o tipo de materia prima requerida se traslada directamente como una pérdida económica, debido a la naturaleza perecedera de la misma.
 \end{itemize}
 
-Este proceso de reposición de inventario, siendo uno de los que ocurre con mayor frecuencia, es a su vez uno de los de mayor costo asociado, significando para uno de los entrevistados, en mayo de 2025, alrededor de 6 millones de pesos argentinos por semana en cada uno de sus locales.
-
 A su vez, el estimar cuanto se deberia comprar es una tarea que hoy en día, debido a los costos asociados, queda en manos del personal con mayor conocimiento del negocio. Inclusive, muchas veces recae directamente en el dueño, quien debe considerar no solo las ventas que ya ocurrieron, sino también cómo los factores externos, como los feriados, el clima y el momento del mes, podrían influir en las ventas de la próxima semana.
 
 \subsection{Aprendizaje supervisado}
 
 El aprendizaje supervisado es una de las principales ramas de Machine Learning y se refiere al proceso mediante el cual un algoritmo aprende a realizar predicciones a partir de un conjunto de datos (dataset) etiquetado. Según \parencite{russell2022ai}, \guillemotleft{}\emph{en el aprendizaje supervisado, el agente observa pares de entrada-salida y aprende una función que mapea desde la entrada hacia la salida. Por ejemplo, las entradas podrían ser imágenes de una cámara, cada una acompañada de una salida que indica \textquotedblleft autobús\textquotedblright{} o \textquotedblleft peatón\textquotedblright{}. Esta salida se llama etiqueta. El agente aprende una función que, dada una nueva imagen, predice la etiqueta apropiada.}\guillemotright{}.
 
-Formalmente, el aprendizaje supervisado parte de un conjunto de entrenamiento conformado por $n$ ejemplos etiquetados:
-
-\begin{equation}
-(x_1, y_1), (x_2, y_2), \ldots, (x_n, y_n)
-\end{equation}
-
-\noindent donde cada $x_n$ es una entrada (también conocida como vector de características) y cada $y_n$ es la salida o etiqueta correspondiente. Estos ejemplos son generados por una función desconocida $f(x)$, y el objetivo del algoritmo es encontrar una función aproximada $h(x)$, denominada \emph{hipótesis}, que generalice correctamente sobre datos no vistos.
+Formalmente, el aprendizaje supervisado parte de un conjunto de entrenamiento conformado por $n$ ejemplos etiquetados $(x_1, y_1), (x_2, y_2), \ldots, (x_n, y_n)$ donde cada $x_n$ es una entrada (también conocida como vector de características) y cada $y_n$ es la salida o etiqueta correspondiente. Estos ejemplos son generados por una función desconocida $f(x)$, y el objetivo del algoritmo es encontrar una función aproximada $h(x)$, denominada \emph{hipótesis}, que generalice correctamente sobre datos no vistos.
 
 Los problemas que son abarcados por este tipo de aprendizaje son
 
@@ -93,8 +85,6 @@ Una \emph{función de pérdida} es una función matemática que cuantifica el er
 Formalmente, dada una función de predicción $f(x)$ y un valor objetivo $y$, una función de pérdida $L(y, f(x))$ devuelve un valor escalar que representa la penalización por la discrepancia entre ambos.
 
 Definido el concepto de función de pérdida, se procede a explicar el concepto de Gradient Boosting, siendo este una técnica de ensamble supervisado que construye un modelo predictivo fuerte mediante la combinación secuencial de múltiples modelos débiles, generalmente árboles de decisión, con el objetivo de corregir los errores residuales del conjunto anterior. A cada paso, el nuevo modelo es entrenado para minimizar el error del conjunto previo, utilizando métodos de optimización basados en el gradiente de una función de pérdida.
-
-En este caso, la función utilizada por CatBoost es RMSE, cuya fórmula matemática ha sido definida previamente
 
 Dada la definición de Gradient Boosting, se continúa con la explicación de CatBoost (Categorical Boosting), definido en \parencite{dorogush2018catboost}, como uno de los algoritmos implementados con esta técnica. Está diseñado específicamente para manejar datasets que contienen una combinación de variables numéricas y categóricas, destacándose por su capacidad para procesar variables categóricas sin necesidad de codificación previa (como one-hot o label encoding), y de reducir el overfitting que ocurre durante el entrenamiento mediante una técnica llamada Ordered Boosting. 
 
@@ -255,7 +245,7 @@ Durante la etapa de descubrimiento del proyecto se consideró fundamental realiz
 
 Primeramente se entrevistó a Ulises Litterio, dueño de La Brava Burguer, la cual es una cadena gastronómica que consta de tres locales y 25 empleados. Se centra en la venta de hamburguesas y llevan a cabo todas las actividades correspondientes para el mantenimiento y desarrollo de calidad de las mismas que van desde la compra de materias primas hasta la venta final de estas con delivery propio. Ahora bien, el control del inventario se encuentra descentralizado, básicamente cada jefe de cocina realiza un conteo el cual se le informa al encargado, quien lo carga en una planilla de Excel que luego es revisada por el dueño (Ulises Litterio). Además, todas las compras necesarias son realizadas de manera semanal, aunque pueden repetirse en distintos momentos de la semana si hay productos o ingredientes faltantes.
 
-El cálculo de reposición de stock se basa en datos como las ventas semanas anteriores, fechas clave, como feriados, y la intuición de los trabajadores sobre la demanda esperada. Sin embargo, gestionar el inventario de esta manera conlleva una alta tasa de error tanto por sobrestock como por faltantes, lo cual genera desperdicios tanto a nivel económico como alimenticio. Además, Ulises destaca la dificultad de consolidar datos de ventas debido a que operan con múltiples plataformas de delivery como Rappi y PedidosYa, cada una con su propio sistema individual, y aunque ha considerado la opción de emplear un software como MaxiRest, ha terminado por descartar dicha idea debido a los costos elevados que tendría que pagar.
+El cálculo de reposición de stock se basa en datos como las ventas semanas anteriores, fechas clave, como feriados, y la intuición de los trabajadores sobre la demanda esperada. Sin embargo, gestionar el inventario de esta manera conlleva una alta tasa de error tanto por sobrestock como por faltantes, lo cual genera desperdicios tanto a nivel económico como alimenticio. Además, Ulises destaca la dificultad de consolidar datos de ventas debido a que operan con múltiples plataformas de delivery como Rappi y PedidosYa, cada una con su propio sistema individual, y aunque ha considerado la opción de emplear un software como MaxiRest, ha terminado por descartar dicha idea debido a los costos elevados que tendría que pagar. A su vez, nos informó sobre como el proceso de reposición de inventario, uno de los que ocurre con mayor frecuencia, es a su vez uno de los de mayor costo asociado, significando para él, en mayo de 2025, alrededor de 6 millones de pesos argentinos por semana en cada uno de sus locales.
 
 En segundo lugar, se entrevistó a Oscar Campione, dueño de una rotisería familiar que opera con un único local instalado en una parte de la casa. La venta del negocio se basa única y exclusivamente en por delivery propio a través de PedidosYa. Además el personal se encuentra compuesto por cuatro personas los cuales son todos integrantes de la familia, exceptuando al repartidor.
 
