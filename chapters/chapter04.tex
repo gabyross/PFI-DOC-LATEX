@@ -1,5 +1,7 @@
 \chapter{Descripción}\label{chapter04}
 
+El presente capítulo desarrolla la descripción integral de la solución propuesta, abordando sus fundamentos conceptuales, técnicos y operativos. Se expone la forma en que la plataforma materializa los objetivos definidos en las etapas de análisis, describiendo los principales componentes que la conforman y la lógica que guía su funcionamiento. Asimismo, se presenta la manera en que las decisiones de diseño, arquitectura y desarrollo se articulan para garantizar la eficiencia, la escalabilidad y la confiabilidad del sistema.
+
 \section{Requerimientos}\label{sec:requerimientos}
 A continuación se presentan los requerimientos de la solución, organizados en dos categorías: requerimientos funcionales y no funcionales. Los requerimientos funcionales representan las operaciones y servicios que la plataforma debe ofrecer al usuario final, mientras que los no funcionales establecen criterios de calidad que condicionan la forma en que el sistema debe operar \parencite{ieee2008}.
 
@@ -23,7 +25,7 @@ Los requerimientos funcionales describen las acciones observables que el sistema
 Los requerimientos no funcionales especifican condiciones de calidad y restricciones técnicas que determinan cómo debe operar la solución, más allá de las funciones explícitas que ofrece \parencite{ieee2008}.
 \begin{enumerate}[label=\textbf{RNF\arabic*}, leftmargin=2.8cm]
     \item La interfaz debe ser adaptable (responsive) para asegurar su correcto uso en computadoras de escritorio, tablets y dispositivos móviles.
-    \item La aplicación debe garantizar disponibilidad continua ($24 \times 7$) para el acceso a predicciones, métricas e informes en cualquier momento.
+    \item La aplicación debe garantizar disponibilidad continua, las veinticuatro horas del día, los siete días de la semana, para el acceso a predicciones, métricas e informes en cualquier momento.
     \item El sistema debe ser compatible con los navegadores más utilizados (Google Chrome, Mozilla Firefox, Microsoft Edge y Safari) en sus versiones estables recientes.
     \item La infraestructura debe poder escalar automáticamente para soportar un crecimiento sostenido de usuarios sin afectar el rendimiento.
     \item El sistema debe desplegarse en una plataforma en la nube (por ejemplo, AWS Amplify) que garantice al menos un 99\% de disponibilidad mensual.
@@ -51,14 +53,12 @@ Un diagrama de caso de uso es una representación visual que muestra cómo los a
 Los diagramas de flujo o de procesos son herramientas visuales que representan de manera secuencial los pasos y decisiones que conforman un procedimiento. Su utilización permite clarificar la lógica del negocio, identificar posibles ineficiencias y redundancias, así como facilitar la comunicación entre los equipos técnicos y los usuarios. De esta manera, constituyen un recurso fundamental para comprender, analizar, documentar y mejorar procesos organizacionales \parencite{asq2025flowchart}.
 
 \subsubsection{Registro y Autenticación}
-
 Con el fin de garantizar la seguridad y la personalización de los datos, el acceso a la información y a las funcionalidades críticas de SmartStocker se encuentra restringido a usuarios autenticados. Para ello, la plataforma implementa un flujo de registro inicial y un mecanismo de inicio de sesión que permite identificar de manera única a cada restaurante o local gastronómico.
 
-En la etapa de registro, el usuario debe proporcionar credenciales seguras junto con los datos básicos de su establecimiento. Una vez verificados y almacenados en la base de datos, se habilita la creación de una cuenta que asegura un entorno exclusivo para la gestión de inventario y el análisis de ventas.
-
+Durante la etapa de registro, el usuario completa un formulario en línea con los datos básicos del negocio.Estos datos son validados por el sistema para comprobar su integridad y formato. En caso de inconsistencias, el sistema informa los errores y solicita su corrección antes de continuar. Si la información ingresada es válida, SmartStocker redirige al usuario a la página de inicio y registra la solicitud correspondiente. Posteriormente, la empresa valida y aprueba el alta del negocio, enviando un correo electrónico con las credenciales definitivas de acceso y confirmando la activación de la cuenta en el entorno B2B. Este proceso garantiza que cada registro corresponda efectivamente a un establecimiento gastronómico verificado, asegurando así la integridad de la red y la trazabilidad de los datos administrados por la plataforma.
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.7\textwidth]{images/DiagramaRegistroDeUsuario.png}
+    \includegraphics[width=1\textwidth]{images/DiagramaRegistroDeUsuarioB2B.png}
     \caption{Flujo de Registro del Usuario.}
     {\textit{Fuente: Elaboración propia.}}
     \label{fig:flujo-registro}
@@ -68,7 +68,7 @@ Posteriormente, mediante la autenticación, los usuarios acceden a su espacio de
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.7\textwidth]{images/DiagramaInicioDeSesion.png}
+    \includegraphics[width=1\textwidth]{images/DiagramaInicioDeSesion.png}
     \caption{Flujo de Autenticación del Usuario.}
     {\textit{Fuente: Elaboración propia.}}
     \label{fig:flujo-autenticacion}
