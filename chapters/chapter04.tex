@@ -497,7 +497,7 @@ A fin de obtener la información relacionada a feriados y aspectos climáticos, 
 
 El algoritmo utilizado para el entrenamiento es CatBoost, perteneciente a la familia de algoritmos de regresión, seleccionado debido a su manejo nativo de variables categóricas.
 
-Para la ejecución del entrenamiento en sí, se utilizan SageMaker Jobs, específicamente Processing Jobs para las tareas de Feature Engineering, y Training Jobs para el Entrenamiento propiamente del modelo.
+Para la ejecución del entrenamiento en sí, se utilizan SageMaker Jobs, específicamente Processing Jobs para las tareas de Feature Engineering, y Training Jobs para el entrenamiento propiamente del modelo.
 
 Para ser capaces de realizar todo el proceso de entrenamiento de forma individual para cada usuario, se optó por implementar un pipeline, cuyo objetivo es entrenar de forma periódica un modelo actualizado para cada uno de ellos.
 
@@ -508,7 +508,7 @@ La segunda Lambda es la dedicada propiamente a coordinar las distintas fases del
 Específicamente, sus funciones son las siguientes:
 
 \begin{itemize}
-    \item Feature engineering: Aquí se tomará el archivo histórico consolidado del usuario, y se obtendrán features adicionales para enriquecer el modelo, siendo estas las relacionadas a aspectos cronológicos y de tendencias de productos. También se realizan tratamiento de datos anómalos, y normalizaciones. La salida de este proceso son los dos datasets a utilizar para el entrenamiento del modelo, uno para el entrenamiento propiamente, y otro para su correspondiente validación, depositados dentro de S3.
+    \item Feature engineering: Aquí se tomará el archivo histórico consolidado del usuario, y se obtendrán features adicionales para enriquecer el modelo, siendo estas las relacionadas a aspectos cronológicos y de tendencias de productos. También se realizan tratamientos de datos anómalos, y normalizaciones. La salida de este proceso son los dos datasets a utilizar para el entrenamiento del modelo, uno para el entrenamiento propiamente, y otro para su correspondiente validación, depositados dentro de S3.
     \item Entrenamiento: Encargado de utilizar los dos datasets creados previamente, e instanciar y ejecutar el entrenamiento en sí. Su salida es el archivo correspondiente al modelo ya entrenado.
 \end{itemize}
 
