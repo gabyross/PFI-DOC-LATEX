@@ -268,7 +268,7 @@ A continuación se presentan las principales pantallas de la aplicación SmartSt
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.9\textwidth]{images/cargaMasiva.png}
-    \caption{Pantalla para carga masiva de ingredientes o productos.}
+    \caption{Pantalla para carga masiva de ingredientes}
     {\textit{Fuente: Elaboración propia.}}
     \label{fig:ux-carga-masiva}
 \end{figure}
@@ -323,6 +323,8 @@ A continuación se presentan las principales pantallas de la aplicación SmartSt
 
 \section{Funcionalidades}\label{sec:funcionalidades}
 
+El presente apartado describe las funcionalidades principales que conforman la plataforma SmartStocker. Cada una de ellas fue diseñada con el objetivo de optimizar la gestión operativa de los locales gastronómicos, integrando procesos de predicción, control y automatización. 
+
 \subsection{Predicción de Ventas}\label{sec:prediccion-ventas}
 
 En el sector gastronómico, la capacidad de anticipar la demanda se ha convertido en un factor estratégico para reducir pérdidas, optimizar el uso de insumos y garantizar la continuidad del servicio. Bajo dicha premisa, SmartStocker incorpora un módulo de predicciones como una de sus funcionalidades principales. El sistema aplica técnicas de aprendizaje automático que permiten transformar datos históricos y registros actuales en estimaciones de ventas futuras. 
@@ -344,9 +346,9 @@ El modelo predictivo requiere datos de calidad para generar resultados confiable
     \item \textbf{Integración automática con sistemas de venta}: este mecanismo posibilita la importación continua de pedidos en tiempo real desde aplicaciones como PedidosYa. Con ello, el sistema asegura la actualización permanente del conjunto de datos, reduciendo la dependencia exclusiva de registros históricos y adaptándose a la dinámica diaria del negocio.
 \end{itemize}
 
-\subsection{Gestion de ingredientes e items del menu}\label{sec:carga-datos}
+\subsection{Gestión de ingredientes e items del menú}\label{sec:carga-datos}
 
-Para que el sistema pueda calcular el inventario sugerido, es necesario que el usuario cargue los ingredientes que utiliza en su local y los vincule con los productos gastronómicos que ofrece en su menú. Esta funcionalidad permite al usuario definir y administrar tanto los ingredientes como los items del menu, permitiendo, en el caso particular de los ingredientes, realizar esta carga no solo desde la UI, sino tambien de forma masiva a traves de un archivo, a fin de simplificar la operatoria en caso de que el usuario cuente con un listado extenso.
+Para que el sistema pueda calcular el inventario sugerido, es necesario que el usuario cargue los ingredientes que utiliza en su local y los vincule con los productos gastronómicos que ofrece en su menú. Esta funcionalidad permite al usuario definir y administrar tanto los ingredientes como los items del menú, permitiendo, en el caso particular de los ingredientes, realizar esta carga no solo desde la UI, sino tambien de forma masiva a traves de un archivo, a fin de simplificar la operatoria en caso de que el usuario cuente con un listado extenso.
 
 \subsection{Procesamiento Predictivo}\label{sec:procesamiento-predictivo}
 
@@ -405,14 +407,14 @@ Para el despliegue y operación de SmartStocker se utiliza Amazon Web Services (
 \end{itemize}
 
 \section{Arquitectura de la solución}\label{sec:arquitectura-solucion}
-En esta sección se presenta la arquitectura de SmartStocker, detallando como las tecnologías empleadas se implementan en el diseño técnico y funcional. La arquitectura funciona como marco conceptual que sustenta cada componente del sistema y especifica las interacciones y dependencias entre las distintas partes que lo componen.
+En este apartado se presenta la arquitectura de SmartStocker, detallando como las tecnologías empleadas se implementan en el diseño técnico y funcional. La arquitectura funciona como marco conceptual que sustenta cada componente del sistema y especifica las interacciones y dependencias entre las distintas partes que lo componen.
 
 \subsection{Diagrama de Arquitectura conceptual}\label{sec:arquitectura-conceptual}
 En relación con la arquitectura de alto nivel de SmartStocker, se propone un modelo de tres capas que organiza la solución, asegurando una separación clara de responsabilidades y mejorando la escalabilidad. Esta estructura está diseñada para optimizar tanto la interacción con el usuario como el procesamiento y almacenamiento de los registros de venta y los resultados de inferencia generados por el modelo predictivo.
 
 La primera capa —Capa de Presentación (Presentation Layer)— agrupa la interfaz y la experiencia de usuario. En ella se implementa el frontend de SmartStocker con Next.js y se despliega mediante AWS Amplify, aprovechando sus capacidades de hosting y CI/CD. Esta capa permite a los usuarios interactuar con la plataforma, gestionar sus productos e ingredientes, visualizar recomendaciones y alertas, y realizar operaciones de predicciones de venta de forma responsiva y orientada a la operativa diaria.
 
-La Capa de Negocio (Business Layer) constituye el núcleo lógico de SmartStocker y se organiza en tres componentes principales. El primero es una API REST que actúa como puente entre la capa de presentación y los servicios backend; a través de ella se gestionan las sesiones y la autorización, se exponen los endpoints para solicitar predicciones y gestionar productos, ingredientes, y alertas, y se incluye la lógica necesaria para atender las demandas de la interfaz de usuario de forma segura y consistente. Esta se encuentra desarollada con Node.js, a fin de aprovechar lo mas posible su integracion nativa con Next.js, y la simpleza a la hora de desplegar la API de forma serverless mediante AWS Lambda. El segundo es el pipeline de ETL, encargado de recibir los datos de ventas en tiempo real desde los sistemas externos, procesarlos, enriquecerlos, y dejarlos listos para ser usados por el modelo. Por último, el pipeline de ML será el encargado de realizar el entrenamiento del modelo, ya sea de forma periódica u bajo demanda, y de dejarlo disponible para su uso en las operaciones de inferencia. La logica de ambos pipelines se encuentra desarollada en Python, a fin de aprovechar las distintas librerías y frameworks disponibles para el procesamiento de datos y machine learning, y se encuentran implementados mediante AWS Lambda.
+La Capa de Negocio (Business Layer) constituye el núcleo lógico de SmartStocker y se organiza en tres componentes principales. El primero es una API REST que actúa como puente entre la capa de presentación y los servicios backend. A través de ella se gestionan las sesiones y la autorización, se exponen los endpoints para solicitar predicciones y gestionar productos, ingredientes, y alertas, y se incluye la lógica necesaria para atender las demandas de la interfaz de usuario de forma segura y consistente. Esta se encuentra desarollada con Node.js, a fin de aprovechar lo mas posible su integracion nativa con Next.js, y la simpleza a la hora de desplegar la API de forma serverless mediante AWS Lambda. El segundo es el pipeline de ETL, encargado de recibir los datos de ventas en tiempo real desde los sistemas externos, procesarlos, enriquecerlos, y dejarlos listos para ser usados por el modelo. Por último, el pipeline de ML será el encargado de realizar el entrenamiento del modelo, ya sea de forma periódica u bajo demanda, y de dejarlo disponible para su uso en las operaciones de inferencia. La logica de ambos pipelines se encuentra desarollada en Python, a fin de aprovechar las distintas librerías y frameworks disponibles para el procesamiento de datos y machine learning, y se encuentran implementados mediante AWS Lambda.
 
 Por último, la Capa de Almacenamiento (Storage Layer) se organiza según los distintos casos de uso de la plataforma y está diseñada para optimizar rendimiento y costos. Los datos de la aplicación, tales como los ingredientes, productos, ventas realizadas,  y resultados de predicciones, se almacenan en DocumentDB, lo que facilita lecturas de baja latencia y flexibilidad en la estructura de los datos. Mientras tanto, los datos orientados al entrenamiento del modelo, tales como los datasets históricos, los artefactos de entrenamiento y los modelos exportados se almacenan en Amazon S3, aprovechando su durabilidad y su bajo costo.
 
@@ -429,13 +431,13 @@ Se decidió usar Amazon Web Services (AWS) como solución de despliegue debido a
 
 Analizando la capa de presentación, esta se encuentra desarrollada con Next.js, y desplegado a través de AWS Amplify. Se eligió este servicio puesto que simplifica enormemente la gestión de la aplicación, permitiendo, mediante una simple configuración inicial, encargarse de aspectos tales como el despliegue (permitiendo CI/CD integrado a GitHub), hasta del escalamiento en sí.
 
-Para la capa de almacenamiento, se optaron por dos soluciones. Primero, DocumentDB como base de datos NoSQL, seleccionado debido a la naturaleza no estructurada de los datos a utilizar, y que nos brinda la posibilidad de modificar el schema con facilidad, además de ser una base serverless escalable. Y segundo, S3, para contener la información en formato \verb|csv| requerida para los entrenamientos del modelo, y para almacenar los archivos correspondientes al modelo entrenado en si.
+Para la capa de almacenamiento, se optaron por dos soluciones. Primero, DocumentDB como base de datos NoSQL, seleccionado debido a la naturaleza no estructurada de los datos a utilizar, y que nos brinda la posibilidad de modificar el schema con facilidad, además de ser una base serverless escalable. Asimismo, S3, para contener la información en formato \verb|csv| requerida para los entrenamientos del modelo, y para almacenar los archivos correspondientes al modelo entrenado en si.
 
 Para la capa de negocio, se decidió implementar las distintas APIs requeridas mediante AWS Lambda, dado que su enfoque serverless permite abstraernos de la gestión de la infraestructura, acelerando el desarrollo y la puesta en producción, escalando cuando la demanda lo requiera, y reduciendo los costos fijos.
 
 Esto también aplica para el pipeline de ETL, donde también se utiliza AWS Simple Queue Service (SQS) para desacoplar el procesamiento de las ventas, a fin de lograr velocidades de respuesta rápida ante los sistemas externos que enviaran las mismas, mientras que el procesamiento y enriquecimiento de las ventas se realiza en otra Lambda.
 
-Por último, se decidió usar AWS Sagemaker en el pipeline de ML, puesto que simplifica el entrenamiento del modelo, requiriendo suministrarle los dataset de entrenamiento y validación a utilizar, y permite disponibilizar el modelo para ser usado para predicciones mediante endpoints, lo que brinda una consulta rápida y de facil implementacion.
+Por último, se decidió usar AWS Sagemaker en el pipeline de ML, puesto que simplifica el entrenamiento del modelo, requiriendo suministrarle los dataset de entrenamiento y validación a utilizar, y permite disponibilizar el modelo para ser usado para predicciones mediante endpoints, lo que brinda una consulta rápida y de fácil implementación.
 
 \begin{figure}[H]
     \centering
@@ -447,7 +449,7 @@ Por último, se decidió usar AWS Sagemaker en el pipeline de ML, puesto que sim
 
 \subsection{Diagrama de Base de datos}\label{sec:arquitectura-base-datos}
 
-Para el diseño de la base de datos, se opto por utilizar DocumentDB, una de las alternativas NoSQL brindadas por AWS, debido a la flexibilidad y capacidades de escalado automatico que esta nos provee, siendo la flexibilidad del schema algo critico dada la necesidad de agregar campos adicionales conforme el proceso de ETL o entrenamiento del modelo de ML lo requieran.
+Para el diseño de la base de datos, se opto por utilizar DocumentDB, una de las alternativas NoSQL brindadas por AWS, debido a la flexibilidad y capacidades de escalado automaáico que esta nos provee, siendo la flexibilidad del schema algo critico dada la necesidad de agregar campos adicionales conforme el proceso de ETL o entrenamiento del modelo de ML lo requieran.
 
 El diseño de la base de datos se estructura en torno a siete entidades principales: Usuario, ItemMenu, Ingrediente, ItemMenu\_Ingrediente, Venta, DetalleVenta,CorreccionPrediccion y Alerta.
 La entidad Usuario representa a cada negocio dentro de la plataforma, almacenando información básica de acceso (nombre de usuario, email, contraseña), su estado de actividad y los identificadores de integración con plataformas externas como PedidosYa, Rappi u OláClick.
@@ -458,7 +460,7 @@ La entidad Predicción registra las predicciones de demanda vinculadas a un prod
 
 La entidad Venta registra las transacciones realizadas, incluyendo el número de venta, fecha, turno, método de pago, plataforma de venta, estado y cantidad total de ítems, todo asociado a un userId y a su vez una se descompone en varios ítems dentro de la entidad DetalleVenta, donde se detallan el producto (ItemMenu), la cantidad, el precio unitario y el subtotal, lo que permite realizar análisis más precisos por producto y turno.
 
-La entidad CorreccionPrediccion guarda el feedback explícito del usuario sobre los valores predichos por el modelo. Cada registro asocia un itemMenuId y un userId con la predicción original, el valor corregido, la fecha y el turno, permitiendo incluir el feedback del usuario en la prediccion.
+La entidad CorreccionPrediccion guarda el feedback explícito del usuario sobre los valores predichos por el modelo. Cada registro asocia un itemMenuId y un userId con la predicción original, el valor corregido, la fecha y el turno, permitiendo incluir el feedback del usuario en la predicción.
 
 Finalmente, la entidad Alerta gestiona las alertas de stock, asociando cada una a su correspondiente a usuarios e ingredientes, con indicadores de lectura y fechas de creación y actualización.
 Todos los documentos incluyen timestamps (fecha\_creacion / fecha\_actualizacion) para auditoría.
@@ -684,7 +686,7 @@ Podemos ver que tanto el RMSE como el MAE presentan valores bajos, lo que indica
 
 \subsection{Inclusión del Feedback de usuario}\label{sec:inclusion-feedback-usuario}
 
-A fin de incluir el feedback del usuario en las predicciones, se decidió implementar una lógica que ajuste la salida del modelo. Para ello, cada vez que el usuario informe que una predicción no es precisa en base a su experiencia, podrá informar el valor de ventas que él considera adecuado, ajustando esto el cálculo de stock requerido. Cuando esto ocurra de forma reiterada para una cierta combinación producto/turno dentro de un plazo de tiempo, se utilizaran los valores corregidos para calcular un valor de ajuste, teniendo más peso las correcciones recientes, y se aplicará a la predicción obtenida del modelo. 
+A fin de incluir el feedback del usuario en las predicciones, se decidió implementar una lógica que ajuste la salida del modelo. Para ello, cada vez que el usuario informe que una predicción no es precisa en base a su experiencia, podrá informar el valor de ventas que él considera adecuado, ajustando esto el cálculo de stock requerido. Cuando esto ocurra de forma reiterada para una cierta combinación producto/turno dentro de un plazo de tiempo, se utilicen los valores corregidos para calcular un valor de ajuste, teniendo más peso las correcciones recientes, y se aplicará a la predicción obtenida del modelo. 
 
 Esto permite realizar ajustes sobre posibles tendencias que están ocurriendo de forma más rápida de la que el modelo es capaz de captarlas, sin modificar el proceso de entrenamiento del mismo, ya que eventualmente, si estos cambios en las tendencias pasarán a ser el comportamiento normal, el modelo lo aprenderá de forma natural conforme va accediendo a nueva información.
 
