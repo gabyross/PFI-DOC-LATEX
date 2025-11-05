@@ -551,14 +551,13 @@ turno & Turno de venta \\ \hline
 \end{table}
 
 A partir de estos datos, se generan los siguientes tipos de features adicionales:
-
 \textbf{Features Temporales:} Representan los aspectos cronológicos de una venta. A fin de capturar la naturaleza cíclica de estos datos, se optó por representar a las variables de día, semana y mes mediante el resultado de aplicar las funciones trigonométricas seno y coseno a sus correspondientes valores numéricos, de esta forma, se logra que el modelo pueda captar la continuidad entre el final y el comienzo de cada ciclo (por ejemplo, entre el día 31 y el día 1).
 
 \textbf{Features Climáticas:} Representan los aspectos climáticos del momento donde se concretó una venta.
 
-\textbf{Features de Lag:} Corresponden a variables que incorporan información de ventas pasadas en un intervalo temporal específico, permitiendo que el modelo aprenda patrones de comportamiento recurrentes en el tiempo. Por ejemplo, la variable \textit{lag\_1\_semana} representa el valor de ventas observado exactamente una semana antes del registro actual.
+\textbf{Features de Lag:} Corresponden a variables que incorporan información de ventas pasadas en un intervalo temporal específico, permitiendo que el modelo aprenda patrones de comportamiento recurrentes en el tiempo. Por ejemplo, la variable \verb|lag_1_semana| representa el valor de ventas observado exactamente una semana antes del registro actual.
 
-\textbf{Rolling Features:} Estas variables se obtienen a partir del cálculo de estadísticas móviles (como medias o desviaciones estándar) sobre ventanas temporales deslizantes. Su objetivo es reflejar la tendencia y la estabilidad reciente de las ventas, suavizando las fluctuaciones diarias. De esta forma, el modelo puede identificar cambios graduales en la demanda y diferenciar entre comportamientos estables y volátiles a corto o mediano plazo. En este caso, se calcularon medias(mean) y desviaciones estándar móviles(std) para ventanas de 1 semana(1w), 2 semanas(2w) y 4 semanas(4w), para cada producto(p), y las combinaciones producto-turno(pt) y producto-día(pdw).
+\textbf{Rolling Features:} Estas variables se obtienen a partir del cálculo de estadísticas móviles (como medias o desviaciones estándar) sobre ventanas temporales deslizantes. Su objetivo es reflejar la tendencia y la estabilidad reciente de las ventas, suavizando las fluctuaciones diarias. De esta forma, el modelo puede identificar cambios graduales en la demanda y diferenciar entre comportamientos estables y volátiles a corto o mediano plazo. En este caso, se calcularon medias (mean) y desviaciones estándar móviles (std) para ventanas de 1 semana (1w), 2 semanas (2w) y 4 semanas (4w), para cada producto (p), y las combinaciones producto-turno (pt) y producto-día (pdw).
 
 Al finalizar el proceso de Feature Engineering, el dataset resultante contiene las siguientes variables:
 
@@ -602,7 +601,7 @@ estacion & Estación del año en Hemisferio Sur (categórica) \\ \hline
 temperatura\_promedio & Categoría de temperatura \\ \hline
 llovio & Indicador si llovió en el día \\ \hline
 clima\_adverso & Indicador de condiciones climáticas adversas \\ \hline
-descripcion\_clima & Descripción textual del clima \\ \hline
+descripción\_clima & Descripción textual del clima \\ \hline
 \end{tabular}
 
 \vspace{0.3em}
@@ -656,7 +655,7 @@ roll\_std\_[ventana]\_[combinacion] & Desviación estándar móvil de ventas \\
 
 \subsection{Entrenamiento del modelo}\label{sec:entrenamiento-modelo}
 
-Como parte del entrenamiento, se decidio usar la función de perdida Tweedie, debido a su capacidad para modelar variables continuas no negativas con distribución asimétrica y presencia de ceros, como ocurre en las ventas diarias de productos gastronómicos, donde es una ocurrencia normal que ciertos productos no sean vendidos en determinados días. Esto permite que el modelo se adapte mejor a estos patrones, mejorando la precisión de las predicciones.
+Como parte del entrenamiento, se decidió usar la función de pérdida Tweedie, debido a su capacidad para modelar variables continuas no negativas con distribución asimétrica y presencia de ceros, como ocurre en las ventas diarias de productos gastronómicos, donde es una ocurrencia normal que ciertos productos no sean vendidos en determinados días. Esto permite que el modelo se adapte mejor a estos patrones, mejorando la precisión de las predicciones.
 
 A continuación, se muestra un gráfico donde se visualiza la importancia de las diez features más relevantes, calculado usando la función PredictionValuesChange de CatBoost, la cual mide el impacto de cada feature en las predicciones del modelo al observar los cambios en los valores predichos cuando se modifica cada feature individualmente.
 
@@ -676,13 +675,13 @@ Usando estos hiperparámetros, se logran los siguientes resultados al evaluar el
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{images/resultados.png}
+    \includegraphics[width=0.6\textwidth]{images/resultados.png}
     \caption{Resultados del modelo.}
     {\textit{Fuente: Elaboración propia.}}
     \label{fig:resultados-modelo}
 \end{figure}
 
-Podemos ver que tanto el RMSE como el MAE presentan valores bajos, lo que indica que el modelo es apto para la tarea de predicción de ventas enfocada a la gestión de inventario.
+Podemos ver que tanto el RMSE como el MAE, medidos en unidades de venta, presentan valores de error aceptables en el contexto gastronómico, lo que indica que el modelo es apto para la tarea de predicción de ventas enfocada a la gestión de inventario.
 
 \subsection{Inclusión del Feedback de usuario}\label{sec:inclusion-feedback-usuario}
 
