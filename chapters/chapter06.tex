@@ -4,19 +4,19 @@ En esta sección se describen las pruebas realizadas para validar el correcto fu
 
 \section{Estrategia General de Pruebas}\label{sec:estrategia-pruebas}
 
-Durante el proceso de desarrollo se adoptó una estrategia incremental de validación, que abarcó desde pruebas unitarias en las primeras etapas de implementación, hasta pruebas de integración y validación funcional con un usuario real perteneciente al rubro gastronómico.
+Durante el proceso de desarrollo se adoptó una estrategia incremental de validación, que abarcó desde pruebas unitarias en las primeras etapas de implementación hasta pruebas de integración y validación funcional con un usuario real perteneciente al rubro gastronómico.
 
-En primer lugar, se realizaron \textbf{pruebas unitarias} sobre cada módulo del sistema (usuarios, ingredientes, ítems del menú, alertas, predicciones y carga de datos históricos), verificando que cada componente cumpliera correctamente con los requerimientos establecidos. Estas pruebas permitieron detectar errores tempranos y garantizar la coherencia de las respuestas de la API ante distintos escenarios de entrada.
+En primer lugar, se realizaron pruebas unitarias sobre cada módulo del sistema (usuarios, ingredientes, ítems del menú, alertas, predicciones y carga de datos históricos), verificando que cada componente cumpliera correctamente con los requerimientos establecidos. Estas pruebas permitieron detectar errores tempranos y garantizar la coherencia de las respuestas de la API ante distintos escenarios de entrada.
 
-Posteriormente se llevaron a cabo \textbf{pruebas de integración}, con el objetivo de validar la correcta comunicación entre los servicios del backend, la base de datos y el frontend. En esta etapa se probaron de forma conjunta las operaciones más críticas, tales como la creación y edición de ingredientes, la generación de alertas automáticas, el funcionamiento del modelo predictivo de ventas y la carga masiva de datos históricos en formato \texttt{.xlsx}.
+Posteriormente se llevaron a cabo pruebas de integración, con el objetivo de validar la correcta comunicación entre los servicios del backend, la base de datos y el frontend. En esta etapa se probaron de forma conjunta las operaciones más críticas, tales como la creación y edición de ingredientes, la generación de alertas automáticas, el funcionamiento del modelo predictivo de ventas y la carga masiva de datos históricos en formato \texttt{.xlsx}.
 
-Finalmente, se realizaron \textbf{pruebas funcionales completas} sobre la versión desplegada en el entorno de producción, con el fin de asegurar la correcta operación del sistema en condiciones equivalentes a las de uso real.
+Finalmente, se realizaron pruebas funcionales completas sobre la versión desplegada en el entorno de producción, con el fin de asegurar la correcta operación del sistema en condiciones equivalentes a las de uso real.
 
 \section{Validación con Usuario de un Negocio}\label{sec:validacion-usuario}
 
-Con el propósito de garantizar que la solución se adaptara a las dinámicas reales del rubro gastronómico, se efectuaron sesiones de validación con \textbf{Ulises Litterio}, dueño de \textbf{La Brava Burger}, quien participó activamente en el proceso de iteración del desarrollo, aportando retroalimentación en cada etapa.
+Con el propósito de garantizar que la solución se adaptara a las dinámicas reales del rubro gastronómico, se efectuaron sesiones de validación con Ulises Litterio, dueño de La Brava Burger, quien participó activamente en el proceso de iteración del desarrollo y aportó retroalimentación en cada etapa.
 
-Durante las sesiones de prueba, se evaluaron aspectos de funcionalidad, diseño, rendimiento y usabilidad mediante tareas representativas de la operación diaria de un restaurante. Entre las principales actividades solicitadas se incluyeron:
+Durante las sesiones de prueba, se evaluaron aspectos de funcionalidad, diseño, rendimiento y usabilidad mediante tareas representativas de la operación diaria de un restaurante. Entre las principales actividades realizadas se incluyeron:
 
 \begin{itemize}
     \item Carga masiva de datos históricos de ventas mediante planillas Excel.
@@ -26,11 +26,11 @@ Durante las sesiones de prueba, se evaluaron aspectos de funcionalidad, diseño,
     \item Evaluación del modelo predictivo de ventas a partir de los datos cargados.
 \end{itemize}
 
-El usuario destacó positivamente la simplicidad de la interfaz y la claridad del flujo de navegación, señalando que la aplicación resulta intuitiva incluso para personas sin experiencia técnica. Además, resaltó la utilidad del modelo predictivo, ya que permite anticipar la demanda con base en los registros históricos y tomar decisiones informadas sobre el stock.
+El usuario destacó la simplicidad de la interfaz y la claridad del flujo de navegación, señalando que la aplicación resulta intuitiva incluso para personas sin experiencia técnica. También valoró la precisión del modelo predictivo, que permite anticipar la demanda en función de los registros históricos y ajustar el inventario con mayor eficiencia.
 
-Otro aspecto valorado fue la adaptabilidad de la plataforma a distintos tipos de negocios gastronómicos. Según su experiencia, \textit{SmartStocker} podría ajustarse fácilmente a las particularidades de cada establecimiento, ya sea por tamaño, tipo de menú o frecuencia de ventas. Esta flexibilidad fue considerada un punto fuerte para su aplicación en diferentes contextos del sector.
+Otro aspecto resaltado fue la adaptabilidad de la plataforma a distintos tipos de negocios gastronómicos. Según su experiencia, SmartStocker puede ajustarse fácilmente a las particularidades de cada establecimiento, ya sea por tamaño, tipo de menú o frecuencia de ventas. Esta flexibilidad fue considerada una ventaja competitiva para su implementación en diferentes contextos del sector.
 
-El diseño visual y la organización de las pantallas también fueron ajustados en base a su retroalimentación, con el objetivo de lograr una experiencia de uso más ágil y coherente con la dinámica de trabajo en locales gastronómicos.
+El diseño visual y la organización de las pantallas fueron ajustados en base a su retroalimentación, con el objetivo de lograr una experiencia de uso más ágil y coherente con la dinámica de trabajo en locales gastronómicos.
 
 \section{Resultados Obtenidos}\label{sec:resultados-pruebas}
 
@@ -49,9 +49,9 @@ Asimismo, se implementaron mejoras derivadas de los comentarios del usuario, com
 
 \section{Conclusión de las Pruebas}\label{sec:conclusion-pruebas}
 
-Las pruebas realizadas permitieron validar la funcionalidad técnica, la precisión del modelo predictivo y la usabilidad general de la plataforma \textit{SmartStocker}, confirmando su adecuación a las necesidades operativas del sector gastronómico.
+Las pruebas realizadas permitieron validar la funcionalidad técnica, la precisión del modelo predictivo y la usabilidad general de la plataforma SmartStocker, confirmando su adecuación a las necesidades operativas del sector gastronómico.
 
-El proceso de validación con un único usuario real aportó una retroalimentación directa y valiosa, que permitió perfeccionar tanto el diseño como las funcionalidades, fortaleciendo el carácter práctico y la aplicabilidad de la solución en entornos reales de uso.
+El proceso de validación con un único usuario real aportó retroalimentación directa y valiosa, que permitió perfeccionar tanto el diseño como las funcionalidades, fortaleciendo el carácter práctico y la aplicabilidad de la solución en entornos reales de uso.
 
 En síntesis, las pruebas demostraron que la plataforma cumple con los requerimientos funcionales definidos, presenta un desempeño estable y ofrece una experiencia de uso positiva. Los resultados obtenidos respaldan la factibilidad técnica y operativa del proyecto, consolidando su potencial de implementación en pequeñas y medianas empresas gastronómicas, con capacidad de adaptación a distintos modelos de negocio.
 
