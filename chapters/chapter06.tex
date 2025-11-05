@@ -1,0 +1,53 @@
+\chapter{Pruebas}\label{chapter06}
+
+En esta sección se describen las pruebas realizadas para validar el correcto funcionamiento de la plataforma SmartStocker, así como su adecuación a las necesidades reales del sector gastronómico. El objetivo de esta etapa fue garantizar la estabilidad técnica del sistema, la coherencia entre sus distintos módulos y la usabilidad de la interfaz desde la perspectiva del usuario final.
+
+\section{Estrategia General de Pruebas}\label{sec:estrategia-pruebas}
+
+Durante el proceso de desarrollo se adoptó una estrategia incremental de validación, que abarcó desde pruebas unitarias en las primeras etapas de implementación, hasta pruebas de integración y validación funcional con usuarios reales.
+
+En primer lugar, se realizaron pruebas unitarias sobre cada módulo del sistema (usuarios, ingredientes, ítems del menú, alertas y carga de datos históricos), verificando que cada componente cumpliera correctamente con los requerimientos establecidos. Estas pruebas permitieron detectar errores tempranos y garantizar la coherencia de las respuestas de la API ante distintos escenarios de entrada.
+
+Posteriormente se llevaron a cabo pruebas de integración, con el objetivo de validar la correcta comunicación entre los servicios del backend, la base de datos y el frontend. En esta etapa se probaron de forma conjunta las operaciones más críticas, tales como la creación y edición de ingredientes, la generación de alertas automáticas al alcanzar el umbral mínimo de stock y la carga masiva de datos históricos en formato \texttt{.xlsx}.
+
+Finalmente, se realizaron pruebas funcionales completas sobre la versión desplegada en el entorno de producción, con el fin de asegurar la correcta operación del sistema en condiciones equivalentes a las de uso real.
+
+\section{Validación con Usuarios}\label{sec:validacion-usuarios}
+
+Con el propósito de garantizar que la solución se adaptara a las dinámicas reales del rubro gastronómico, se efectuaron sesiones de validación con Ulises Litterio, dueño de La Brava Burger, quien participó activamente en el proceso de iteración del desarrollo, aportando retroalimentación en cada etapa.
+
+Durante las sesiones de prueba, se evaluaron aspectos de funcionalidad, diseño y usabilidad a través de tareas representativas de la operación diaria de un restaurante. Entre las principales actividades solicitadas se incluyeron:
+
+\begin{itemize}
+    \item Carga masiva de datos históricos de ventas mediante planillas Excel.
+    \item Registro y modificación de ingredientes, unidades de stock y productos del menú.
+    \item Visualización de ventas históricas y métricas por fecha y turno.
+    \item Configuración de umbrales de stock y validación de alertas generadas.
+\end{itemize}
+
+El usuario valoró positivamente la simplicidad de la interfaz y la claridad del flujo de navegación, destacando que la aplicación resultó intuitiva incluso para personas sin experiencia técnica. Además, el diseño visual y la organización de las pantallas fueron ajustados en base a su retroalimentación, con el objetivo de lograr una experiencia de uso más ágil y coherente con la dinámica de trabajo en locales gastronómicos.
+
+\section{Resultados Obtenidos}\label{sec:resultados-pruebas}
+
+Los resultados de las pruebas fueron altamente satisfactorios. La totalidad de las funcionalidades principales del sistema operaron conforme a lo esperado, y el usuario pudo completar todas las tareas propuestas sin inconvenientes.
+
+Entre los principales hallazgos se destacan los siguientes puntos:
+
+\begin{itemize}
+    \item La función de carga masiva de datos permitió reducir considerablemente el tiempo de configuración inicial del sistema.
+    \item El módulo de alertas demostró ser eficaz para prevenir faltantes de stock, notificando de forma automática cuando un insumo se encontraba por debajo del umbral definido.
+    \item El tablero de ventas y el historial de productos fueron percibidos como herramientas útiles para el seguimiento de la actividad comercial y la toma de decisiones.
+    \item La respuesta del sistema fue estable incluso ante cargas de datos voluminosas, sin presentar errores críticos ni pérdida de información.
+\end{itemize}
+
+Asimismo, se implementaron mejoras derivadas de los comentarios del usuario, como la incorporación de mensajes de confirmación visual en los botones con tiempo de respuesta del servidor y la optimización del flujo de carga de planillas.
+
+\section{Conclusión de las Pruebas}\label{sec:conclusion-pruebas}
+
+Las pruebas realizadas permitieron validar la funcionalidad técnica y la usabilidad general de la plataforma \textit{SmartStocker}, confirmando su adecuación a las necesidades operativas del sector gastronómico. 
+
+El proceso de validación con un usuario real permitió obtener retroalimentación valiosa para el perfeccionamiento del diseño y las interacciones, fortaleciendo el carácter práctico y la aplicabilidad de la solución en contextos reales de uso.
+
+En síntesis, las pruebas demostraron que la plataforma cumple con los requerimientos funcionales definidos, presenta un desempeño estable y ofrece una experiencia de usuario positiva. Estos resultados respaldan la factibilidad técnica y operativa del proyecto, consolidando su potencial de implementación en pequeñas y medianas empresas gastronómicas.
+
+
